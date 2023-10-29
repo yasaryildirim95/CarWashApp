@@ -1,4 +1,4 @@
-using CarWash.UI;
+using CarWashApp.UI;
 
 namespace CarWashApp.UI
 {

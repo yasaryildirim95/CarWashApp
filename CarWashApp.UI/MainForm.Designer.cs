@@ -1,4 +1,4 @@
-﻿namespace CarWash.UI
+﻿namespace CarWashApp.UI
 {
     partial class MainForm
     {
@@ -17,7 +17,8 @@
 
         private void InitializeComponent()
         {
-            panelMenu = new Panel();
+            menuPanel = new Panel();
+            uygulamaKullaniciBtn = new Button();
             uygulamaAyarlariBtn = new Button();
             personelBtn = new Button();
             stokBtn = new Button();
@@ -34,26 +35,41 @@
             kullaniciLabel = new Label();
             sifreTextbox = new TextBox();
             kullaniciTextbox = new TextBox();
-            panelMenu.SuspendLayout();
+            menuPanel.SuspendLayout();
             panel2.SuspendLayout();
             panelTitle.SuspendLayout();
             girisPanel.SuspendLayout();
             SuspendLayout();
             // 
-            // panelMenu
+            // menuPanel
             // 
-            panelMenu.BackColor = Color.FromArgb(51, 51, 76);
-            panelMenu.Controls.Add(uygulamaAyarlariBtn);
-            panelMenu.Controls.Add(personelBtn);
-            panelMenu.Controls.Add(stokBtn);
-            panelMenu.Controls.Add(yikamaBtn);
-            panelMenu.Controls.Add(aracKayitBtn);
-            panelMenu.Controls.Add(panel2);
-            panelMenu.Dock = DockStyle.Left;
-            panelMenu.Location = new Point(0, 0);
-            panelMenu.Name = "panelMenu";
-            panelMenu.Size = new Size(164, 472);
-            panelMenu.TabIndex = 0;
+            menuPanel.BackColor = Color.FromArgb(51, 51, 76);
+            menuPanel.Controls.Add(uygulamaKullaniciBtn);
+            menuPanel.Controls.Add(uygulamaAyarlariBtn);
+            menuPanel.Controls.Add(personelBtn);
+            menuPanel.Controls.Add(stokBtn);
+            menuPanel.Controls.Add(yikamaBtn);
+            menuPanel.Controls.Add(aracKayitBtn);
+            menuPanel.Controls.Add(panel2);
+            menuPanel.Dock = DockStyle.Left;
+            menuPanel.Location = new Point(0, 0);
+            menuPanel.Name = "menuPanel";
+            menuPanel.Size = new Size(164, 472);
+            menuPanel.TabIndex = 0;
+            // 
+            // uygulamaKullaniciBtn
+            // 
+            uygulamaKullaniciBtn.Dock = DockStyle.Top;
+            uygulamaKullaniciBtn.FlatAppearance.BorderSize = 0;
+            uygulamaKullaniciBtn.FlatStyle = FlatStyle.Flat;
+            uygulamaKullaniciBtn.ForeColor = Color.Gainsboro;
+            uygulamaKullaniciBtn.Location = new Point(0, 405);
+            uygulamaKullaniciBtn.Name = "uygulamaKullaniciBtn";
+            uygulamaKullaniciBtn.Size = new Size(164, 65);
+            uygulamaKullaniciBtn.TabIndex = 7;
+            uygulamaKullaniciBtn.Text = "Uygulama Kullanıcı";
+            uygulamaKullaniciBtn.UseVisualStyleBackColor = true;
+            uygulamaKullaniciBtn.Click += uygulamaKullaniciBtn_Click;
             // 
             // uygulamaAyarlariBtn
             // 
@@ -61,9 +77,9 @@
             uygulamaAyarlariBtn.FlatAppearance.BorderSize = 0;
             uygulamaAyarlariBtn.FlatStyle = FlatStyle.Flat;
             uygulamaAyarlariBtn.ForeColor = Color.Gainsboro;
-            uygulamaAyarlariBtn.Location = new Point(0, 320);
+            uygulamaAyarlariBtn.Location = new Point(0, 340);
             uygulamaAyarlariBtn.Name = "uygulamaAyarlariBtn";
-            uygulamaAyarlariBtn.Size = new Size(164, 60);
+            uygulamaAyarlariBtn.Size = new Size(164, 65);
             uygulamaAyarlariBtn.TabIndex = 6;
             uygulamaAyarlariBtn.Text = "Uygulama Ayarları";
             uygulamaAyarlariBtn.UseVisualStyleBackColor = true;
@@ -75,9 +91,9 @@
             personelBtn.FlatAppearance.BorderSize = 0;
             personelBtn.FlatStyle = FlatStyle.Flat;
             personelBtn.ForeColor = Color.Gainsboro;
-            personelBtn.Location = new Point(0, 260);
+            personelBtn.Location = new Point(0, 275);
             personelBtn.Name = "personelBtn";
-            personelBtn.Size = new Size(164, 60);
+            personelBtn.Size = new Size(164, 65);
             personelBtn.TabIndex = 5;
             personelBtn.Text = "Personel";
             personelBtn.UseVisualStyleBackColor = true;
@@ -89,9 +105,9 @@
             stokBtn.FlatAppearance.BorderSize = 0;
             stokBtn.FlatStyle = FlatStyle.Flat;
             stokBtn.ForeColor = Color.Gainsboro;
-            stokBtn.Location = new Point(0, 200);
+            stokBtn.Location = new Point(0, 210);
             stokBtn.Name = "stokBtn";
-            stokBtn.Size = new Size(164, 60);
+            stokBtn.Size = new Size(164, 65);
             stokBtn.TabIndex = 4;
             stokBtn.Text = "Stok";
             stokBtn.UseVisualStyleBackColor = true;
@@ -103,9 +119,9 @@
             yikamaBtn.FlatAppearance.BorderSize = 0;
             yikamaBtn.FlatStyle = FlatStyle.Flat;
             yikamaBtn.ForeColor = Color.Gainsboro;
-            yikamaBtn.Location = new Point(0, 140);
+            yikamaBtn.Location = new Point(0, 145);
             yikamaBtn.Name = "yikamaBtn";
-            yikamaBtn.Size = new Size(164, 60);
+            yikamaBtn.Size = new Size(164, 65);
             yikamaBtn.TabIndex = 3;
             yikamaBtn.Text = "Yıkama";
             yikamaBtn.UseVisualStyleBackColor = true;
@@ -119,7 +135,7 @@
             aracKayitBtn.ForeColor = Color.Gainsboro;
             aracKayitBtn.Location = new Point(0, 80);
             aracKayitBtn.Name = "aracKayitBtn";
-            aracKayitBtn.Size = new Size(164, 60);
+            aracKayitBtn.Size = new Size(164, 65);
             aracKayitBtn.TabIndex = 2;
             aracKayitBtn.Text = "Araç Kayıt";
             aracKayitBtn.UseVisualStyleBackColor = true;
@@ -188,14 +204,14 @@
             girisPanel.Location = new Point(164, 80);
             girisPanel.Name = "girisPanel";
             girisPanel.Size = new Size(775, 392);
-            girisPanel.TabIndex = 3;
+            girisPanel.TabIndex = 0;
             // 
             // girisYapBtn
             // 
             girisYapBtn.Location = new Point(337, 240);
             girisYapBtn.Name = "girisYapBtn";
             girisYapBtn.Size = new Size(165, 50);
-            girisYapBtn.TabIndex = 7;
+            girisYapBtn.TabIndex = 6;
             girisYapBtn.Text = "Giriş Yap";
             girisYapBtn.UseVisualStyleBackColor = true;
             girisYapBtn.Click += girisYapBtn_Click;
@@ -207,7 +223,7 @@
             sifreLabel.Location = new Point(162, 149);
             sifreLabel.Name = "sifreLabel";
             sifreLabel.Size = new Size(60, 28);
-            sifreLabel.TabIndex = 5;
+            sifreLabel.TabIndex = 0;
             sifreLabel.Text = "Şifre :";
             // 
             // kullaniciLabel
@@ -226,7 +242,7 @@
             sifreTextbox.Location = new Point(334, 146);
             sifreTextbox.Name = "sifreTextbox";
             sifreTextbox.Size = new Size(247, 34);
-            sifreTextbox.TabIndex = 3;
+            sifreTextbox.TabIndex = 5;
             // 
             // kullaniciTextbox
             // 
@@ -244,11 +260,11 @@
             Controls.Add(girisPanel);
             Controls.Add(desktopPanel);
             Controls.Add(panelTitle);
-            Controls.Add(panelMenu);
+            Controls.Add(menuPanel);
             Name = "MainForm";
-            Text = "Form1";
+            Text = "Araç Yıkama";
             Load += Form1_Load;
-            panelMenu.ResumeLayout(false);
+            menuPanel.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panelTitle.ResumeLayout(false);
@@ -260,7 +276,7 @@
 
         #endregion
 
-        private Panel panelMenu;
+        private Panel menuPanel;
         private Button uygulamaAyarlariBtn;
         private Button personelBtn;
         private Button stokBtn;
@@ -277,5 +293,6 @@
         private Label kullaniciLabel;
         private TextBox sifreTextbox;
         private TextBox kullaniciTextbox;
+        private Button uygulamaKullaniciBtn;
     }
 }

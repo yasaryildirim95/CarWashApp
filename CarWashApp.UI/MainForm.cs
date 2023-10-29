@@ -1,4 +1,7 @@
-namespace CarWash.UI
+using CarWashApp.UI.Forms;
+using CarWashApp.UI.Helper;
+
+namespace CarWashApp.UI
 {
     public partial class MainForm : Form
     {
@@ -21,7 +24,7 @@ namespace CarWash.UI
 
         private void panelMenuHideOrShow(bool IsShow)
         {
-            foreach (var control in panelMenu.Controls)
+            foreach (var control in menuPanel.Controls)
             {
                 if (control is Button btn)
                 {
@@ -33,40 +36,13 @@ namespace CarWash.UI
 
             }
         }
-        private void ActivateButton(object sender)
-        {
-            if (sender != null)
-            {
-                DisableButton();
-                if (currentButton != (Button)sender)
-                {
-                    currentButton = (Button)sender;
-                    currentButton.BackColor = Color.FromArgb(153, 145, 254);
-                    currentButton.ForeColor = Color.White;
-                    currentButton.Enabled = false;
-                }
-
-            }
-        }
-        private void DisableButton()
-        {
-            foreach (Control panelMenuControl in panelMenu.Controls)
-            {
-                if (panelMenuControl.GetType() == typeof(Button))
-                {
-                    panelMenuControl.BackColor = Color.FromArgb(51, 51, 76);
-                    panelMenuControl.ForeColor = Color.LightGray;
-                    panelMenuControl.Enabled = true;
-                }
-            }
-        }
         private void OpenChildForm(Form childForm, object sender)
         {
             if (activeForm != null)
             {
                 activeForm.Close();
             }
-            ActivateButton(sender);
+            FormHelper.ActivateButton(sender, menuPanel);
             activeForm = childForm;
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
@@ -102,33 +78,40 @@ namespace CarWash.UI
 
         private void aracKayitBtn_Click(object sender, EventArgs e)
         {
-            var tempAracForm = new Forms.AracKayitForm();
+            var tempAracForm = new AracKayitForm();
             OpenChildForm(tempAracForm, sender);
+
         }
 
         private void yikamaBtn_Click(object sender, EventArgs e)
         {
-            var tempYikamaForm = new Forms.yikamaForm();
+            var tempYikamaForm = new yikamaForm();
             OpenChildForm(tempYikamaForm, sender);
         }
 
         private void stokBtn_Click(object sender, EventArgs e)
         {
-            var tempStokForm = new Forms.stokForm();
+            var tempStokForm = new stokForm();
             OpenChildForm(tempStokForm, sender);
         }
 
         private void personelBtn_Click(object sender, EventArgs e)
         {
-            var tempPersonelForm = new Forms.personelForm();
+            var tempPersonelForm = new personelForm();
             OpenChildForm(tempPersonelForm, sender);
         }
 
         private void uygulamaAyarlariBtn_Click(object sender, EventArgs e)
         {
-            var tempUygulamaAyarlariForm = new Forms.uygulamaAyarlariForm();
+            var tempUygulamaAyarlariForm = new uygulamaAyarlariForm();
             OpenChildForm(tempUygulamaAyarlariForm, sender);
         }
         #endregion
+
+        private void uygulamaKullaniciBtn_Click(object sender, EventArgs e)
+        {
+            var tempUygulamaKullaniciForm = new uygulamaKullaniciForm();
+            OpenChildForm(tempUygulamaKullaniciForm, sender);
+        }
     }
 }

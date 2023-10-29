@@ -1,4 +1,4 @@
-﻿namespace CarWash.UI.Forms
+﻿namespace CarWashApp.UI.Forms
 {
     partial class AracKayitForm
     {
@@ -29,12 +29,11 @@
         private void InitializeComponent()
         {
             aramaPanel = new Panel();
-            aracEkleBtn = new Button();
+            label12 = new Label();
+            label11 = new Label();
             araBtn = new Button();
             plakaAramaTextBox = new TextBox();
             aracKayitPanel = new Panel();
-            aramaAracKayitBtn = new Button();
-            aracSahibiEklePanelBtn = new Button();
             label7 = new Label();
             aracSahipComboBox = new ComboBox();
             label6 = new Label();
@@ -50,8 +49,6 @@
             aracMarkaTextBox = new TextBox();
             aracPlakaTextBox = new TextBox();
             aracSahibiPanel = new Panel();
-            aramaAracSahibiBtn = new Button();
-            aracEklePanelBtn = new Button();
             adTextBox = new TextBox();
             label8 = new Label();
             label9 = new Label();
@@ -62,36 +59,51 @@
             label14 = new Label();
             mailTextBox = new TextBox();
             soyadTextBox = new TextBox();
+            menuPanel = new Panel();
+            aracSahibiBtn = new Button();
+            aracKayitBtn = new Button();
+            aramaBtn = new Button();
             aramaPanel.SuspendLayout();
             aracKayitPanel.SuspendLayout();
             aracSahibiPanel.SuspendLayout();
+            menuPanel.SuspendLayout();
             SuspendLayout();
             // 
             // aramaPanel
             // 
-            aramaPanel.Controls.Add(aracEkleBtn);
+            aramaPanel.Controls.Add(label12);
+            aramaPanel.Controls.Add(label11);
             aramaPanel.Controls.Add(araBtn);
             aramaPanel.Controls.Add(plakaAramaTextBox);
             aramaPanel.Dock = DockStyle.Fill;
-            aramaPanel.Location = new Point(0, 0);
+            aramaPanel.Location = new Point(128, 0);
             aramaPanel.Name = "aramaPanel";
-            aramaPanel.Size = new Size(759, 353);
+            aramaPanel.Size = new Size(631, 400);
             aramaPanel.TabIndex = 3;
             // 
-            // aracEkleBtn
+            // label12
             // 
-            aracEkleBtn.Location = new Point(467, 126);
-            aracEkleBtn.Name = "aracEkleBtn";
-            aracEkleBtn.Size = new Size(94, 34);
-            aracEkleBtn.TabIndex = 5;
-            aracEkleBtn.Text = "Ekle";
-            aracEkleBtn.UseVisualStyleBackColor = true;
-            aracEkleBtn.Visible = false;
-            aracEkleBtn.Click += aracEkleBtn_Click;
+            label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI", 25F, FontStyle.Regular, GraphicsUnit.Point);
+            label12.Location = new Point(12, 9);
+            label12.Name = "label12";
+            label12.Size = new Size(117, 46);
+            label12.TabIndex = 19;
+            label12.Text = "Arama";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            label11.Location = new Point(84, 155);
+            label11.Name = "label11";
+            label11.Size = new Size(102, 28);
+            label11.TabIndex = 6;
+            label11.Text = "Araç Plaka";
             // 
             // araBtn
             // 
-            araBtn.Location = new Point(270, 176);
+            araBtn.Location = new Point(287, 202);
             araBtn.Name = "araBtn";
             araBtn.Size = new Size(100, 50);
             araBtn.TabIndex = 4;
@@ -102,15 +114,13 @@
             // plakaAramaTextBox
             // 
             plakaAramaTextBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            plakaAramaTextBox.Location = new Point(186, 126);
+            plakaAramaTextBox.Location = new Point(203, 152);
             plakaAramaTextBox.Name = "plakaAramaTextBox";
             plakaAramaTextBox.Size = new Size(253, 34);
             plakaAramaTextBox.TabIndex = 3;
             // 
             // aracKayitPanel
             // 
-            aracKayitPanel.Controls.Add(aramaAracKayitBtn);
-            aracKayitPanel.Controls.Add(aracSahibiEklePanelBtn);
             aracKayitPanel.Controls.Add(label7);
             aracKayitPanel.Controls.Add(aracSahipComboBox);
             aracKayitPanel.Controls.Add(label6);
@@ -126,32 +136,10 @@
             aracKayitPanel.Controls.Add(aracMarkaTextBox);
             aracKayitPanel.Controls.Add(aracPlakaTextBox);
             aracKayitPanel.Dock = DockStyle.Fill;
-            aracKayitPanel.Location = new Point(0, 0);
+            aracKayitPanel.Location = new Point(128, 0);
             aracKayitPanel.Name = "aracKayitPanel";
-            aracKayitPanel.Size = new Size(759, 353);
+            aracKayitPanel.Size = new Size(631, 400);
             aracKayitPanel.TabIndex = 3;
-            // 
-            // aramaAracKayitBtn
-            // 
-            aramaAracKayitBtn.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            aramaAracKayitBtn.Location = new Point(613, 111);
-            aramaAracKayitBtn.Name = "aramaAracKayitBtn";
-            aramaAracKayitBtn.Size = new Size(134, 37);
-            aramaAracKayitBtn.TabIndex = 36;
-            aramaAracKayitBtn.Text = "Arama";
-            aramaAracKayitBtn.UseVisualStyleBackColor = true;
-            aramaAracKayitBtn.Click += aramaAracKayitBtn_Click;
-            // 
-            // aracSahibiEklePanelBtn
-            // 
-            aracSahibiEklePanelBtn.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            aracSahibiEklePanelBtn.Location = new Point(613, 154);
-            aracSahibiEklePanelBtn.Name = "aracSahibiEklePanelBtn";
-            aracSahibiEklePanelBtn.Size = new Size(134, 81);
-            aracSahibiEklePanelBtn.TabIndex = 16;
-            aracSahibiEklePanelBtn.Text = "Araç Sahibi Ekle";
-            aracSahibiEklePanelBtn.UseVisualStyleBackColor = true;
-            aracSahibiEklePanelBtn.Click += aracSahibiEklePanelBtn_Click;
             // 
             // label7
             // 
@@ -167,17 +155,17 @@
             // 
             aracSahipComboBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             aracSahipComboBox.FormattingEnabled = true;
-            aracSahipComboBox.Location = new Point(203, 102);
+            aracSahipComboBox.Location = new Point(174, 108);
             aracSahipComboBox.Margin = new Padding(25, 3, 3, 25);
             aracSahipComboBox.Name = "aracSahipComboBox";
-            aracSahipComboBox.Size = new Size(118, 29);
+            aracSahipComboBox.Size = new Size(179, 29);
             aracSahipComboBox.TabIndex = 17;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(41, 211);
+            label6.Location = new Point(12, 217);
             label6.Margin = new Padding(15, 3, 3, 25);
             label6.Name = "label6";
             label6.Size = new Size(98, 28);
@@ -187,10 +175,10 @@
             // aracRenkTextBox
             // 
             aracRenkTextBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            aracRenkTextBox.Location = new Point(203, 211);
+            aracRenkTextBox.Location = new Point(174, 217);
             aracRenkTextBox.Margin = new Padding(25, 3, 3, 25);
             aracRenkTextBox.Name = "aracRenkTextBox";
-            aracRenkTextBox.Size = new Size(118, 29);
+            aracRenkTextBox.Size = new Size(179, 29);
             aracRenkTextBox.TabIndex = 15;
             // 
             // button1
@@ -207,7 +195,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(41, 99);
+            label5.Location = new Point(12, 105);
             label5.Margin = new Padding(15, 3, 3, 25);
             label5.Name = "label5";
             label5.Size = new Size(140, 28);
@@ -218,17 +206,17 @@
             // 
             aracTipComboBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             aracTipComboBox.FormattingEnabled = true;
-            aracTipComboBox.Location = new Point(434, 211);
+            aracTipComboBox.Location = new Point(466, 217);
             aracTipComboBox.Margin = new Padding(25, 3, 3, 25);
             aracTipComboBox.Name = "aracTipComboBox";
-            aracTipComboBox.Size = new Size(118, 29);
+            aracTipComboBox.Size = new Size(153, 29);
             aracTipComboBox.TabIndex = 11;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(339, 211);
+            label4.Location = new Point(371, 217);
             label4.Margin = new Padding(15, 3, 3, 25);
             label4.Name = "label4";
             label4.Size = new Size(88, 28);
@@ -239,7 +227,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(339, 155);
+            label3.Location = new Point(371, 161);
             label3.Margin = new Padding(15, 3, 3, 25);
             label3.Name = "label3";
             label3.Size = new Size(69, 28);
@@ -250,7 +238,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(339, 99);
+            label2.Location = new Point(371, 105);
             label2.Margin = new Padding(15, 3, 3, 25);
             label2.Name = "label2";
             label2.Size = new Size(67, 28);
@@ -261,7 +249,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(41, 155);
+            label1.Location = new Point(12, 161);
             label1.Margin = new Padding(15, 3, 3, 25);
             label1.Name = "label1";
             label1.Size = new Size(102, 28);
@@ -271,34 +259,32 @@
             // aracModelTextBox
             // 
             aracModelTextBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            aracModelTextBox.Location = new Point(434, 159);
+            aracModelTextBox.Location = new Point(466, 165);
             aracModelTextBox.Margin = new Padding(25, 3, 3, 25);
             aracModelTextBox.Name = "aracModelTextBox";
-            aracModelTextBox.Size = new Size(118, 29);
+            aracModelTextBox.Size = new Size(153, 29);
             aracModelTextBox.TabIndex = 4;
             // 
             // aracMarkaTextBox
             // 
             aracMarkaTextBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            aracMarkaTextBox.Location = new Point(434, 102);
+            aracMarkaTextBox.Location = new Point(466, 108);
             aracMarkaTextBox.Margin = new Padding(25, 3, 3, 25);
             aracMarkaTextBox.Name = "aracMarkaTextBox";
-            aracMarkaTextBox.Size = new Size(118, 29);
+            aracMarkaTextBox.Size = new Size(153, 29);
             aracMarkaTextBox.TabIndex = 5;
             // 
             // aracPlakaTextBox
             // 
             aracPlakaTextBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            aracPlakaTextBox.Location = new Point(203, 158);
+            aracPlakaTextBox.Location = new Point(174, 164);
             aracPlakaTextBox.Margin = new Padding(25, 3, 3, 25);
             aracPlakaTextBox.Name = "aracPlakaTextBox";
-            aracPlakaTextBox.Size = new Size(118, 29);
+            aracPlakaTextBox.Size = new Size(179, 29);
             aracPlakaTextBox.TabIndex = 6;
             // 
             // aracSahibiPanel
             // 
-            aracSahibiPanel.Controls.Add(aramaAracSahibiBtn);
-            aracSahibiPanel.Controls.Add(aracEklePanelBtn);
             aracSahibiPanel.Controls.Add(adTextBox);
             aracSahibiPanel.Controls.Add(label8);
             aracSahibiPanel.Controls.Add(label9);
@@ -310,32 +296,10 @@
             aracSahibiPanel.Controls.Add(mailTextBox);
             aracSahibiPanel.Controls.Add(soyadTextBox);
             aracSahibiPanel.Dock = DockStyle.Fill;
-            aracSahibiPanel.Location = new Point(0, 0);
+            aracSahibiPanel.Location = new Point(128, 0);
             aracSahibiPanel.Name = "aracSahibiPanel";
-            aracSahibiPanel.Size = new Size(759, 353);
+            aracSahibiPanel.Size = new Size(631, 400);
             aracSahibiPanel.TabIndex = 15;
-            // 
-            // aramaAracSahibiBtn
-            // 
-            aramaAracSahibiBtn.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            aramaAracSahibiBtn.Location = new Point(613, 146);
-            aramaAracSahibiBtn.Name = "aramaAracSahibiBtn";
-            aramaAracSahibiBtn.Size = new Size(134, 37);
-            aramaAracSahibiBtn.TabIndex = 35;
-            aramaAracSahibiBtn.Text = "Arama";
-            aramaAracSahibiBtn.UseVisualStyleBackColor = true;
-            aramaAracSahibiBtn.Click += aramaAracSahibiBtn_Click;
-            // 
-            // aracEklePanelBtn
-            // 
-            aracEklePanelBtn.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            aracEklePanelBtn.Location = new Point(613, 198);
-            aracEklePanelBtn.Name = "aracEklePanelBtn";
-            aracEklePanelBtn.Size = new Size(134, 37);
-            aracEklePanelBtn.TabIndex = 34;
-            aracEklePanelBtn.Text = "Araç Ekle";
-            aracEklePanelBtn.UseVisualStyleBackColor = true;
-            aracEklePanelBtn.Click += aracEklePanelBtn_Click_1;
             // 
             // adTextBox
             // 
@@ -350,7 +314,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 25F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(10, 28);
+            label8.Location = new Point(12, 9);
             label8.Name = "label8";
             label8.Size = new Size(255, 46);
             label8.TabIndex = 32;
@@ -437,14 +401,72 @@
             soyadTextBox.Size = new Size(165, 29);
             soyadTextBox.TabIndex = 21;
             // 
+            // menuPanel
+            // 
+            menuPanel.Controls.Add(aracSahibiBtn);
+            menuPanel.Controls.Add(aracKayitBtn);
+            menuPanel.Controls.Add(aramaBtn);
+            menuPanel.Dock = DockStyle.Left;
+            menuPanel.Location = new Point(0, 0);
+            menuPanel.Margin = new Padding(10, 3, 3, 3);
+            menuPanel.Name = "menuPanel";
+            menuPanel.Size = new Size(128, 400);
+            menuPanel.TabIndex = 16;
+            // 
+            // aracSahibiBtn
+            // 
+            aracSahibiBtn.BackColor = Color.FromArgb(51, 51, 76);
+            aracSahibiBtn.Dock = DockStyle.Top;
+            aracSahibiBtn.FlatAppearance.BorderSize = 0;
+            aracSahibiBtn.FlatStyle = FlatStyle.Flat;
+            aracSahibiBtn.ForeColor = Color.White;
+            aracSahibiBtn.Location = new Point(0, 266);
+            aracSahibiBtn.Name = "aracSahibiBtn";
+            aracSahibiBtn.Size = new Size(128, 133);
+            aracSahibiBtn.TabIndex = 2;
+            aracSahibiBtn.Text = "Araç Sahibi Ekle";
+            aracSahibiBtn.UseVisualStyleBackColor = false;
+            aracSahibiBtn.Click += aracSahibiBtn_Click;
+            // 
+            // aracKayitBtn
+            // 
+            aracKayitBtn.BackColor = Color.FromArgb(51, 51, 76);
+            aracKayitBtn.Dock = DockStyle.Top;
+            aracKayitBtn.FlatAppearance.BorderSize = 0;
+            aracKayitBtn.FlatStyle = FlatStyle.Flat;
+            aracKayitBtn.ForeColor = Color.White;
+            aracKayitBtn.Location = new Point(0, 133);
+            aracKayitBtn.Name = "aracKayitBtn";
+            aracKayitBtn.Size = new Size(128, 133);
+            aracKayitBtn.TabIndex = 1;
+            aracKayitBtn.Text = "Araç Kayıt";
+            aracKayitBtn.UseVisualStyleBackColor = false;
+            aracKayitBtn.Click += aracKayitBtn_Click;
+            // 
+            // aramaBtn
+            // 
+            aramaBtn.BackColor = Color.FromArgb(51, 51, 76);
+            aramaBtn.Dock = DockStyle.Top;
+            aramaBtn.FlatAppearance.BorderSize = 0;
+            aramaBtn.FlatStyle = FlatStyle.Flat;
+            aramaBtn.ForeColor = Color.White;
+            aramaBtn.Location = new Point(0, 0);
+            aramaBtn.Name = "aramaBtn";
+            aramaBtn.Size = new Size(128, 133);
+            aramaBtn.TabIndex = 0;
+            aramaBtn.Text = "Arama";
+            aramaBtn.UseVisualStyleBackColor = false;
+            aramaBtn.Click += aramaBtn_Click;
+            // 
             // AracKayitForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(759, 353);
+            ClientSize = new Size(759, 400);
             Controls.Add(aracSahibiPanel);
-            Controls.Add(aracKayitPanel);
             Controls.Add(aramaPanel);
+            Controls.Add(aracKayitPanel);
+            Controls.Add(menuPanel);
             Name = "AracKayitForm";
             Text = "Araç Kayıt";
             Load += AracKayitForm_Load;
@@ -454,13 +476,13 @@
             aracKayitPanel.PerformLayout();
             aracSahibiPanel.ResumeLayout(false);
             aracSahibiPanel.PerformLayout();
+            menuPanel.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
         private Panel aramaPanel;
-        private Button aracEkleBtn;
         private Button araBtn;
         private TextBox plakaAramaTextBox;
         private Panel aracKayitPanel;
@@ -489,9 +511,11 @@
         private TextBox mailTextBox;
         private TextBox soyadTextBox;
         private Label label7;
-        private Button aracSahibiEklePanelBtn;
-        private Button aramaAracKayitBtn;
-        private Button aramaAracSahibiBtn;
-        private Button aracEklePanelBtn;
+        private Label label11;
+        private Panel menuPanel;
+        private Button aracSahibiBtn;
+        private Button aracKayitBtn;
+        private Button aramaBtn;
+        private Label label12;
     }
 }
