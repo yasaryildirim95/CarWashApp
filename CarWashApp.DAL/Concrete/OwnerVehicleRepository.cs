@@ -11,10 +11,12 @@ namespace CarWashApp.DAL.Concrete
     public class OwnerVehicleRepository : GenericRepository<VehicleOwner>
     {
         private DbSet<Vehicle> vehicles;
+        private DbSet<VehicleType> vehicleTypes;
 
         public OwnerVehicleRepository(DbContext dbContext) : base(dbContext)
         {
             vehicles = dbContext.Set<Vehicle>();
+            vehicleTypes = dbContext.Set<VehicleType>();    
         }
 
         public bool SearchByPlate(string plate)
@@ -35,9 +37,10 @@ namespace CarWashApp.DAL.Concrete
             return DbSet.Where(o => o.PhoneNumber == phoneNumber).Any();
         }
 
-        public bool AddVehicle(string phoneNumber, string plate, string brand, string model, string color, int vehicleTypeIndex) 
+        public bool AddVehicle(string phoneNumber, string plate, string brand, string model, string color, string vehicleTypeName) 
         { 
-            var owner = DbSet.Where(o => o.PhoneNumber == phoneNumber).FirstOrDefault();
+            var vehicleTypeIndex = vehicleTypes.Where(vt => vt.VehicleTypeName == vehicleTypeName).Select(vt => vt.VehicleTypeID).FirstOrDefault();
+            var vehicleOwnerID = DbSet.Where(o => o.PhoneNumber == phoneNumber).Select(o => o.VehicleOwnerID).FirstOrDefault();
 
             var newVehicle = new Vehicle()
             {
@@ -45,8 +48,8 @@ namespace CarWashApp.DAL.Concrete
                 Brand = brand,
                 Model = model,
                 Color = color,
-                VehicleOwnerId = owner.VehicleOwnerId,
-                VehicleTypeId = vehicleTypeIndex
+                VehicleOwnerID = vehicleOwnerID,
+                VehicleTypeID = vehicleTypeIndex
             };
 
             vehicles.Add(newVehicle);

@@ -9,13 +9,13 @@ namespace CarWashApp.Entity.Concrete
 {
     public class Personel : IEntity
     {
-        public int PersonelId { get; set; }
+        public int PersonelID { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public int Salary {  get; set; }
-        public int LeaveNum { get; set; }
+        public int LeavesLeft { get; set; }
         public Shift Shift { get; set; }
-        public int ShifTypeId { get; set; }
+        public int ShifTypeID { get; set; }
 
     }
 }

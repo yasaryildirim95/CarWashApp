@@ -27,9 +27,7 @@ namespace CarWashApp.DAL.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=Gaming-PC\SQLEXPRESS;Initial Catalog=CarWashApp;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
-
-            base.OnConfiguring(optionsBuilder);
+            optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-F4M3HC0\SQLEXPRESS;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Initial Catalog=newDb; Application Intent=ReadWrite;Multi Subnet Failover=False");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -42,100 +40,97 @@ namespace CarWashApp.DAL.Context
             modelBuilder.Entity<Wash>()
                 .HasOne(w => w.WashType)
                 .WithMany()
-                .HasForeignKey(w => w.WashTypeId);
+                .HasForeignKey(w => w.WashTypeID);
 
             modelBuilder.Entity<Wash>()
                 .HasOne(w => w.DirtinessLevel)
                 .WithMany()
-                .HasForeignKey(w => w.DirtinessLevelId);
+                .HasForeignKey(w => w.DirtinessLevelID);
 
             modelBuilder.Entity<WashTypeProduct>()
-                .HasKey(wtp => new { wtp.WashTypeId, wtp.ProductTypeId });
+                .HasKey(wtp => new { wtp.WashTypeID, wtp.ProductTypeID });
 
             modelBuilder.Entity<WashTypeProduct>()
                 .HasOne(wtp => wtp.WashType)
                 .WithMany()
-                .HasForeignKey(wtp => wtp.WashTypeId);
+                .HasForeignKey(wtp => wtp.WashTypeID);
 
             modelBuilder.Entity<WashTypeProduct>()
                 .HasOne(wtp => wtp.Product)
                 .WithMany()
-                .HasForeignKey(wtp => wtp.ProductTypeId);
+                .HasForeignKey(wtp => wtp.ProductTypeID);
 
             modelBuilder.Entity<Vehicle>()
                 .HasOne(v => v.VehicleOwner)
                 .WithMany()
-                .HasForeignKey(v => v.VehicleOwnerId);
+                .HasForeignKey(v => v.VehicleOwnerID);
 
             modelBuilder.Entity<LoginDetail>()
                 .HasOne(ld => ld.Personel)
                 .WithOne()
-                .HasForeignKey<LoginDetail>(ld => ld.PersonelId);
+                .HasForeignKey<LoginDetail>(ld => ld.PersonelID);
 
             modelBuilder.Entity<Personel>()
                 .HasOne(p => p.Shift)
                 .WithMany()
-                .HasForeignKey(p => p.ShifTypeId);
+                .HasForeignKey(p => p.ShifTypeID);
 
             modelBuilder.Entity<LoginDetail>()
-                .HasKey(x=>x.PersonelId);
+                .HasKey(x=>x.PersonelID);
             modelBuilder.Entity<Shift>()
-                .HasKey(x => x.ShiftTypeId);
+                .HasKey(x => x.ShiftTypeID);
 
             modelBuilder.Entity<VehicleOwner>()
                 .HasIndex(x=>x.PhoneNumber)
                 .IsUnique();
 
             modelBuilder.Entity<Shift>().HasData(
-                new Shift { ShiftTypeId = 0, Name = "Sabah" },
-                new Shift { ShiftTypeId = 1, Name = "Akşam" }
+                new Shift { ShiftTypeID = 1, ShiftName = "Sabah" },
+                new Shift { ShiftTypeID = 2, ShiftName = "Akşam" }
                 );
 
             modelBuilder.Entity<WashType>().HasData(
-                new WashType { WashTypeId = 0, Name = "İç", Duration = 60, Price = 150 },
-                new WashType { WashTypeId = 1, Name = "Dış", Duration = 30, Price = 100 },
-                new WashType { WashTypeId = 2, Name = "İç&Dış", Duration = 90, Price = 225 }
+                new WashType { WashTypeID = 1, WashTypeName = "İç", Duration = 60, Price = 150 },
+                new WashType { WashTypeID = 2, WashTypeName = "Dış", Duration = 30, Price = 100 },
+                new WashType { WashTypeID = 3, WashTypeName = "İç&Dış", Duration = 90, Price = 225 }
                 );
 
             modelBuilder.Entity<DirtinessLevel>().HasData(
-                new DirtinessLevel { DirtinessLevelId = 0, Name = "Az", Duration=5 },
-                new DirtinessLevel { DirtinessLevelId = 1, Name = "Orta", Duration=15 },
-                new DirtinessLevel { DirtinessLevelId = 2, Name = "Çok", Duration=25 });
+                new DirtinessLevel { DirtinessLevelID = 1, DirtinessLevelName = "Az", AdditionalDuration = 5 },
+                new DirtinessLevel { DirtinessLevelID = 2, DirtinessLevelName = "Orta", AdditionalDuration = 15 },
+                new DirtinessLevel { DirtinessLevelID = 3, DirtinessLevelName = "Çok", AdditionalDuration = 25 });
 
             modelBuilder.Entity<Product>().HasData(
-                new Product { ProductId = 0, Name = "İç Deterjan", Stock = 1, WarningStock = 20 },
-                new Product { ProductId = 1, Name = "Dış Deterjan", Stock = 1, WarningStock = 20 }
+                new Product { ProductID = 1, ProductName = "İç Deterjan", Stock = 1, StockWarningThreshold = 20 },
+                new Product { ProductID = 2, ProductName = "Dış Deterjan", Stock = 1, StockWarningThreshold = 20 }
                 );
 
             modelBuilder.Entity<WashTypeProduct>().HasData(
-                new WashTypeProduct { ProductTypeId = 0, WashTypeId=0, Quantity=1 },
-                new WashTypeProduct { ProductTypeId = 1, WashTypeId=1, Quantity=1 },
-                new WashTypeProduct { ProductTypeId = 0, WashTypeId=2, Quantity=1 },
-                new WashTypeProduct { ProductTypeId = 1, WashTypeId=2, Quantity=1 }
+                new WashTypeProduct { ProductTypeID = 1, WashTypeID =1, Quantity=1 },
+                new WashTypeProduct { ProductTypeID = 2, WashTypeID =2, Quantity=1 },
+                new WashTypeProduct { ProductTypeID = 1, WashTypeID =3, Quantity=1 },
+                new WashTypeProduct { ProductTypeID = 2, WashTypeID =3, Quantity=1 }
                 );
 
             modelBuilder.Entity<VehicleType>().HasData(
                 new VehicleType
                 {
-                    VehicleTypeId = 0,
-                    VehicleName = "Sedan",
+                    VehicleTypeID = 1,
+                    VehicleTypeName = "Sedan",
                     PriceMultiplier = 1
                 },
                 new VehicleType
                 {
-                    VehicleTypeId = 1,
-                    VehicleName = "SUV",
+                    VehicleTypeID = 2,
+                    VehicleTypeName = "SUV",
                     PriceMultiplier = 2
                 },
                 new VehicleType
                 {
-                    VehicleTypeId = 2,
-                    VehicleName = "Truck",
+                    VehicleTypeID = 3,
+                    VehicleTypeName = "Truck",
                     PriceMultiplier = 2
                 });
-
-
-            base.OnModelCreating(modelBuilder);
         }
     }
 }

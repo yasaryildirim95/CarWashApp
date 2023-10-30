@@ -12,7 +12,7 @@ namespace CarWashApp.DAL.Concrete
     {
 
         private DbSet<Wash> washes;
-        private DbSet<DirtinessLevel> dirtinessLevel;
+        private DbSet<DirtinessLevel> dirtinessLevels;
         private DbSet<WashType> washeTypes;
         private DbSet<Vehicle> vehicles;
         private DbSet<VehicleType> vehicleTypes;
@@ -21,35 +21,31 @@ namespace CarWashApp.DAL.Concrete
         {
             washes = DbContext.Set<Wash>();
             vehicles = DbContext.Set<Vehicle>();
+            dirtinessLevels = DbContext.Set<DirtinessLevel>();
 
         }
 
-        public IEnumerable<Wash> GetAllActiveWashes()
+        public bool AddWash(int washTypeID, string plate, string dirtinessLevelName)
         {
-            return washes
-                .Include(w => w.Vehicle)
-                .Include(w => w.WashType)
-                .Include(w => w.Personel)
-                .ToList();
-        }
-
-        public bool AddWash(int washtypeid,int vehicleid,int personelid,int dirtinessid)
-        {
-            var washtype = washeTypes.Where(w=>w.WashTypeId == washtypeid).FirstOrDefault();
-            var vehicletype = vehicleTypes.Where(v=>v.VehicleTypeId == vehicleid).FirstOrDefault();
+            var vehicle = vehicles.Where(v => v.Plate == plate).FirstOrDefault();
+            var washType = washeTypes.Where(w=>w.WashTypeID == washTypeID).FirstOrDefault();
+            var vehicleType = vehicleTypes.Where(v=>v.VehicleTypeID == vehicle.VehicleTypeID).FirstOrDefault();
+            var dirtinessLevel = dirtinessLevels.Where(v=>v.DirtinessLevelName == dirtinessLevelName).FirstOrDefault();
 
             Wash newWash = new Wash()
             {
-                TotalPrice = washtype.Price*vehicletype.PriceMultiplier,
-                PersonelId = personelid,
-                VehicleId = vehicleid,
-                WashType = washtype,
-                DirtinessLevelId = dirtinessid,
-                StartDate = DateTime.Now
+                Price = washType.Price * vehicleType.PriceMultiplier,
+                VehicleId = vehicle.VehicleID,
+                WashTypeID = washTypeID,
+                DirtinessLevelID = dirtinessLevel.DirtinessLevelID,
+                StartTime = DateTime.Now,
+                EndTime = DateTime.Now.AddMinutes(washType.Duration + dirtinessLevel.AdditionalDuration)
+                //Personel ataması sonra yapılacak
             };
+            
             washes.Add(newWash);
-            return true;
-            //return washes.Where(x=>x.StartDate == newWash.StartDate && ).Any();
+            
+            return washes.Where(x=>x.WashID == newWash.WashID).Any();
         }
     }
 }

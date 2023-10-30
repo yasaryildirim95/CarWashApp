@@ -12,10 +12,13 @@ namespace CarWashApp.DAL.Concrete
     {
         private DbSet<LoginDetail> loginDetails;
         private DbSet<PersonelLeave> personelLeaves;
+        private DbSet<Shift> shifts;
+
         public PersonelRepository(DbContext dbContext) : base(dbContext)
         {
             loginDetails = dbContext.Set<LoginDetail>();
             personelLeaves = dbContext.Set<PersonelLeave>();
+            shifts = dbContext.Set<Shift>();
         }
 
         public (bool, bool) CheckLoginInfo(string username, string password)
@@ -28,48 +31,50 @@ namespace CarWashApp.DAL.Concrete
             }
             return(false, false);
         }
-
-        public bool AddUser(string name, string surname, int salary, int shiftId)
+        //
+        public bool AddUser(string name, string surname, int salary, string shiftName)
         {
+            var shiftID = shifts.Where(s => s.ShiftName == shiftName).Select(s => s.ShiftTypeID).FirstOrDefault();
+
             var newPersonel = new Personel()
             {
                 Name = name,
                 Surname = surname,
                 Salary = salary,
-                LeaveNum = 14,
-                ShifTypeId = shiftId
+                LeavesLeft = 14,
+                ShifTypeID = shiftID
             };
 
             Insert(newPersonel);
-            return DbSet.Where(p => p.PersonelId == newPersonel.PersonelId).Any();     
+            return DbSet.Where(p => p.PersonelID == newPersonel.PersonelID).Any();     
         }
-
+        //ID ve ad soyad verilecek combobox'a ve bunu split ile bll'de girdi olarak idye vereceksin.
         public bool AddLoginDetails(int personelId, string username, string password)
         {
             var newLoginDetails = new LoginDetail()
             {
-                PersonelId = personelId,
+                PersonelID = personelId,
                 Username = username,
                 Password = password
             };
 
             loginDetails.Add(newLoginDetails);
             DbContext.SaveChanges();
-            return loginDetails.Where(p => p.PersonelId == newLoginDetails.PersonelId).Any();
+            return loginDetails.Where(p => p.PersonelID == newLoginDetails.PersonelID).Any();
         }
-
+        //ID ve ad soyad verilecek combobox'a ve bunu split ile bll'de girdi olarak idye vereceksin.
         public bool AddPersonelLeave(int personelId, DateTime startDate, int dayCount)
         {
             var newPersonelLeave = new PersonelLeave()
             {
-                PersonelId = personelId,
+                PersonelID = personelId,
                 StartDate = startDate,
-                DayCount = dayCount
+                NumOfDays = dayCount
             };
 
             personelLeaves.Add(newPersonelLeave);
             DbContext.SaveChanges();
-            return personelLeaves.Where(p => p.PersonelId == newPersonelLeave.PersonelId && p.StartDate == startDate).Any();
+            return personelLeaves.Where(p => p.PersonelID == newPersonelLeave.PersonelID && p.StartDate == startDate).Any();
         }
     }
 }

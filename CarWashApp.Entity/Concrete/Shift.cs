@@ -9,7 +9,7 @@ namespace CarWashApp.Entity.Concrete
 {
     public class Shift : IEntity
     {
-        public int ShiftTypeId { get; set; }
-        public string Name { get; set; }
+        public int ShiftTypeID { get; set; }
+        public string ShiftName { get; set; }
     }
 }

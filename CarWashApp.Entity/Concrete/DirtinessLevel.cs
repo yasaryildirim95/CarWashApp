@@ -9,9 +9,9 @@ namespace CarWashApp.Entity.Concrete
 {
     public class DirtinessLevel : IEntity
     {
-        public int DirtinessLevelId { get; set; }
-        public string Name { get; set; }
-        public int Duration { get; set; }
+        public int DirtinessLevelID { get; set; }
+        public string DirtinessLevelName { get; set; }
+        public int AdditionalDuration { get; set; }
 
     }
 }

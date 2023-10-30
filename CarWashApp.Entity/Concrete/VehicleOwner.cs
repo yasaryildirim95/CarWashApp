@@ -10,7 +10,7 @@ namespace CarWashApp.Entity.Concrete
 {
     public class VehicleOwner : IEntity
     {
-        public int VehicleOwnerId { get; set; }
+        public int VehicleOwnerID { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public string PhoneNumber { get; set; }

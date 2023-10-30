@@ -9,19 +9,17 @@ namespace CarWashApp.Entity.Concrete
 {
     public class Wash : IEntity
     {
-        public int WashId { get; set; }
-        public int TotalPrice { get; set; }
-        public DateTime StartDate { get; set; }
+        public int WashID { get; set; }
+        public int Price { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
         public Vehicle Vehicle { get; set; }
         public int VehicleId { get; set; }
         public WashType WashType { get; set; }
-        public int WashTypeId { get; set; }
+        public int WashTypeID { get; set; }
         public DirtinessLevel DirtinessLevel { get; set; }
-        public int DirtinessLevelId { get; set; }
+        public int DirtinessLevelID { get; set; }
         public Personel Personel { get; set; }
-        public int PersonelId { get; set;}
-
-
-
+        public int PersonelID { get; set;}
     }
 }

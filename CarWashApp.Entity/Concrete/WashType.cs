@@ -9,8 +9,8 @@ namespace CarWashApp.Entity.Concrete
 {
     public class WashType : IEntity
     {
-        public int WashTypeId { get; set; }
-        public string Name { get; set; }
+        public int WashTypeID { get; set; }
+        public string WashTypeName { get; set; }
         public int Duration { get; set; }
         public int Price { get; set; }
 
