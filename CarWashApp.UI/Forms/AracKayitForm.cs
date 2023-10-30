@@ -4,6 +4,7 @@ namespace CarWashApp.UI.Forms
 {
     public partial class AracKayitForm : Form
     {
+        public MainForm mainForm;
         public AracKayitForm()
         {
             InitializeComponent();
@@ -11,7 +12,8 @@ namespace CarWashApp.UI.Forms
 
         private void araBtn_Click(object sender, EventArgs e)
         {
-
+            //TODO arama mantığı yazılcak
+            mainForm.yikamaBtn_Click(sender,e);
         }
 
         private void aramaBtn_Click(object sender, EventArgs e)

@@ -29,9 +29,27 @@ namespace CarWashApp.UI
                 if (control is Button btn)
                 {
                     if (IsShow)
+                    {
+                        girisPanel.Hide();
+                        FormName.Text = "Home";
+                        foreach (var item in girisPanel.Controls)
+                        {
+                            if (item is TextBox txt)
+                                txt.Hide();
+
+
+                            if (item is Button tempBtn)
+                                tempBtn.Hide();
+
+                            if (item is Label lbl)
+                                lbl.Hide();
+                        }
                         btn.Show();
+                    }
                     else
+                    {
                         btn.Hide();
+                    }
                 }
 
             }
@@ -59,31 +77,19 @@ namespace CarWashApp.UI
 
         private void girisYapBtn_Click(object sender, EventArgs e)
         {
-            foreach (var item in girisPanel.Controls)
-            {
-                if (item is TextBox txt)
-                    txt.Hide();
-
-
-                if (item is Button btn)
-                    btn.Hide();
-
-                if (item is Label lbl)
-                    lbl.Hide();
-            }
-            FormName.Text = "Home";
+            //TODO login mantýðý yazýlcak
             panelMenuHideOrShow(true);
-            girisPanel.Hide();
         }
 
         private void aracKayitBtn_Click(object sender, EventArgs e)
         {
             var tempAracForm = new AracKayitForm();
+            tempAracForm.mainForm = this;
             OpenChildForm(tempAracForm, sender);
 
         }
 
-        private void yikamaBtn_Click(object sender, EventArgs e)
+        public void yikamaBtn_Click(object sender, EventArgs e)
         {
             var tempYikamaForm = new yikamaForm();
             OpenChildForm(tempYikamaForm, sender);
