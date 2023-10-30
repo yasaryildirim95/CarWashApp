@@ -463,9 +463,9 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(759, 400);
+            Controls.Add(aracKayitPanel);
             Controls.Add(aracSahibiPanel);
             Controls.Add(aramaPanel);
-            Controls.Add(aracKayitPanel);
             Controls.Add(menuPanel);
             Name = "AracKayitForm";
             Text = "Araç Kayıt";

@@ -13,6 +13,7 @@
         }
         public static void ResetItems(Panel temp)
         {
+            //todo metotlar gelince list eklencek ve listbox resetlencek
             foreach (var tempControl in temp.Controls.OfType<TextBox>())
             {
                 tempControl.Text = string.Empty;
