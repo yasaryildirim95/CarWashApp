@@ -16,6 +16,7 @@ namespace CarWashApp.Entity.Concrete
         public int LeavesLeft { get; set; }
         public Shift Shift { get; set; }
         public int ShifTypeID { get; set; }
+        public bool IsWasher { get; set; }
 
     }
 }

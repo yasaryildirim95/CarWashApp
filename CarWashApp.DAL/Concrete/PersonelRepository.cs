@@ -32,7 +32,7 @@ namespace CarWashApp.DAL.Concrete
             return(false, false);
         }
         //
-        public bool AddUser(string name, string surname, int salary, string shiftName)
+        public bool AddUser(string name, string surname, int salary, string shiftName, bool isWasher)
         {
             var shiftID = shifts.Where(s => s.ShiftName == shiftName).Select(s => s.ShiftTypeID).FirstOrDefault();
 
@@ -42,7 +42,8 @@ namespace CarWashApp.DAL.Concrete
                 Surname = surname,
                 Salary = salary,
                 LeavesLeft = 14,
-                ShifTypeID = shiftID
+                ShifTypeID = shiftID,
+                IsWasher = isWasher
             };
 
             Insert(newPersonel);

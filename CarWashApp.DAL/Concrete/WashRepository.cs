@@ -39,7 +39,7 @@ namespace CarWashApp.DAL.Concrete
                 WashTypeID = washTypeID,
                 DirtinessLevelID = dirtinessLevel.DirtinessLevelID,
                 StartTime = DateTime.Now,
-                EndTime = DateTime.Now.AddMinutes(washType.Duration + dirtinessLevel.AdditionalDuration)
+                //EndTime = DateTime.Now.AddMinutes(washType.Duration + dirtinessLevel.AdditionalDuration) bu atama da personel aracı alınca yapılacak.
                 //Personel ataması sonra yapılacak
             };
             
@@ -47,5 +47,7 @@ namespace CarWashApp.DAL.Concrete
             
             return washes.Where(x=>x.WashID == newWash.WashID).Any();
         }
+
+        //Timerda çalıştırılacak mevcut personellere boştaki araçları atama metodu - IsWasher dikkate alınarak:
     }
 }
