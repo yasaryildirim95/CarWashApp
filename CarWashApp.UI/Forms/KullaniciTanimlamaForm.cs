@@ -1,8 +1,8 @@
 ﻿namespace CarWashApp.UI.Forms
 {
-    public partial class uygulamaAyarlariForm : Form
+    public partial class KullaniciTanimlamaForm : Form
     {
-        public uygulamaAyarlariForm()
+        public KullaniciTanimlamaForm()
         {
             InitializeComponent();
         }

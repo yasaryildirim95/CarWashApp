@@ -33,6 +33,7 @@
             personelTakipBtn = new Button();
             kayitBtn = new Button();
             kayitPanel = new Panel();
+            resetBtn = new Button();
             kayitEkleBtn = new Button();
             vardiyaComboBox = new ComboBox();
             maasTextBox = new TextBox();
@@ -44,6 +45,9 @@
             label5 = new Label();
             label2 = new Label();
             izinPanel = new Panel();
+            izinGunleriListBox = new ListBox();
+            guncelleIzinBtn = new Button();
+            silIzinBtn = new Button();
             izinEkleBtn = new Button();
             izinSuresiNumericUpD = new NumericUpDown();
             baslangicTarihiDTP = new DateTimePicker();
@@ -54,7 +58,7 @@
             label4 = new Label();
             personelTakipPanel = new Panel();
             label3 = new Label();
-            izinGunleriListBox = new ListBox();
+            resetIzinBtn = new Button();
             menuPanel.SuspendLayout();
             kayitPanel.SuspendLayout();
             izinPanel.SuspendLayout();
@@ -121,6 +125,7 @@
             // 
             // kayitPanel
             // 
+            kayitPanel.Controls.Add(resetBtn);
             kayitPanel.Controls.Add(kayitEkleBtn);
             kayitPanel.Controls.Add(vardiyaComboBox);
             kayitPanel.Controls.Add(maasTextBox);
@@ -137,10 +142,21 @@
             kayitPanel.Size = new Size(631, 400);
             kayitPanel.TabIndex = 1;
             // 
+            // resetBtn
+            // 
+            resetBtn.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            resetBtn.Location = new Point(346, 328);
+            resetBtn.Name = "resetBtn";
+            resetBtn.Size = new Size(118, 37);
+            resetBtn.TabIndex = 5;
+            resetBtn.Text = "Reset";
+            resetBtn.UseVisualStyleBackColor = true;
+            resetBtn.Click += resetBtn_Click;
+            // 
             // kayitEkleBtn
             // 
             kayitEkleBtn.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            kayitEkleBtn.Location = new Point(316, 328);
+            kayitEkleBtn.Location = new Point(183, 328);
             kayitEkleBtn.Name = "kayitEkleBtn";
             kayitEkleBtn.Size = new Size(118, 37);
             kayitEkleBtn.TabIndex = 5;
@@ -233,6 +249,9 @@
             // izinPanel
             // 
             izinPanel.Controls.Add(izinGunleriListBox);
+            izinPanel.Controls.Add(guncelleIzinBtn);
+            izinPanel.Controls.Add(silIzinBtn);
+            izinPanel.Controls.Add(resetIzinBtn);
             izinPanel.Controls.Add(izinEkleBtn);
             izinPanel.Controls.Add(izinSuresiNumericUpD);
             izinPanel.Controls.Add(baslangicTarihiDTP);
@@ -247,15 +266,49 @@
             izinPanel.Size = new Size(631, 400);
             izinPanel.TabIndex = 0;
             // 
+            // izinGunleriListBox
+            // 
+            izinGunleriListBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            izinGunleriListBox.FormattingEnabled = true;
+            izinGunleriListBox.ItemHeight = 28;
+            izinGunleriListBox.Location = new Point(392, 12);
+            izinGunleriListBox.Name = "izinGunleriListBox";
+            izinGunleriListBox.Size = new Size(227, 312);
+            izinGunleriListBox.TabIndex = 8;
+            izinGunleriListBox.SelectedIndexChanged += izinGunleriListBox_SelectedIndexChanged;
+            // 
+            // guncelleIzinBtn
+            // 
+            guncelleIzinBtn.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            guncelleIzinBtn.Location = new Point(168, 342);
+            guncelleIzinBtn.Name = "guncelleIzinBtn";
+            guncelleIzinBtn.Size = new Size(118, 37);
+            guncelleIzinBtn.TabIndex = 7;
+            guncelleIzinBtn.Text = "Guncelle";
+            guncelleIzinBtn.UseVisualStyleBackColor = true;
+            guncelleIzinBtn.Click += guncelleIzinBtn_Click;
+            // 
+            // silIzinBtn
+            // 
+            silIzinBtn.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            silIzinBtn.Location = new Point(29, 342);
+            silIzinBtn.Name = "silIzinBtn";
+            silIzinBtn.Size = new Size(118, 37);
+            silIzinBtn.TabIndex = 7;
+            silIzinBtn.Text = "Sil";
+            silIzinBtn.UseVisualStyleBackColor = true;
+            silIzinBtn.Click += silIzinBtn_Click;
+            // 
             // izinEkleBtn
             // 
             izinEkleBtn.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            izinEkleBtn.Location = new Point(213, 321);
+            izinEkleBtn.Location = new Point(29, 287);
             izinEkleBtn.Name = "izinEkleBtn";
             izinEkleBtn.Size = new Size(118, 37);
             izinEkleBtn.TabIndex = 7;
             izinEkleBtn.Text = "İzin Ekle";
             izinEkleBtn.UseVisualStyleBackColor = true;
+            izinEkleBtn.Click += izinEkleBtn_Click;
             // 
             // izinSuresiNumericUpD
             // 
@@ -341,15 +394,16 @@
             label3.TabIndex = 2;
             label3.Text = "Personel Takip";
             // 
-            // izinGunleriListBox
+            // resetIzinBtn
             // 
-            izinGunleriListBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            izinGunleriListBox.FormattingEnabled = true;
-            izinGunleriListBox.ItemHeight = 28;
-            izinGunleriListBox.Location = new Point(379, 94);
-            izinGunleriListBox.Name = "izinGunleriListBox";
-            izinGunleriListBox.Size = new Size(227, 256);
-            izinGunleriListBox.TabIndex = 8;
+            resetIzinBtn.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            resetIzinBtn.Location = new Point(168, 287);
+            resetIzinBtn.Name = "resetIzinBtn";
+            resetIzinBtn.Size = new Size(118, 37);
+            resetIzinBtn.TabIndex = 7;
+            resetIzinBtn.Text = "Reset";
+            resetIzinBtn.UseVisualStyleBackColor = true;
+            resetIzinBtn.Click += resetIzinBtn_Click;
             // 
             // personelForm
             // 
@@ -357,8 +411,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(759, 400);
             Controls.Add(izinPanel);
-            Controls.Add(personelTakipPanel);
             Controls.Add(kayitPanel);
+            Controls.Add(personelTakipPanel);
             Controls.Add(menuPanel);
             Name = "personelForm";
             Text = "Personel";
@@ -404,5 +458,9 @@
         private Label label10;
         private Label label8;
         private ListBox izinGunleriListBox;
+        private Button guncelleIzinBtn;
+        private Button silIzinBtn;
+        private Button resetBtn;
+        private Button resetIzinBtn;
     }
 }

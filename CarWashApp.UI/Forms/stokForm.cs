@@ -7,16 +7,10 @@ namespace CarWashApp.UI.Forms
         public stokForm()
         {
             InitializeComponent();
-            guncelleSilBtn(false);
+            FormHelper.guncelleSilBtn(false, stokPanel);
         }
 
         #region Custom Methods
-        private void guncelleSilBtn(bool temp)
-        {
-            guncelleBtn.Visible = temp;
-            silBtn.Visible = temp;
-            ekleBtn.Enabled = !temp;
-        }
 
         #endregion
 
@@ -24,13 +18,13 @@ namespace CarWashApp.UI.Forms
 
         private void guncelleBtn_Click(object sender, EventArgs e)
         {
-            guncelleSilBtn(false);
+            FormHelper.guncelleSilBtn(false, stokPanel);
             FormHelper.ResetItems(stokPanel);
         }
 
         private void silBtn_Click(object sender, EventArgs e)
         {
-            guncelleSilBtn(false);
+            FormHelper.guncelleSilBtn(false, stokPanel);
             FormHelper.ResetItems(stokPanel);
         }
 
@@ -38,7 +32,7 @@ namespace CarWashApp.UI.Forms
         {
             if (stokUrunListBox.SelectedIndex != -1)
             {
-                guncelleSilBtn(true);
+                FormHelper.guncelleSilBtn(true, stokPanel);
             }
 
         }
@@ -49,6 +43,10 @@ namespace CarWashApp.UI.Forms
         }
 
         #endregion
-
+        private void resetBtn_Click(object sender, EventArgs e)
+        {
+            FormHelper.ResetItems(stokPanel);
+            FormHelper.guncelleSilBtn(false, stokPanel);
+        }
     }
 }

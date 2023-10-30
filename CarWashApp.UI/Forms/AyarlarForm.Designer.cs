@@ -1,6 +1,6 @@
 ﻿namespace CarWashApp.UI.Forms
 {
-    partial class uygulamaAyarlariForm
+    partial class AyarlarForm
     {
         /// <summary>
         /// Required designer variable.

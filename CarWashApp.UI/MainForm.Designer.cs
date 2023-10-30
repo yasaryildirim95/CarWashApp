@@ -30,6 +30,7 @@
             FormName = new Label();
             desktopPanel = new Panel();
             girisPanel = new Panel();
+            eyeImg = new PictureBox();
             girisYapBtn = new Button();
             sifreLabel = new Label();
             kullaniciLabel = new Label();
@@ -39,6 +40,7 @@
             panel2.SuspendLayout();
             panelTitle.SuspendLayout();
             girisPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)eyeImg).BeginInit();
             SuspendLayout();
             // 
             // menuPanel
@@ -67,7 +69,7 @@
             uygulamaKullaniciBtn.Name = "uygulamaKullaniciBtn";
             uygulamaKullaniciBtn.Size = new Size(164, 65);
             uygulamaKullaniciBtn.TabIndex = 7;
-            uygulamaKullaniciBtn.Text = "Uygulama Kullanıcı";
+            uygulamaKullaniciBtn.Text = "Kullanıcı Tanımlama";
             uygulamaKullaniciBtn.UseVisualStyleBackColor = true;
             uygulamaKullaniciBtn.Click += uygulamaKullaniciBtn_Click;
             // 
@@ -81,7 +83,7 @@
             uygulamaAyarlariBtn.Name = "uygulamaAyarlariBtn";
             uygulamaAyarlariBtn.Size = new Size(164, 65);
             uygulamaAyarlariBtn.TabIndex = 6;
-            uygulamaAyarlariBtn.Text = "Uygulama Ayarları";
+            uygulamaAyarlariBtn.Text = "Ayarlar";
             uygulamaAyarlariBtn.UseVisualStyleBackColor = true;
             uygulamaAyarlariBtn.Click += uygulamaAyarlariBtn_Click;
             // 
@@ -195,6 +197,7 @@
             // 
             // girisPanel
             // 
+            girisPanel.Controls.Add(eyeImg);
             girisPanel.Controls.Add(girisYapBtn);
             girisPanel.Controls.Add(sifreLabel);
             girisPanel.Controls.Add(kullaniciLabel);
@@ -205,6 +208,19 @@
             girisPanel.Name = "girisPanel";
             girisPanel.Size = new Size(775, 392);
             girisPanel.TabIndex = 0;
+            // 
+            // eyeImg
+            // 
+            eyeImg.Image = Properties.Resources.Eye_icon;
+            eyeImg.Location = new Point(583, 146);
+            eyeImg.Margin = new Padding(3, 5, 3, 5);
+            eyeImg.Name = "eyeImg";
+            eyeImg.Size = new Size(34, 34);
+            eyeImg.SizeMode = PictureBoxSizeMode.Zoom;
+            eyeImg.TabIndex = 7;
+            eyeImg.TabStop = false;
+            eyeImg.MouseLeave += pictureBox1_MouseLeave;
+            eyeImg.MouseHover += pictureBox1_MouseHover;
             // 
             // girisYapBtn
             // 
@@ -241,6 +257,7 @@
             sifreTextbox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             sifreTextbox.Location = new Point(334, 146);
             sifreTextbox.Name = "sifreTextbox";
+            sifreTextbox.PasswordChar = '*';
             sifreTextbox.Size = new Size(247, 34);
             sifreTextbox.TabIndex = 5;
             // 
@@ -271,6 +288,7 @@
             panelTitle.PerformLayout();
             girisPanel.ResumeLayout(false);
             girisPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)eyeImg).EndInit();
             ResumeLayout(false);
         }
 
@@ -294,5 +312,6 @@
         private TextBox sifreTextbox;
         private TextBox kullaniciTextbox;
         private Button uygulamaKullaniciBtn;
+        private PictureBox eyeImg;
     }
 }

@@ -29,14 +29,15 @@
         private void InitializeComponent()
         {
             stokPanel = new Panel();
+            stokAdetNumericUpD = new NumericUpDown();
             stokUrunListBox = new ListBox();
             urunAdıTextBox = new TextBox();
             silBtn = new Button();
+            resetBtn = new Button();
             guncelleBtn = new Button();
             ekleBtn = new Button();
             label2 = new Label();
             label1 = new Label();
-            stokAdetNumericUpD = new NumericUpDown();
             stokPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)stokAdetNumericUpD).BeginInit();
             SuspendLayout();
@@ -47,6 +48,7 @@
             stokPanel.Controls.Add(stokUrunListBox);
             stokPanel.Controls.Add(urunAdıTextBox);
             stokPanel.Controls.Add(silBtn);
+            stokPanel.Controls.Add(resetBtn);
             stokPanel.Controls.Add(guncelleBtn);
             stokPanel.Controls.Add(ekleBtn);
             stokPanel.Controls.Add(label2);
@@ -57,14 +59,21 @@
             stokPanel.Size = new Size(759, 400);
             stokPanel.TabIndex = 5;
             // 
+            // stokAdetNumericUpD
+            // 
+            stokAdetNumericUpD.Location = new Point(136, 136);
+            stokAdetNumericUpD.Name = "stokAdetNumericUpD";
+            stokAdetNumericUpD.Size = new Size(176, 34);
+            stokAdetNumericUpD.TabIndex = 13;
+            // 
             // stokUrunListBox
             // 
             stokUrunListBox.FormattingEnabled = true;
             stokUrunListBox.ItemHeight = 28;
             stokUrunListBox.Items.AddRange(new object[] { "31" });
-            stokUrunListBox.Location = new Point(497, 16);
+            stokUrunListBox.Location = new Point(520, 20);
             stokUrunListBox.Name = "stokUrunListBox";
-            stokUrunListBox.Size = new Size(250, 368);
+            stokUrunListBox.Size = new Size(227, 368);
             stokUrunListBox.TabIndex = 12;
             stokUrunListBox.SelectedIndexChanged += stokUrunListBox_SelectedIndexChanged;
             // 
@@ -77,7 +86,7 @@
             // 
             // silBtn
             // 
-            silBtn.Location = new Point(294, 219);
+            silBtn.Location = new Point(84, 289);
             silBtn.Name = "silBtn";
             silBtn.Size = new Size(135, 42);
             silBtn.TabIndex = 7;
@@ -85,9 +94,19 @@
             silBtn.UseVisualStyleBackColor = true;
             silBtn.Click += silBtn_Click;
             // 
+            // resetBtn
+            // 
+            resetBtn.Location = new Point(225, 289);
+            resetBtn.Name = "resetBtn";
+            resetBtn.Size = new Size(135, 42);
+            resetBtn.TabIndex = 8;
+            resetBtn.Text = "Reset";
+            resetBtn.UseVisualStyleBackColor = true;
+            resetBtn.Click += resetBtn_Click;
+            // 
             // guncelleBtn
             // 
-            guncelleBtn.Location = new Point(153, 219);
+            guncelleBtn.Location = new Point(225, 219);
             guncelleBtn.Name = "guncelleBtn";
             guncelleBtn.Size = new Size(135, 42);
             guncelleBtn.TabIndex = 8;
@@ -97,7 +116,7 @@
             // 
             // ekleBtn
             // 
-            ekleBtn.Location = new Point(12, 219);
+            ekleBtn.Location = new Point(84, 219);
             ekleBtn.Name = "ekleBtn";
             ekleBtn.Size = new Size(135, 42);
             ekleBtn.TabIndex = 9;
@@ -122,13 +141,6 @@
             label1.Size = new Size(104, 28);
             label1.TabIndex = 6;
             label1.Text = "Ürün Adı : ";
-            // 
-            // stokAdetNumericUpD
-            // 
-            stokAdetNumericUpD.Location = new Point(136, 136);
-            stokAdetNumericUpD.Name = "stokAdetNumericUpD";
-            stokAdetNumericUpD.Size = new Size(176, 34);
-            stokAdetNumericUpD.TabIndex = 13;
             // 
             // stokForm
             // 
@@ -157,5 +169,6 @@
         private Label label2;
         private Label label1;
         private NumericUpDown stokAdetNumericUpD;
+        private Button resetBtn;
     }
 }

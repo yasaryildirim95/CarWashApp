@@ -9,7 +9,7 @@ namespace CarWashApp.UI.Forms
             InitializeComponent();
             FormHelper.HidePanels(this);
         }
-
+        #region menuPanel
         private void kayitBtn_Click(object sender, EventArgs e)
         {
             FormHelper.ActivateButton(sender, menuPanel);
@@ -30,5 +30,47 @@ namespace CarWashApp.UI.Forms
             FormHelper.HidePanels(this);
             personelTakipPanel.Show();
         }
+        #endregion
+        #region izinPanel
+        private void izinEkleBtn_Click(object sender, EventArgs e)
+        {
+            FormHelper.ResetItems(izinPanel);
+            FormHelper.guncelleSilBtn(false, izinPanel);
+        }
+
+        private void silIzinBtn_Click(object sender, EventArgs e)
+        {
+            FormHelper.ResetItems(izinPanel);
+            FormHelper.guncelleSilBtn(false, izinPanel);
+        }
+
+        private void guncelleIzinBtn_Click(object sender, EventArgs e)
+        {
+            FormHelper.ResetItems(izinPanel);
+            FormHelper.guncelleSilBtn(false, izinPanel);
+        }
+
+        private void izinGunleriListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (izinGunleriListBox.SelectedIndex != -1)
+                FormHelper.guncelleSilBtn(true, izinPanel);
+        }
+        private void resetIzinBtn_Click(object sender, EventArgs e)
+        {
+            FormHelper.ResetItems(izinPanel);
+            FormHelper.guncelleSilBtn(false, izinPanel);
+        }
+
+        #endregion
+
+        #region kayitPanel
+
+        private void resetBtn_Click(object sender, EventArgs e)
+        {
+            FormHelper.ResetItems(kayitPanel);
+        }
+
+        #endregion
+
     }
 }

@@ -1,5 +1,6 @@
 using CarWashApp.UI.Forms;
 using CarWashApp.UI.Helper;
+using CarWashApp.UI.Properties;
 
 namespace CarWashApp.UI
 {
@@ -77,7 +78,7 @@ namespace CarWashApp.UI
 
         private void girisYapBtn_Click(object sender, EventArgs e)
         {
-            //TODO login mantýðý yazýlcak
+            //TODO login mantï¿½ï¿½ï¿½ yazï¿½lcak
             panelMenuHideOrShow(true);
         }
 
@@ -85,6 +86,7 @@ namespace CarWashApp.UI
         {
             var tempAracForm = new AracKayitForm();
             tempAracForm.mainForm = this;
+            tempAracForm.btn = yikamaBtn;
             OpenChildForm(tempAracForm, sender);
 
         }
@@ -109,15 +111,27 @@ namespace CarWashApp.UI
 
         private void uygulamaAyarlariBtn_Click(object sender, EventArgs e)
         {
-            var tempUygulamaAyarlariForm = new uygulamaAyarlariForm();
+            var tempUygulamaAyarlariForm = new AyarlarForm();
             OpenChildForm(tempUygulamaAyarlariForm, sender);
         }
         #endregion
 
         private void uygulamaKullaniciBtn_Click(object sender, EventArgs e)
         {
-            var tempUygulamaKullaniciForm = new uygulamaKullaniciForm();
+            var tempUygulamaKullaniciForm = new KullaniciTanimlamaForm();
             OpenChildForm(tempUygulamaKullaniciForm, sender);
+        }
+
+        private void pictureBox1_MouseHover(object sender, EventArgs e)
+        {
+            sifreTextbox.PasswordChar = '\0';
+            eyeImg.Image = Resources.eye;
+        }
+
+        private void pictureBox1_MouseLeave(object sender, EventArgs e)
+        {
+            sifreTextbox.PasswordChar = '*';
+            eyeImg.Image = Resources.Eye_icon;
         }
     }
 }
