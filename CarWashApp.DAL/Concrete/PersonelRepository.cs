@@ -41,9 +41,7 @@ namespace CarWashApp.DAL.Concrete
             };
 
             Insert(newPersonel);
-            if(DbSet.Where(p => p.PersonelId == newPersonel.PersonelId).Any()) return true;
-            return false;
-               
+            return DbSet.Where(p => p.PersonelId == newPersonel.PersonelId).Any();     
         }
 
         public bool AddLoginDetails(int personelId, string username, string password)
@@ -57,8 +55,7 @@ namespace CarWashApp.DAL.Concrete
 
             loginDetails.Add(newLoginDetails);
             DbContext.SaveChanges();
-            if (loginDetails.Where(p => p.PersonelId == newLoginDetails.PersonelId).Any()) return true;
-            return false;
+            return loginDetails.Where(p => p.PersonelId == newLoginDetails.PersonelId).Any();
         }
 
         public bool AddPersonelLeave(int personelId, DateTime startDate, int dayCount)
@@ -72,8 +69,7 @@ namespace CarWashApp.DAL.Concrete
 
             personelLeaves.Add(newPersonelLeave);
             DbContext.SaveChanges();
-            if (personelLeaves.Where(p => p.PersonelId == newPersonelLeave.PersonelId && p.StartDate == startDate).Any()) return true;
-            return false;
+            return personelLeaves.Where(p => p.PersonelId == newPersonelLeave.PersonelId && p.StartDate == startDate).Any();
         }
     }
 }
