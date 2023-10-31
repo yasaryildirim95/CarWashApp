@@ -72,12 +72,14 @@ namespace CarWashApp.DAL.Concrete
                     MODEL = wash.Vehicle.Model,
                     YIKAMA_TİPİ = wash.WashType.WashTypeName,
                     ÇALIŞAN_KİŞİ = wash.PersonelID >= 1 ? wash.Personel.Name : "Çalışan Bekleniyor.",
-                    YIKAMA_DURUMU = wash.PersonelID >= 1 ? "İşlemde" : "Sırada",
+                    YIKAMA_DURUMU = (!wash.IsDone && wash.PersonelID < 1) ? "Sırada" : ((wash.EndTime - DateTime.Now).Minutes > 0) ? "İşlemde." : "Bitti.",
                     KALAN_SÜRE = (wash.EndTime - DateTime.Now).Minutes > 0 ? (wash.EndTime - DateTime.Now).Minutes : 0
                 });
 
                 queueNum++;
             }
+
+            //Tamam olup olmadığını kontrol et yıkamanın - sanıyorum ki burada.
 
             return outputList;  
         }
@@ -95,8 +97,8 @@ namespace CarWashApp.DAL.Concrete
                     wash.PersonelID = person.PersonelID;
                     wash.EndTime = DateTime.Now.AddMinutes(wash.DirtinessLevel.AdditionalDuration + wash.WashType.Duration);
                     person.IsWorking = true;
-                    DbContext.SaveChanges();
                 }
+                DbContext.SaveChanges();
             }
         }
 
