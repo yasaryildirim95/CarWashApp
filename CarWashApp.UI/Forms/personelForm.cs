@@ -7,7 +7,6 @@ namespace CarWashApp.UI.Forms
         public personelForm()
         {
             InitializeComponent();
-            FormHelper.HidePanels(this);
         }
         #region menuPanel
         private void kayitBtn_Click(object sender, EventArgs e)
@@ -31,6 +30,7 @@ namespace CarWashApp.UI.Forms
             personelTakipPanel.Show();
         }
         #endregion
+
         #region izinPanel
         private void izinEkleBtn_Click(object sender, EventArgs e)
         {
@@ -68,6 +68,28 @@ namespace CarWashApp.UI.Forms
         private void resetBtn_Click(object sender, EventArgs e)
         {
             FormHelper.ResetItems(kayitPanel);
+            FormHelper.guncelleSilBtn(false, kayitPanel);
+        }
+        private void kayitEkleBtn_Click(object sender, EventArgs e)
+        {
+            FormHelper.ResetItems(kayitPanel);
+        }
+        private void personelListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (personelListBox.SelectedIndex != -1)
+                FormHelper.guncelleSilBtn(true, kayitPanel);
+        }
+
+        private void silKayitBtn_Click(object sender, EventArgs e)
+        {
+            FormHelper.ResetItems(kayitPanel);
+            FormHelper.guncelleSilBtn(false, kayitPanel);
+        }
+
+        private void guncelleKayitBtn_Click(object sender, EventArgs e)
+        {
+            FormHelper.ResetItems(kayitPanel);
+            FormHelper.guncelleSilBtn(false, kayitPanel);
         }
 
         #endregion

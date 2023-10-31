@@ -5,10 +5,10 @@
         public static Button currentButton;
         public static void HidePanels(Control control)
         {
-            foreach (Panel tempControl in control.Controls.OfType<Panel>())
+            var temp = control.Controls.OfType<Panel>().FirstOrDefault(x => x.Visible == true && x.Name != "menuPanel");
+            if (temp != null)
             {
-                if (tempControl.Name != "menuPanel")
-                    tempControl.Hide();
+                temp.Visible = false;
             }
         }
         public static void ResetItems(Panel temp)
@@ -68,11 +68,11 @@
         {
             foreach (var button in pnl.Controls.OfType<Button>())
             {
-                if (button.Name.Contains("guncelle"))
+                if (button.Text.Contains("Güncelle") || button.Text.Contains("güncelle"))
                     button.Visible = temp;
-                if (button.Name.Contains("sil"))
+                if (button.Text.Contains("Sil") || button.Text.Contains("sil"))
                     button.Visible = temp;
-                if (button.Name.Contains("ekle"))
+                if (button.Text.Contains("Ekle") || button.Text.Contains("ekle"))
                     button.Enabled = !temp;
             }
         }
@@ -83,19 +83,19 @@
             foreach (var textBox in pnl.Controls.OfType<TextBox>())
             {
                 if (string.IsNullOrEmpty(textBox.Text))
-                    tempString += textBox.Name + " boş bırakılamaz!";
+                    tempString += textBox.Name + " boş bırakılamaz!\n";
             }
 
             foreach (var comboBox in pnl.Controls.OfType<ComboBox>())
             {
                 if (comboBox.SelectedIndex == -1)
-                    tempString += comboBox.Name + " seçilmeli!";
+                    tempString += comboBox.Name + " seçilmeli!\n";
             }
 
             foreach (var numericUpDown in pnl.Controls.OfType<NumericUpDown>())
             {
                 if (numericUpDown.Value == 0)
-                    tempString += numericUpDown.Name + " 0 olamaz!";
+                    tempString += numericUpDown.Name + " 0 olamaz!\n";
             }
             return tempString;
         }

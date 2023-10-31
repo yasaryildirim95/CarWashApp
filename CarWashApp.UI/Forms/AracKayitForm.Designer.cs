@@ -80,14 +80,15 @@
             aramaPanel.Name = "aramaPanel";
             aramaPanel.Size = new Size(631, 400);
             aramaPanel.TabIndex = 3;
+            aramaPanel.Visible = false;
             // 
             // label12
             // 
             label12.AutoSize = true;
-            label12.Font = new Font("Segoe UI", 25F, FontStyle.Regular, GraphicsUnit.Point);
+            label12.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             label12.Location = new Point(12, 9);
             label12.Name = "label12";
-            label12.Size = new Size(117, 46);
+            label12.Size = new Size(69, 28);
             label12.TabIndex = 19;
             label12.Text = "Arama";
             // 
@@ -140,14 +141,15 @@
             aracKayitPanel.Name = "aracKayitPanel";
             aracKayitPanel.Size = new Size(631, 400);
             aracKayitPanel.TabIndex = 3;
+            aracKayitPanel.Visible = false;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 25F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             label7.Location = new Point(12, 9);
             label7.Name = "label7";
-            label7.Size = new Size(169, 46);
+            label7.Size = new Size(100, 28);
             label7.TabIndex = 18;
             label7.Text = "Araç Kayıt";
             // 
@@ -300,6 +302,7 @@
             aracSahibiPanel.Name = "aracSahibiPanel";
             aracSahibiPanel.Size = new Size(631, 400);
             aracSahibiPanel.TabIndex = 15;
+            aracSahibiPanel.Visible = false;
             // 
             // adTextBox
             // 
@@ -313,10 +316,10 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 25F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             label8.Location = new Point(12, 9);
             label8.Name = "label8";
-            label8.Size = new Size(255, 46);
+            label8.Size = new Size(150, 28);
             label8.TabIndex = 32;
             label8.Text = "Araç Sahibi Ekle";
             // 
@@ -463,9 +466,9 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(759, 400);
-            Controls.Add(aracKayitPanel);
-            Controls.Add(aracSahibiPanel);
             Controls.Add(aramaPanel);
+            Controls.Add(aracSahibiPanel);
+            Controls.Add(aracKayitPanel);
             Controls.Add(menuPanel);
             Name = "AracKayitForm";
             Text = "Araç Kayıt";

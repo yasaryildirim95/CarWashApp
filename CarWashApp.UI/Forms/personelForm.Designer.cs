@@ -33,7 +33,10 @@
             personelTakipBtn = new Button();
             kayitBtn = new Button();
             kayitPanel = new Panel();
-            resetBtn = new Button();
+            personelListBox = new ListBox();
+            guncelleKayitBtn = new Button();
+            resetKayitBtn = new Button();
+            silKayitBtn = new Button();
             kayitEkleBtn = new Button();
             vardiyaComboBox = new ComboBox();
             maasTextBox = new TextBox();
@@ -48,6 +51,7 @@
             izinGunleriListBox = new ListBox();
             guncelleIzinBtn = new Button();
             silIzinBtn = new Button();
+            resetIzinBtn = new Button();
             izinEkleBtn = new Button();
             izinSuresiNumericUpD = new NumericUpDown();
             baslangicTarihiDTP = new DateTimePicker();
@@ -58,7 +62,6 @@
             label4 = new Label();
             personelTakipPanel = new Panel();
             label3 = new Label();
-            resetIzinBtn = new Button();
             menuPanel.SuspendLayout();
             kayitPanel.SuspendLayout();
             izinPanel.SuspendLayout();
@@ -125,7 +128,10 @@
             // 
             // kayitPanel
             // 
-            kayitPanel.Controls.Add(resetBtn);
+            kayitPanel.Controls.Add(personelListBox);
+            kayitPanel.Controls.Add(guncelleKayitBtn);
+            kayitPanel.Controls.Add(resetKayitBtn);
+            kayitPanel.Controls.Add(silKayitBtn);
             kayitPanel.Controls.Add(kayitEkleBtn);
             kayitPanel.Controls.Add(vardiyaComboBox);
             kayitPanel.Controls.Add(maasTextBox);
@@ -141,33 +147,70 @@
             kayitPanel.Name = "kayitPanel";
             kayitPanel.Size = new Size(631, 400);
             kayitPanel.TabIndex = 1;
+            kayitPanel.Visible = false;
             // 
-            // resetBtn
+            // personelListBox
             // 
-            resetBtn.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            resetBtn.Location = new Point(346, 328);
-            resetBtn.Name = "resetBtn";
-            resetBtn.Size = new Size(118, 37);
-            resetBtn.TabIndex = 5;
-            resetBtn.Text = "Reset";
-            resetBtn.UseVisualStyleBackColor = true;
-            resetBtn.Click += resetBtn_Click;
+            personelListBox.FormattingEnabled = true;
+            personelListBox.ItemHeight = 15;
+            personelListBox.Items.AddRange(new object[] { "31" });
+            personelListBox.Location = new Point(392, 76);
+            personelListBox.Name = "personelListBox";
+            personelListBox.Size = new Size(227, 304);
+            personelListBox.TabIndex = 27;
+            personelListBox.SelectedIndexChanged += personelListBox_SelectedIndexChanged;
+            // 
+            // guncelleKayitBtn
+            // 
+            guncelleKayitBtn.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            guncelleKayitBtn.Location = new Point(201, 353);
+            guncelleKayitBtn.Name = "guncelleKayitBtn";
+            guncelleKayitBtn.Size = new Size(118, 37);
+            guncelleKayitBtn.TabIndex = 5;
+            guncelleKayitBtn.Text = "Güncelle";
+            guncelleKayitBtn.UseVisualStyleBackColor = true;
+            guncelleKayitBtn.Visible = false;
+            guncelleKayitBtn.Click += guncelleKayitBtn_Click;
+            // 
+            // resetKayitBtn
+            // 
+            resetKayitBtn.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            resetKayitBtn.Location = new Point(201, 310);
+            resetKayitBtn.Name = "resetKayitBtn";
+            resetKayitBtn.Size = new Size(118, 37);
+            resetKayitBtn.TabIndex = 5;
+            resetKayitBtn.Text = "Reset";
+            resetKayitBtn.UseVisualStyleBackColor = true;
+            resetKayitBtn.Click += resetBtn_Click;
+            // 
+            // silKayitBtn
+            // 
+            silKayitBtn.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            silKayitBtn.Location = new Point(59, 353);
+            silKayitBtn.Name = "silKayitBtn";
+            silKayitBtn.Size = new Size(118, 37);
+            silKayitBtn.TabIndex = 5;
+            silKayitBtn.Text = "Sil";
+            silKayitBtn.UseVisualStyleBackColor = true;
+            silKayitBtn.Visible = false;
+            silKayitBtn.Click += silKayitBtn_Click;
             // 
             // kayitEkleBtn
             // 
             kayitEkleBtn.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            kayitEkleBtn.Location = new Point(183, 328);
+            kayitEkleBtn.Location = new Point(59, 310);
             kayitEkleBtn.Name = "kayitEkleBtn";
             kayitEkleBtn.Size = new Size(118, 37);
             kayitEkleBtn.TabIndex = 5;
             kayitEkleBtn.Text = "Ekle";
             kayitEkleBtn.UseVisualStyleBackColor = true;
+            kayitEkleBtn.Click += kayitEkleBtn_Click;
             // 
             // vardiyaComboBox
             // 
             vardiyaComboBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             vardiyaComboBox.FormattingEnabled = true;
-            vardiyaComboBox.Location = new Point(285, 260);
+            vardiyaComboBox.Location = new Point(144, 246);
             vardiyaComboBox.Name = "vardiyaComboBox";
             vardiyaComboBox.Size = new Size(179, 36);
             vardiyaComboBox.TabIndex = 4;
@@ -175,7 +218,7 @@
             // maasTextBox
             // 
             maasTextBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            maasTextBox.Location = new Point(285, 194);
+            maasTextBox.Location = new Point(144, 180);
             maasTextBox.Name = "maasTextBox";
             maasTextBox.Size = new Size(179, 34);
             maasTextBox.TabIndex = 3;
@@ -183,7 +226,7 @@
             // soyadTextBox
             // 
             soyadTextBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            soyadTextBox.Location = new Point(285, 126);
+            soyadTextBox.Location = new Point(144, 112);
             soyadTextBox.Name = "soyadTextBox";
             soyadTextBox.Size = new Size(179, 34);
             soyadTextBox.TabIndex = 3;
@@ -191,7 +234,7 @@
             // adTextBox
             // 
             adTextBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            adTextBox.Location = new Point(285, 69);
+            adTextBox.Location = new Point(144, 55);
             adTextBox.Name = "adTextBox";
             adTextBox.Size = new Size(179, 34);
             adTextBox.TabIndex = 3;
@@ -200,7 +243,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(168, 260);
+            label9.Location = new Point(27, 246);
             label9.Name = "label9";
             label9.Size = new Size(86, 28);
             label9.TabIndex = 2;
@@ -210,7 +253,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(168, 200);
+            label7.Location = new Point(27, 186);
             label7.Name = "label7";
             label7.Size = new Size(72, 28);
             label7.TabIndex = 2;
@@ -220,7 +263,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(168, 132);
+            label6.Location = new Point(27, 118);
             label6.Name = "label6";
             label6.Size = new Size(81, 28);
             label6.TabIndex = 2;
@@ -230,7 +273,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(168, 72);
+            label5.Location = new Point(27, 58);
             label5.Name = "label5";
             label5.Size = new Size(51, 28);
             label5.TabIndex = 2;
@@ -265,13 +308,14 @@
             izinPanel.Name = "izinPanel";
             izinPanel.Size = new Size(631, 400);
             izinPanel.TabIndex = 0;
+            izinPanel.Visible = false;
             // 
             // izinGunleriListBox
             // 
             izinGunleriListBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             izinGunleriListBox.FormattingEnabled = true;
             izinGunleriListBox.ItemHeight = 28;
-            izinGunleriListBox.Location = new Point(392, 12);
+            izinGunleriListBox.Location = new Point(392, 76);
             izinGunleriListBox.Name = "izinGunleriListBox";
             izinGunleriListBox.Size = new Size(227, 312);
             izinGunleriListBox.TabIndex = 8;
@@ -280,40 +324,53 @@
             // guncelleIzinBtn
             // 
             guncelleIzinBtn.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            guncelleIzinBtn.Location = new Point(168, 342);
+            guncelleIzinBtn.Location = new Point(225, 343);
             guncelleIzinBtn.Name = "guncelleIzinBtn";
             guncelleIzinBtn.Size = new Size(118, 37);
             guncelleIzinBtn.TabIndex = 7;
-            guncelleIzinBtn.Text = "Guncelle";
+            guncelleIzinBtn.Text = "Güncelle";
             guncelleIzinBtn.UseVisualStyleBackColor = true;
+            guncelleIzinBtn.Visible = false;
             guncelleIzinBtn.Click += guncelleIzinBtn_Click;
             // 
             // silIzinBtn
             // 
             silIzinBtn.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            silIzinBtn.Location = new Point(29, 342);
+            silIzinBtn.Location = new Point(84, 343);
             silIzinBtn.Name = "silIzinBtn";
             silIzinBtn.Size = new Size(118, 37);
             silIzinBtn.TabIndex = 7;
             silIzinBtn.Text = "Sil";
             silIzinBtn.UseVisualStyleBackColor = true;
+            silIzinBtn.Visible = false;
             silIzinBtn.Click += silIzinBtn_Click;
+            // 
+            // resetIzinBtn
+            // 
+            resetIzinBtn.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            resetIzinBtn.Location = new Point(225, 288);
+            resetIzinBtn.Name = "resetIzinBtn";
+            resetIzinBtn.Size = new Size(118, 37);
+            resetIzinBtn.TabIndex = 7;
+            resetIzinBtn.Text = "Reset";
+            resetIzinBtn.UseVisualStyleBackColor = true;
+            resetIzinBtn.Click += resetIzinBtn_Click;
             // 
             // izinEkleBtn
             // 
             izinEkleBtn.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            izinEkleBtn.Location = new Point(29, 287);
+            izinEkleBtn.Location = new Point(84, 288);
             izinEkleBtn.Name = "izinEkleBtn";
             izinEkleBtn.Size = new Size(118, 37);
             izinEkleBtn.TabIndex = 7;
-            izinEkleBtn.Text = "İzin Ekle";
+            izinEkleBtn.Text = "Ekle";
             izinEkleBtn.UseVisualStyleBackColor = true;
             izinEkleBtn.Click += izinEkleBtn_Click;
             // 
             // izinSuresiNumericUpD
             // 
             izinSuresiNumericUpD.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            izinSuresiNumericUpD.Location = new Point(183, 224);
+            izinSuresiNumericUpD.Location = new Point(171, 195);
             izinSuresiNumericUpD.Name = "izinSuresiNumericUpD";
             izinSuresiNumericUpD.Size = new Size(172, 34);
             izinSuresiNumericUpD.TabIndex = 6;
@@ -321,7 +378,7 @@
             // baslangicTarihiDTP
             // 
             baslangicTarihiDTP.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            baslangicTarihiDTP.Location = new Point(183, 162);
+            baslangicTarihiDTP.Location = new Point(171, 133);
             baslangicTarihiDTP.Name = "baslangicTarihiDTP";
             baslangicTarihiDTP.Size = new Size(172, 34);
             baslangicTarihiDTP.TabIndex = 5;
@@ -330,7 +387,7 @@
             // 
             personelComboBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             personelComboBox.FormattingEnabled = true;
-            personelComboBox.Location = new Point(183, 102);
+            personelComboBox.Location = new Point(171, 73);
             personelComboBox.Name = "personelComboBox";
             personelComboBox.Size = new Size(172, 36);
             personelComboBox.TabIndex = 4;
@@ -339,7 +396,7 @@
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label11.Location = new Point(24, 226);
+            label11.Location = new Point(12, 197);
             label11.Name = "label11";
             label11.Size = new Size(108, 28);
             label11.TabIndex = 3;
@@ -349,7 +406,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(24, 162);
+            label10.Location = new Point(12, 133);
             label10.Name = "label10";
             label10.Size = new Size(153, 28);
             label10.TabIndex = 3;
@@ -359,7 +416,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(24, 105);
+            label8.Location = new Point(12, 76);
             label8.Name = "label8";
             label8.Size = new Size(94, 28);
             label8.TabIndex = 3;
@@ -383,6 +440,7 @@
             personelTakipPanel.Name = "personelTakipPanel";
             personelTakipPanel.Size = new Size(631, 400);
             personelTakipPanel.TabIndex = 0;
+            personelTakipPanel.Visible = false;
             // 
             // label3
             // 
@@ -393,17 +451,6 @@
             label3.Size = new Size(135, 28);
             label3.TabIndex = 2;
             label3.Text = "Personel Takip";
-            // 
-            // resetIzinBtn
-            // 
-            resetIzinBtn.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            resetIzinBtn.Location = new Point(168, 287);
-            resetIzinBtn.Name = "resetIzinBtn";
-            resetIzinBtn.Size = new Size(118, 37);
-            resetIzinBtn.TabIndex = 7;
-            resetIzinBtn.Text = "Reset";
-            resetIzinBtn.UseVisualStyleBackColor = true;
-            resetIzinBtn.Click += resetIzinBtn_Click;
             // 
             // personelForm
             // 
@@ -460,7 +507,10 @@
         private ListBox izinGunleriListBox;
         private Button guncelleIzinBtn;
         private Button silIzinBtn;
-        private Button resetBtn;
+        private Button resetKayitBtn;
         private Button resetIzinBtn;
+        private Button guncelleKayitBtn;
+        private Button silKayitBtn;
+        private ListBox personelListBox;
     }
 }
