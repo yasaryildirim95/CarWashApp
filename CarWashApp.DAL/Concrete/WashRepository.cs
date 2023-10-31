@@ -51,11 +51,15 @@ namespace CarWashApp.DAL.Concrete
             return washes.Where(x=>x.WashID == newWash.WashID).Any();
         }
 
-        public List<DataGridStruct> ListWashes()
+        public List<DataGridStruct> RunCarWash()
         {
             AssignPersonel();
 
+            //Tamam olup olmadığını kontrol et yıkamanın - sanıyorum ki burada.
+
             var mainList = DbSet.Include(w => w.WashType).Include(w => w.Personel).Include(w => w.DirtinessLevel).Include(w => w.Vehicle).ToList();
+            
+            CheckWashes(mainList);
 
             var outputList = new List<DataGridStruct>();
 
@@ -79,9 +83,23 @@ namespace CarWashApp.DAL.Concrete
                 queueNum++;
             }
 
-            //Tamam olup olmadığını kontrol et yıkamanın - sanıyorum ki burada.
 
-            return outputList;  
+
+            return outputList;
+        }
+
+        private void CheckWashes(List<Wash> mainList)
+        {
+            if(mainList != null)
+            {
+                foreach (var wash in mainList.Where(w => w.IsDone == false && w.EndTime < DateTime.Now))
+                {
+                    wash.IsDone = true;
+                    wash.Personel.IsWorking = false;
+                }
+
+                DbContext.SaveChanges();
+            }
         }
 
         public void AssignPersonel()
