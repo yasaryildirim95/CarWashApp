@@ -11,8 +11,7 @@ namespace CarWashApp.Entity.Concrete
     {
         public int WashID { get; set; }
         public int Price { get; set; }
-        public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
+        public bool IsDone { get; set; }
         public Vehicle Vehicle { get; set; }
         public int VehicleId { get; set; }
         public WashType WashType { get; set; }
@@ -21,5 +20,6 @@ namespace CarWashApp.Entity.Concrete
         public int DirtinessLevelID { get; set; }
         public Personel Personel { get; set; }
         public int PersonelID { get; set;}
+        public DateTime EndTime { get; set; }
     }
 }

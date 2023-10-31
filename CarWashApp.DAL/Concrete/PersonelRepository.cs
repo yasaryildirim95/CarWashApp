@@ -43,7 +43,8 @@ namespace CarWashApp.DAL.Concrete
                 Salary = salary,
                 LeavesLeft = 14,
                 ShifTypeID = shiftID,
-                IsWasher = isWasher
+                IsWasher = isWasher,
+                IsWorking = false
             };
 
             Insert(newPersonel);

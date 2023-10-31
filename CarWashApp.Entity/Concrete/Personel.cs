@@ -17,6 +17,7 @@ namespace CarWashApp.Entity.Concrete
         public Shift Shift { get; set; }
         public int ShifTypeID { get; set; }
         public bool IsWasher { get; set; }
+        public bool IsWorking { get; set; }
 
     }
 }
