@@ -67,16 +67,26 @@ namespace CarWashApp.DAL.Concrete
         //ID ve ad soyad verilecek combobox'a ve bunu split ile bll'de girdi olarak idye vereceksin.
         public bool AddPersonelLeave(int personelId, DateTime startDate, int dayCount)
         {
-            var newPersonelLeave = new PersonelLeave()
-            {
-                PersonelID = personelId,
-                StartDate = startDate,
-                NumOfDays = dayCount
-            };
+            var query = DbSet.Where(p => p.PersonelID == personelId && p.LeavesLeft > dayCount);
 
-            personelLeaves.Add(newPersonelLeave);
-            DbContext.SaveChanges();
-            return personelLeaves.Where(p => p.PersonelID == newPersonelLeave.PersonelID && p.StartDate == startDate).Any();
+            if (query.Any()) 
+            {
+                foreach (var item in query.ToList())
+                {
+                    item.LeavesLeft -= dayCount; 
+                }
+                var newPersonelLeave = new PersonelLeave()
+                {
+                    PersonelID = personelId,
+                    StartDate = startDate,
+                    NumOfDays = dayCount
+                };
+
+                personelLeaves.Add(newPersonelLeave);
+                DbContext.SaveChanges();
+                return personelLeaves.Where(p => p.PersonelID == newPersonelLeave.PersonelID && p.StartDate == startDate).Any();
+            }
+            return false; 
         }
     }
 }
