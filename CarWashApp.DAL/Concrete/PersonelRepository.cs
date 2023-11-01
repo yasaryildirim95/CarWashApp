@@ -1,11 +1,5 @@
 ﻿using CarWashApp.Entity.Concrete;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace CarWashApp.DAL.Concrete
 {
@@ -30,7 +24,7 @@ namespace CarWashApp.DAL.Concrete
             {
                 return (true, tempData.IsAdmin);
             }
-            return(false, false);
+            return (false, false);
         }
         public bool AddUser(string name, string surname, int salary, string shiftName, bool isWasher)
         {
@@ -48,7 +42,7 @@ namespace CarWashApp.DAL.Concrete
             };
 
             Insert(newPersonel);
-            return DbSet.Where(p => p.Name == newPersonel.Name && p.Surname == newPersonel.Surname).Any();     
+            return DbSet.Where(p => p.Name == newPersonel.Name && p.Surname == newPersonel.Surname).Any();
         }
         public bool AddLoginDetails(int personelId, string username, string password)
         {
@@ -65,7 +59,7 @@ namespace CarWashApp.DAL.Concrete
         }
         public bool AddPersonelLeave(int personelId, DateTime startDate, int dayCount)
         {
-            if (DbSet.Where(p => p.PersonelID == personelId && p.LeavesLeft > dayCount).Any()) 
+            if (DbSet.Where(p => p.PersonelID == personelId && p.LeavesLeft > dayCount).Any())
             {
                 DbSet.Where(p => p.PersonelID == personelId).FirstOrDefault().LeavesLeft -= dayCount;
 
@@ -80,7 +74,7 @@ namespace CarWashApp.DAL.Concrete
                 DbContext.SaveChanges();
                 return personelLeaves.Where(p => p.PersonelID == newPersonelLeave.PersonelID && p.StartDate == startDate).Any();
             }
-            return false; 
+            return false;
         }
     }
 }

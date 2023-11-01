@@ -1,10 +1,5 @@
 ﻿using CarWashApp.Entity.Concrete;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CarWashApp.DAL.Context
 {
@@ -27,7 +22,7 @@ namespace CarWashApp.DAL.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-F4M3HC0\SQLEXPRESS;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Initial Catalog=newDb; Application Intent=ReadWrite;Multi Subnet Failover=False");
+            optionsBuilder.UseSqlServer(@"Data Source=Buraks_PC\SQLEXPRESS;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Initial Catalog=newDb; Application Intent=ReadWrite;Multi Subnet Failover=False");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -76,12 +71,12 @@ namespace CarWashApp.DAL.Context
                 .HasForeignKey(p => p.ShifTypeID);
 
             modelBuilder.Entity<LoginDetail>()
-                .HasKey(x=>x.PersonelID);
+                .HasKey(x => x.PersonelID);
             modelBuilder.Entity<Shift>()
                 .HasKey(x => x.ShiftTypeID);
 
             modelBuilder.Entity<VehicleOwner>()
-                .HasIndex(x=>x.PhoneNumber)
+                .HasIndex(x => x.PhoneNumber)
                 .IsUnique();
 
             modelBuilder.Entity<Shift>().HasData(
@@ -106,10 +101,10 @@ namespace CarWashApp.DAL.Context
                 );
 
             modelBuilder.Entity<WashTypeProduct>().HasData(
-                new WashTypeProduct { ProductTypeID = 1, WashTypeID =1, Quantity=1 },
-                new WashTypeProduct { ProductTypeID = 2, WashTypeID =2, Quantity=1 },
-                new WashTypeProduct { ProductTypeID = 1, WashTypeID =3, Quantity=1 },
-                new WashTypeProduct { ProductTypeID = 2, WashTypeID =3, Quantity=1 }
+                new WashTypeProduct { ProductTypeID = 1, WashTypeID = 1, Quantity = 1 },
+                new WashTypeProduct { ProductTypeID = 2, WashTypeID = 2, Quantity = 1 },
+                new WashTypeProduct { ProductTypeID = 1, WashTypeID = 3, Quantity = 1 },
+                new WashTypeProduct { ProductTypeID = 2, WashTypeID = 3, Quantity = 1 }
                 );
 
             modelBuilder.Entity<VehicleType>().HasData(

@@ -1,10 +1,5 @@
 ﻿using CarWashApp.Entity.Concrete;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CarWashApp.DAL.Concrete
 {
@@ -13,7 +8,7 @@ namespace CarWashApp.DAL.Concrete
         DbSet<WashTypeProduct> washTypeProducts;
         DbSet<Product> products;
 
-        public WashTypeRepository(DbContext dbContext) : base (dbContext)
+        public WashTypeRepository(DbContext dbContext) : base(dbContext)
         {
             washTypeProducts = dbContext.Set<WashTypeProduct>();
             products = dbContext.Set<Product>();
@@ -31,7 +26,7 @@ namespace CarWashApp.DAL.Concrete
 
             Insert(newWashType);
 
-            newWashType = DbSet.Where(wt => wt.WashTypeName ==  washTypeName).FirstOrDefault();
+            newWashType = DbSet.Where(wt => wt.WashTypeName == washTypeName).FirstOrDefault();
 
             if (newWashType != null)
             {
@@ -52,7 +47,7 @@ namespace CarWashApp.DAL.Concrete
                 DbContext.SaveChanges();
                 return true;
             }
-            return false;  
+            return false;
         }
     }
 }

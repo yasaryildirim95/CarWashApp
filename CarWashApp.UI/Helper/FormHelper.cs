@@ -1,5 +1,4 @@
 ﻿using CarWashApp.BLL.Manager;
-using CarWashApp.BLL.Service;
 using CarWashApp.DAL.Concrete;
 using CarWashApp.DAL.Context;
 
@@ -9,8 +8,21 @@ namespace CarWashApp.UI.Helper
     {
         public static Button currentButton;
 
-        public static IOwnerVehicleService OwnerVehicleService =
-            new OwnerVehicleManager(new OwnerVehicleRepository(new AppDbContext()));
+        public static OwnerVehicleManager
+            OwnerVehicleService = new OwnerVehicleManager(new OwnerVehicleRepository(new AppDbContext()));
+
+        public static PersonelManager
+            PersonelService = new PersonelManager(new PersonelRepository(new AppDbContext()));
+
+        public static ProductManager
+            ProductService = new ProductManager(new ProductRepository(new AppDbContext()));
+
+        public static WashManager
+            WashService = new WashManager(new WashRepository(new AppDbContext()));
+
+        public static WashTypeManager
+            WashTypeService = new WashTypeManager(new WashTypeRepository(new AppDbContext()));
+
         public static void HidePanels(Control control)
         {
             var temp = control.Controls.OfType<Panel>().FirstOrDefault(x => x.Visible == true && x.Name != "menuPanel");
@@ -46,6 +58,11 @@ namespace CarWashApp.UI.Helper
             foreach (var listBox in temp.Controls.OfType<ListBox>())
             {
                 listBox.SelectedIndex = -1;
+            }
+
+            foreach (var checkBox in temp.Controls.OfType<CheckBox>())
+            {
+                checkBox.Checked = false;
             }
 
         }

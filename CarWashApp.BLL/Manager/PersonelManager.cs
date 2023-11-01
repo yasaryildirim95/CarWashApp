@@ -71,5 +71,12 @@ namespace CarWashApp.BLL.Manager
 
             return outputList;
         }
+
+        public override void Add(Personel entity)
+        {
+            entity.LeavesLeft = 14;
+            entity.IsWorking = false;
+            base.Add(entity);
+        }
     }
 }
