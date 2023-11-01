@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace CarWashApp.DAL.Concrete
 {
@@ -64,14 +65,10 @@ namespace CarWashApp.DAL.Concrete
         }
         public bool AddPersonelLeave(int personelId, DateTime startDate, int dayCount)
         {
-            var query = DbSet.Where(p => p.PersonelID == personelId && p.LeavesLeft > dayCount);
-
-            if (query.Any()) 
+            if (DbSet.Where(p => p.PersonelID == personelId && p.LeavesLeft > dayCount).Any()) 
             {
-                foreach (var item in query.ToList())
-                {
-                    item.LeavesLeft -= dayCount; 
-                }
+                DbSet.Where(p => p.PersonelID == personelId).FirstOrDefault().LeavesLeft -= dayCount;
+
                 var newPersonelLeave = new PersonelLeave()
                 {
                     PersonelID = personelId,

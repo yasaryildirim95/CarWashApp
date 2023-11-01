@@ -50,9 +50,9 @@ namespace CarWashApp.DAL.Concrete
         {
             AssignPersonel();
 
-            var mainList = DbSet.Include(w => w.WashType).Include(w => w.Personel).Include(w => w.DirtinessLevel).Include(w => w.Vehicle).ToList();
+            CheckWashes();
 
-            CheckWashes(mainList);
+            var mainList = DbSet.Include(w => w.WashType).Include(w => w.Personel).Include(w => w.DirtinessLevel).Include(w => w.Vehicle).ToList();
 
             var outputList = new List<DataGridStruct>();
 
@@ -79,14 +79,17 @@ namespace CarWashApp.DAL.Concrete
             return outputList;
         }
 
-        private void CheckWashes(List<Wash> mainList)
+        private void CheckWashes()
         {
-            if (mainList != null)
+            var list = DbSet.Include(w => w.Personel).ToList();
+
+            if (list.Count() > 1)
             {
-                foreach (var wash in mainList.Where(w => w.IsDone == false && w.EndTime < DateTime.Now))
+                foreach (var wash in list.Where(w => w.IsDone == false && w.Personel != null && w.EndTime < DateTime.Now))
                 {
-                    wash.IsDone = true;
-                    wash.Personel.IsWorking = false;
+                    var currentWash = DbSet.Where(w => w.WashID == wash.WashID).FirstOrDefault();
+                    currentWash.IsDone = true;
+                    currentWash.Personel.IsWorking = false;
 
                     DbContext.SaveChanges();
                 }
