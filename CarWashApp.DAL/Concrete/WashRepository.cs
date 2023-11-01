@@ -29,10 +29,10 @@ namespace CarWashApp.DAL.Concrete
             Personel = DbContext.Set<Personel>();
         }
 
-        public bool AddWash(int washTypeID, string plate, string dirtinessLevelName)
+        public bool AddWash(string washTypeName, string plate, string dirtinessLevelName)
         {
             var vehicle = vehicles.Where(v => v.Plate == plate).FirstOrDefault();
-            var washType = washTypes.Where(w=>w.WashTypeID == washTypeID).FirstOrDefault();
+            var washType = washTypes.Where(w=>w.WashTypeName == washTypeName).FirstOrDefault();
             var vehicleType = vehicleTypes.Where(v=>v.VehicleTypeID == vehicle.VehicleTypeID).FirstOrDefault();
             var dirtinessLevel = dirtinessLevels.Where(v=>v.DirtinessLevelName == dirtinessLevelName).FirstOrDefault();
 
@@ -40,7 +40,7 @@ namespace CarWashApp.DAL.Concrete
             {
                 Price = washType.Price * vehicleType.PriceMultiplier,
                 VehicleId = vehicle.VehicleID,
-                WashTypeID = washTypeID,
+                WashTypeID = washType.WashTypeID,
                 DirtinessLevelID = dirtinessLevel.DirtinessLevelID,
                 IsDone = false
                 //Personel ataması sonra yapılacak
@@ -54,8 +54,6 @@ namespace CarWashApp.DAL.Concrete
         public List<DataGridStruct> RunCarWash()
         {
             AssignPersonel();
-
-            //Tamam olup olmadığını kontrol et yıkamanın - sanıyorum ki burada.
 
             var mainList = DbSet.Include(w => w.WashType).Include(w => w.Personel).Include(w => w.DirtinessLevel).Include(w => w.Vehicle).ToList();
             
@@ -82,8 +80,6 @@ namespace CarWashApp.DAL.Concrete
 
                 queueNum++;
             }
-
-
 
             return outputList;
         }
@@ -119,7 +115,5 @@ namespace CarWashApp.DAL.Concrete
                 DbContext.SaveChanges();
             }
         }
-
-        //Timerda çalıştırılacak mevcut personellere boştaki araçları atama metodu - IsWasher dikkate alınarak:
     }
 }

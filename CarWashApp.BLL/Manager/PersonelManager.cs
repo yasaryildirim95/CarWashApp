@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CarWashApp.BLL.Manager
 {
-    internal class PersonelManager : BaseManager<Personel>, IPersonelService
+    public class PersonelManager : BaseManager<Personel>, IPersonelService
     {
         protected PersonelRepository _personelRepository;
 
@@ -29,7 +29,6 @@ namespace CarWashApp.BLL.Manager
                 return (false, false);
             }
         }
-
         public bool AddUser(string name, string surname, int salary, string shiftName, bool isWasher)
         {
             try
@@ -41,7 +40,6 @@ namespace CarWashApp.BLL.Manager
                 return false;
             }
         }
-
         public bool AddLoginDetails(string idAndName, string username, string password) 
         {
             try
@@ -54,7 +52,6 @@ namespace CarWashApp.BLL.Manager
                 return false;
             }
         }
-
         public bool AddPersonelLeave(string idAndName, DateTime startDate, int dayCount)
         {
             try
@@ -67,7 +64,6 @@ namespace CarWashApp.BLL.Manager
                 return false;
             }
         }
-
         public List<string> FillCombobox()
         {
             var personel = _genericRepository.GetAll();
@@ -79,6 +75,6 @@ namespace CarWashApp.BLL.Manager
             }
 
             return outputList;
-        }
+        } 
     }
 }

@@ -31,7 +31,6 @@ namespace CarWashApp.DAL.Concrete
             }
             return(false, false);
         }
-        //
         public bool AddUser(string name, string surname, int salary, string shiftName, bool isWasher)
         {
             var shiftID = shifts.Where(s => s.ShiftName == shiftName).Select(s => s.ShiftTypeID).FirstOrDefault();
@@ -48,9 +47,8 @@ namespace CarWashApp.DAL.Concrete
             };
 
             Insert(newPersonel);
-            return DbSet.Where(p => p.PersonelID == newPersonel.PersonelID).Any();     
+            return DbSet.Where(p => p.Name == newPersonel.Name && p.Surname == newPersonel.Surname).Any();     
         }
-        //ID ve ad soyad verilecek combobox'a ve bunu split ile bll'de girdi olarak idye vereceksin.
         public bool AddLoginDetails(int personelId, string username, string password)
         {
             var newLoginDetails = new LoginDetail()
@@ -64,7 +62,6 @@ namespace CarWashApp.DAL.Concrete
             DbContext.SaveChanges();
             return loginDetails.Where(p => p.PersonelID == newLoginDetails.PersonelID).Any();
         }
-        //ID ve ad soyad verilecek combobox'a ve bunu split ile bll'de girdi olarak idye vereceksin.
         public bool AddPersonelLeave(int personelId, DateTime startDate, int dayCount)
         {
             var query = DbSet.Where(p => p.PersonelID == personelId && p.LeavesLeft > dayCount);
