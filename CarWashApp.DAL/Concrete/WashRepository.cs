@@ -73,8 +73,8 @@ namespace CarWashApp.DAL.Concrete
                     MARKA = wash.Vehicle.Brand,
                     MODEL = wash.Vehicle.Model,
                     YIKAMA_TİPİ = wash.WashType.WashTypeName,
-                    ÇALIŞAN_KİŞİ = wash.PersonelID >= 1 ? wash.Personel.Name : "Çalışan Bekleniyor.",
-                    YIKAMA_DURUMU = (!wash.IsDone && wash.PersonelID < 1) ? "Sırada" : ((wash.EndTime - DateTime.Now).Minutes > 0) ? "İşlemde." : "Bitti.",
+                    ÇALIŞAN_KİŞİ = wash.Personel != null ? wash.Personel.Name : "Çalışan Bekleniyor.",
+                    YIKAMA_DURUMU = (!wash.IsDone && wash.Personel == null) ? "Sırada" : ((wash.EndTime - DateTime.Now).Minutes > 0) ? "İşlemde." : "Bitti.",
                     KALAN_SÜRE = (wash.EndTime - DateTime.Now).Minutes > 0 ? (wash.EndTime - DateTime.Now).Minutes : 0
                 });
 
@@ -92,27 +92,28 @@ namespace CarWashApp.DAL.Concrete
                 {
                     wash.IsDone = true;
                     wash.Personel.IsWorking = false;
-                }
 
-                DbContext.SaveChanges();
+                    DbContext.SaveChanges();
+                }
             }
         }
 
         public void AssignPersonel()
         {
             var personel = Personel.Where(p => p.IsWasher == true && p.IsWorking == false).ToList();
-            var washes = DbSet.Include(w => w.WashType).Include(w => w.DirtinessLevel).Where(w => w.PersonelID < 1).ToList();
+            var washes = DbSet.Include(w => w.WashType).Include(w => w.DirtinessLevel).Where(w => w.Personel == null).ToList();
 
             foreach (var person in personel)
             {
-                var wash = washes.Where(w => w.PersonelID < 1).FirstOrDefault();
+                var wash = washes.FirstOrDefault();
                 if(wash != null)
                 {
                     wash.PersonelID = person.PersonelID;
                     wash.EndTime = DateTime.Now.AddMinutes(wash.DirtinessLevel.AdditionalDuration + wash.WashType.Duration);
                     person.IsWorking = true;
+
+                    DbContext.SaveChanges();
                 }
-                DbContext.SaveChanges();
             }
         }
     }
