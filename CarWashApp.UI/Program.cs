@@ -1,5 +1,3 @@
-using CarWashApp.UI;
-
 namespace CarWashApp.UI
 {
     internal static class Program
