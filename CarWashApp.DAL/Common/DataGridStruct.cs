@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CarWashApp.DAL.Common
+﻿namespace CarWashApp.DAL.Common
 {
-    public class DataGridStruct
+    public struct DataGridStruct
     {
         public int SIRA { get; set; }
         public string PLAKA { get; set; }

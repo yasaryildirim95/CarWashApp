@@ -1,11 +1,6 @@
 ﻿using CarWashApp.BLL.Service;
 using CarWashApp.DAL.Concrete;
 using CarWashApp.Entity.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CarWashApp.BLL.Manager
 {
@@ -13,7 +8,7 @@ namespace CarWashApp.BLL.Manager
     {
         protected PersonelRepository _personelRepository;
 
-        public PersonelManager(GenericRepository<Personel> genericRepository, PersonelRepository personelRepository) : base(genericRepository)
+        public PersonelManager(PersonelRepository personelRepository) : base(personelRepository)
         {
             _personelRepository = personelRepository;
         }
@@ -40,7 +35,7 @@ namespace CarWashApp.BLL.Manager
                 return false;
             }
         }
-        public bool AddLoginDetails(string idAndName, string username, string password) 
+        public bool AddLoginDetails(string idAndName, string username, string password)
         {
             try
             {
@@ -68,13 +63,13 @@ namespace CarWashApp.BLL.Manager
         {
             var personel = _genericRepository.GetAll();
             List<string> outputList = new List<string>();
-            
+
             foreach (var person in personel)
             {
-                outputList.Add(person.PersonelID+"-"+person.Name);
+                outputList.Add(person.PersonelID + "-" + person.Name);
             }
 
             return outputList;
-        } 
+        }
     }
 }

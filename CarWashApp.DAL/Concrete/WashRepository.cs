@@ -1,15 +1,10 @@
 ﻿using CarWashApp.DAL.Common;
 using CarWashApp.Entity.Concrete;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CarWashApp.DAL.Concrete
 {
-    public class WashRepository : GenericRepository<Wash> 
+    public class WashRepository : GenericRepository<Wash>
     {
 
         private DbSet<Wash> washes;
@@ -32,9 +27,9 @@ namespace CarWashApp.DAL.Concrete
         public bool AddWash(string washTypeName, string plate, string dirtinessLevelName)
         {
             var vehicle = vehicles.Where(v => v.Plate == plate).FirstOrDefault();
-            var washType = washTypes.Where(w=>w.WashTypeName == washTypeName).FirstOrDefault();
-            var vehicleType = vehicleTypes.Where(v=>v.VehicleTypeID == vehicle.VehicleTypeID).FirstOrDefault();
-            var dirtinessLevel = dirtinessLevels.Where(v=>v.DirtinessLevelName == dirtinessLevelName).FirstOrDefault();
+            var washType = washTypes.Where(w => w.WashTypeName == washTypeName).FirstOrDefault();
+            var vehicleType = vehicleTypes.Where(v => v.VehicleTypeID == vehicle.VehicleTypeID).FirstOrDefault();
+            var dirtinessLevel = dirtinessLevels.Where(v => v.DirtinessLevelName == dirtinessLevelName).FirstOrDefault();
 
             Wash newWash = new Wash()
             {
@@ -45,10 +40,10 @@ namespace CarWashApp.DAL.Concrete
                 IsDone = false
                 //Personel ataması sonra yapılacak
             };
-            
+
             washes.Add(newWash);
-            
-            return washes.Where(x=>x.WashID == newWash.WashID).Any();
+
+            return washes.Where(x => x.WashID == newWash.WashID).Any();
         }
 
         public List<DataGridStruct> RunCarWash()
@@ -56,7 +51,7 @@ namespace CarWashApp.DAL.Concrete
             AssignPersonel();
 
             var mainList = DbSet.Include(w => w.WashType).Include(w => w.Personel).Include(w => w.DirtinessLevel).Include(w => w.Vehicle).ToList();
-            
+
             CheckWashes(mainList);
 
             var outputList = new List<DataGridStruct>();
@@ -86,7 +81,7 @@ namespace CarWashApp.DAL.Concrete
 
         private void CheckWashes(List<Wash> mainList)
         {
-            if(mainList != null)
+            if (mainList != null)
             {
                 foreach (var wash in mainList.Where(w => w.IsDone == false && w.EndTime < DateTime.Now))
                 {
@@ -103,18 +98,19 @@ namespace CarWashApp.DAL.Concrete
             var personel = Personel.Where(p => p.IsWasher == true && p.IsWorking == false).ToList();
             var washes = DbSet.Include(w => w.WashType).Include(w => w.DirtinessLevel).Where(w => w.Personel == null).ToList();
 
-            foreach (var person in personel)
-            {
-                var wash = washes.FirstOrDefault();
-                if(wash != null)
+            if (washes.Count > 0)
+                foreach (var person in personel)
                 {
-                    wash.PersonelID = person.PersonelID;
-                    wash.EndTime = DateTime.Now.AddMinutes(wash.DirtinessLevel.AdditionalDuration + wash.WashType.Duration);
-                    person.IsWorking = true;
+                    var wash = washes.FirstOrDefault();
+                    if (wash != null)
+                    {
+                        wash.PersonelID = person.PersonelID;
+                        wash.EndTime = DateTime.Now.AddMinutes(wash.DirtinessLevel.AdditionalDuration + wash.WashType.Duration);
+                        person.IsWorking = true;
 
-                    DbContext.SaveChanges();
+                        DbContext.SaveChanges();
+                    }
                 }
-            }
         }
     }
 }

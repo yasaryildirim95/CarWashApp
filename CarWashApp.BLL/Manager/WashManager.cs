@@ -2,18 +2,13 @@
 using CarWashApp.DAL.Common;
 using CarWashApp.DAL.Concrete;
 using CarWashApp.Entity.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CarWashApp.BLL.Manager
 {
-    public class WashManager: BaseManager<Wash>, IWashService
+    public class WashManager : BaseManager<Wash>, IWashService
     {
         protected WashRepository _washRepository;
-        public WashManager(GenericRepository<Wash> genericRepository, WashRepository washRepository) : base(genericRepository)
+        public WashManager(WashRepository washRepository) : base(washRepository)
         {
             _washRepository = washRepository;
         }
@@ -35,9 +30,9 @@ namespace CarWashApp.BLL.Manager
             {
                 return _washRepository.RunCarWash();
             }
-            catch 
-            { 
-                return new List<DataGridStruct>(); 
+            catch
+            {
+                return new List<DataGridStruct>();
             }
         }
     }

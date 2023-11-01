@@ -1,11 +1,6 @@
 ﻿using CarWashApp.BLL.Service;
 using CarWashApp.DAL.Concrete;
 using CarWashApp.Entity.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CarWashApp.BLL.Manager
 {
@@ -13,7 +8,7 @@ namespace CarWashApp.BLL.Manager
     {
         protected ProductRepository _productRepository;
 
-        public ProductManager(GenericRepository<Product> genericRepository, ProductRepository productRepository) : base(genericRepository)
+        public ProductManager(ProductRepository productRepository) : base(productRepository)
         {
             _productRepository = productRepository;
         }

@@ -1,8 +1,16 @@
-﻿namespace CarWashApp.UI.Helper
+﻿using CarWashApp.BLL.Manager;
+using CarWashApp.BLL.Service;
+using CarWashApp.DAL.Concrete;
+using CarWashApp.DAL.Context;
+
+namespace CarWashApp.UI.Helper
 {
     internal static class FormHelper
     {
         public static Button currentButton;
+
+        public static IOwnerVehicleService OwnerVehicleService =
+            new OwnerVehicleManager(new OwnerVehicleRepository(new AppDbContext()));
         public static void HidePanels(Control control)
         {
             var temp = control.Controls.OfType<Panel>().FirstOrDefault(x => x.Visible == true && x.Name != "menuPanel");
