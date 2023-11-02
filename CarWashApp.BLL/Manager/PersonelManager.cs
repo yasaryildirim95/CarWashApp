@@ -35,16 +35,20 @@ namespace CarWashApp.BLL.Manager
                 return false;
             }
         }
-        public bool AddLoginDetails(string idAndName, string username, string password)
+        public string AddLoginDetails(int Id, string username, string password, bool IsAdmin)
         {
             try
             {
-                var splittedParts = idAndName.Split('-');
-                return _personelRepository.AddLoginDetails(int.Parse(splittedParts[0]), username, password);
+                if (_personelRepository.AddLoginDetails(Id, username, password, IsAdmin))
+                {
+                    return "Giriş Bilgileri eklendi.";
+                }
+
+                return "Giriş Bilgileri eklenemedi.";
             }
-            catch (Exception)
+            catch
             {
-                return false;
+                return "Veri tabanına ulaşım sırasında bir sıkıntı meydana geldi.";
             }
         }
         public bool AddPersonelLeave(string idAndName, DateTime startDate, int dayCount)

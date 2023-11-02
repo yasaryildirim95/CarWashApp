@@ -151,5 +151,10 @@ namespace CarWashApp.UI.Helper
                 }
             }
         }
+
+        public static T SelectedIndexTransform<T>(ListItem item)
+        {
+            return (T)((ListItem)item).Value;
+        }
     }
 }

@@ -29,28 +29,28 @@
         private void InitializeComponent()
         {
             stokPanel = new Panel();
-            stokAdetNumericUpD = new NumericUpDown();
+            uyari_EsigiNumericUpD = new NumericUpDown();
+            stok_AdetNumericUpD = new NumericUpDown();
             stokUrunListBox = new ListBox();
-            urunAdıTextBox = new TextBox();
+            urun_AdıTextBox = new TextBox();
             silBtn = new Button();
             resetBtn = new Button();
             guncelleBtn = new Button();
             ekleBtn = new Button();
+            label3 = new Label();
             label2 = new Label();
             label1 = new Label();
-            label3 = new Label();
-            uyari_EsigiNumericUpD = new NumericUpDown();
             stokPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)stokAdetNumericUpD).BeginInit();
             ((System.ComponentModel.ISupportInitialize)uyari_EsigiNumericUpD).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)stok_AdetNumericUpD).BeginInit();
             SuspendLayout();
             // 
             // stokPanel
             // 
             stokPanel.Controls.Add(uyari_EsigiNumericUpD);
-            stokPanel.Controls.Add(stokAdetNumericUpD);
+            stokPanel.Controls.Add(stok_AdetNumericUpD);
             stokPanel.Controls.Add(stokUrunListBox);
-            stokPanel.Controls.Add(urunAdıTextBox);
+            stokPanel.Controls.Add(urun_AdıTextBox);
             stokPanel.Controls.Add(silBtn);
             stokPanel.Controls.Add(resetBtn);
             stokPanel.Controls.Add(guncelleBtn);
@@ -64,12 +64,19 @@
             stokPanel.Size = new Size(759, 400);
             stokPanel.TabIndex = 5;
             // 
-            // stokAdetNumericUpD
+            // uyari_EsigiNumericUpD
             // 
-            stokAdetNumericUpD.Location = new Point(177, 136);
-            stokAdetNumericUpD.Name = "stokAdetNumericUpD";
-            stokAdetNumericUpD.Size = new Size(184, 34);
-            stokAdetNumericUpD.TabIndex = 13;
+            uyari_EsigiNumericUpD.Location = new Point(177, 199);
+            uyari_EsigiNumericUpD.Name = "uyari_EsigiNumericUpD";
+            uyari_EsigiNumericUpD.Size = new Size(184, 34);
+            uyari_EsigiNumericUpD.TabIndex = 13;
+            // 
+            // stok_AdetNumericUpD
+            // 
+            stok_AdetNumericUpD.Location = new Point(177, 136);
+            stok_AdetNumericUpD.Name = "stok_AdetNumericUpD";
+            stok_AdetNumericUpD.Size = new Size(184, 34);
+            stok_AdetNumericUpD.TabIndex = 13;
             // 
             // stokUrunListBox
             // 
@@ -81,12 +88,12 @@
             stokUrunListBox.TabIndex = 12;
             stokUrunListBox.SelectedIndexChanged += stokUrunListBox_SelectedIndexChanged;
             // 
-            // urunAdıTextBox
+            // urun_AdıTextBox
             // 
-            urunAdıTextBox.Location = new Point(177, 72);
-            urunAdıTextBox.Name = "urunAdıTextBox";
-            urunAdıTextBox.Size = new Size(184, 34);
-            urunAdıTextBox.TabIndex = 10;
+            urun_AdıTextBox.Location = new Point(177, 72);
+            urun_AdıTextBox.Name = "urun_AdıTextBox";
+            urun_AdıTextBox.Size = new Size(184, 34);
+            urun_AdıTextBox.TabIndex = 10;
             // 
             // silBtn
             // 
@@ -130,6 +137,15 @@
             ekleBtn.UseVisualStyleBackColor = true;
             ekleBtn.Click += ekleBtn_Click;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(53, 201);
+            label3.Name = "label3";
+            label3.Size = new Size(112, 28);
+            label3.TabIndex = 5;
+            label3.Text = "Uyarı Eşiği :";
+            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -148,22 +164,6 @@
             label1.TabIndex = 6;
             label1.Text = "Ürün Adı : ";
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(50, 201);
-            label3.Name = "label3";
-            label3.Size = new Size(107, 28);
-            label3.TabIndex = 5;
-            label3.Text = "Stok Adet :";
-            // 
-            // uyari_EsigiNumericUpD
-            // 
-            uyari_EsigiNumericUpD.Location = new Point(177, 199);
-            uyari_EsigiNumericUpD.Name = "uyari_EsigiNumericUpD";
-            uyari_EsigiNumericUpD.Size = new Size(184, 34);
-            uyari_EsigiNumericUpD.TabIndex = 13;
-            // 
             // stokForm
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
@@ -176,8 +176,8 @@
             Text = "Stok";
             stokPanel.ResumeLayout(false);
             stokPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)stokAdetNumericUpD).EndInit();
             ((System.ComponentModel.ISupportInitialize)uyari_EsigiNumericUpD).EndInit();
+            ((System.ComponentModel.ISupportInitialize)stok_AdetNumericUpD).EndInit();
             ResumeLayout(false);
         }
 
@@ -185,13 +185,13 @@
 
         private Panel stokPanel;
         private ListBox stokUrunListBox;
-        private TextBox urunAdıTextBox;
+        private TextBox urun_AdıTextBox;
         private Button silBtn;
         private Button guncelleBtn;
         private Button ekleBtn;
         private Label label2;
         private Label label1;
-        private NumericUpDown stokAdetNumericUpD;
+        private NumericUpDown stok_AdetNumericUpD;
         private Button resetBtn;
         private NumericUpDown uyari_EsigiNumericUpD;
         private Label label3;

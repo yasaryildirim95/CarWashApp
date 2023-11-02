@@ -4,7 +4,7 @@
     {
         (bool, bool) CheckLoginInfo(string username, string password);
         bool AddUser(string name, string surname, int salary, int shiftTypeId, bool isWasher);
-        bool AddLoginDetails(string idAndName, string username, string password);
+        string AddLoginDetails(int Id, string username, string password, bool IsAdmin);
         bool AddPersonelLeave(string idAndName, DateTime startDate, int dayCount);
         List<string> FillCombobox();
     }

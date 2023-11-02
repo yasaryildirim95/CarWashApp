@@ -112,9 +112,6 @@ namespace CarWashApp.UI.Forms
         private void guncelleKayitBtn_Click(object sender, EventArgs e)
         {
 
-
-
-
             var value = (Personel)((ListItem)personelListBox.SelectedItem).Value;
             value = PersonelGuncelleOlustur(value);
             FormHelper.PersonelService.Update(value);

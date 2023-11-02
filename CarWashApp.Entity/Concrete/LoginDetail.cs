@@ -11,5 +11,10 @@ namespace CarWashApp.Entity.Concrete
 
         //Nav Property
         public Personel Personel { get; set; }
+
+        public override string ToString()
+        {
+            return $"{PersonelID} {Username} {Password}";
+        }
     }
 }
