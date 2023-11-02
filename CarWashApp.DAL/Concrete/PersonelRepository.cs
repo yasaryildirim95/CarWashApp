@@ -45,7 +45,7 @@ namespace CarWashApp.DAL.Concrete
         }
         public bool AddLoginDetails(int personelId, string username, string password, bool IsAdmin)
         {
-            if(loginDetails.Where(ld => ld.PersonelID != personelId).Any())
+            if(!loginDetails.Where(ld => ld.PersonelID == personelId).Any())
             {
                 var newLoginDetails = new LoginDetail()
                 {
