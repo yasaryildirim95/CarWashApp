@@ -1,12 +1,6 @@
 ﻿using CarWashApp.DAL.Abstract;
-using CarWashApp.DAL.Context;
 using CarWashApp.Entity.Abstract;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CarWashApp.DAL.Concrete
 {
@@ -29,7 +23,7 @@ namespace CarWashApp.DAL.Concrete
 
         public T Get(int id) => DbContext.Set<T>().Find(id);
 
-        public List<T> GetAll()
+        public virtual List<T> GetAll()
         {
             return DbSet.ToList();
         }
@@ -42,6 +36,7 @@ namespace CarWashApp.DAL.Concrete
 
         public void Update(T entity)
         {
+            DbContext.Entry(entity).State = EntityState.Modified;
             DbContext.SaveChanges();
         }
     }

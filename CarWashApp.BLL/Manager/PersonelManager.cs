@@ -86,5 +86,9 @@ namespace CarWashApp.BLL.Manager
             entity.IsWorking = false;
             base.Add(entity);
         }
+        public List<Personel> GetAll(int temp)
+        {
+            return _personelRepository.GetAll(temp);
+        }
     }
 }

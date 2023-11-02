@@ -45,20 +45,21 @@ namespace CarWashApp.DAL.Concrete
         }
         public bool AddLoginDetails(int personelId, string username, string password, bool IsAdmin)
         {
-            if(!loginDetails.Where(ld => ld.PersonelID == personelId).Any())
+            if (!loginDetails.Where(ld => ld.PersonelID == personelId).Any())
             {
                 var newLoginDetails = new LoginDetail()
                 {
                     PersonelID = personelId,
                     Username = username,
-                    Password = password
+                    Password = password,
+                    IsAdmin = IsAdmin
                 };
                 loginDetails.Add(newLoginDetails);
                 DbContext.SaveChanges();
                 return loginDetails.Where(p => p.PersonelID == newLoginDetails.PersonelID).Any();
             }
             return false;
-            
+
         }
         public bool AddPersonelLeave(int personelId, DateTime startDate, int dayCount)
         {
@@ -78,6 +79,17 @@ namespace CarWashApp.DAL.Concrete
                 return personelLeaves.Where(p => p.PersonelID == newPersonelLeave.PersonelID && p.StartDate == startDate).Any();
             }
             return false;
+        }
+        public List<Personel> GetAll(int temp)
+        {
+            var List = loginDetails.Select(x => x.PersonelID).ToList();
+            List<Personel> personels = new List<Personel>();
+            foreach (var i in DbSet.ToList())
+            {
+                if (!List.Contains(i.PersonelID))
+                    personels.Add(i);
+            }
+            return personels;
         }
     }
 }
