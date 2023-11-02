@@ -24,15 +24,19 @@ namespace CarWashApp.BLL.Manager
                 return (false, false);
             }
         }
-        public bool AddUser(string name, string surname, int salary, int shiftTypeId, bool isWasher)
+        public string AddUser(string name, string surname, int salary, int shiftTypeId, bool isWasher)
         {
             try
             {
-                return _personelRepository.AddUser(name, surname, salary, shiftTypeId, isWasher);
+                if(_personelRepository.AddUser(name, surname, salary, shiftTypeId, isWasher))
+                {
+                    return "Kullanıcı eklendi";
+                }
+                return "Kullanıcı eklenemedi";
             }
-            catch (Exception)
+            catch
             {
-                return false;
+                return "Veri tabanına ulaşım sırasında bir sıkıntı meydana geldi.";
             }
         }
         public string AddLoginDetails(int Id, string username, string password, bool IsAdmin)

@@ -13,15 +13,22 @@ namespace CarWashApp.BLL.Manager
             _washRepository = washRepository;
         }
 
-        public bool AddWash(string washTypeName, string plate, string dirtinessLevelName)
+        public string AddWash(string washTypeName, string plate, string dirtinessLevelName)
         {
             try
             {
-                return _washRepository.AddWash(washTypeName, plate, dirtinessLevelName);
+                if(_washRepository.AddWash(washTypeName, plate, dirtinessLevelName))
+                {
+                    return "Yıkama eklendi.";
+                }
+                else
+                {
+                    return "Yıkama eklenemedi.";
+                }
             }
-            catch (Exception)
+            catch
             {
-                return false;
+                return "Veri tabanına ulaşım sırasında bir sıkıntı meydana geldi.";
             }
         }
         public List<DataGridStruct> RunCarWash()

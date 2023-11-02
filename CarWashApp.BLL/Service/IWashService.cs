@@ -9,7 +9,7 @@ namespace CarWashApp.BLL.Service
 {
     public interface IWashService
     {
-        bool AddWash(string washTypeName, string plate, string dirtinessLevelName);
+        string AddWash(string washTypeName, string plate, string dirtinessLevelName);
         List<DataGridStruct> RunCarWash();
     }
 }

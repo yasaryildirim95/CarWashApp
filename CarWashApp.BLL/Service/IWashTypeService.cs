@@ -8,6 +8,6 @@ namespace CarWashApp.BLL.Service
 {
     public interface IWashTypeService
     {
-        bool Add(string washTypeName, int duration, int price, int usage, params string[] productNames);
+        string Add(string washTypeName, int duration, int price, int usage, params string[] productNames);
     }
 }

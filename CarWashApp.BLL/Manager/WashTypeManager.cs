@@ -12,15 +12,19 @@ namespace CarWashApp.BLL.Manager
             _washTypeRepository = washTypeRepository;
         }
 
-        public bool Add(string washTypeName, int duration, int price, int usage, params string[] productNames)
+        public string Add(string washTypeName, int duration, int price, int usage, params string[] productNames)
         {
             try
             {
-                return _washTypeRepository.Add(washTypeName, duration, price, usage, productNames);
+                if(_washTypeRepository.Add(washTypeName, duration, price, usage, productNames))
+                {
+                    return "Yıkama tipi eklendi";
+                }
+                return "Yıkama tipi eklenemedi";
             }
-            catch (Exception)
+            catch
             {
-                return false;
+                return "Veri tabanına ulaşım sırasında bir sıkıntı meydana geldi.";
             }
         }
     }

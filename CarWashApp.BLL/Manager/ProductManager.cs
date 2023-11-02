@@ -39,10 +39,8 @@ namespace CarWashApp.BLL.Manager
                 {
                     return "Ürün güncellendi.";
                 }
-                else
-                {
                     return "Ürün güncellenemedi.";
-                }
+                
             }
             catch
             {
