@@ -13,26 +13,40 @@ namespace CarWashApp.BLL.Manager
             _productRepository = productRepository;
         }
 
-        public bool Add(string productName, int stock, int stockWarningThreshold)
+        public string Add(string productName, int stock, int stockWarningThreshold)
         {
             try
             {
-                return _productRepository.Add(productName, stock, stockWarningThreshold);
+                if(_productRepository.Add(productName, stock, stockWarningThreshold))
+                {
+                    return "Ürün eklendi.";
+                }
+                else
+                {
+                    return "Ürün eklenemedi.";
+                }
             }
-            catch (Exception)
+            catch
             {
-                return false;
+                return "Veri tabanına ulaşım sırasında bir sıkıntı meydana geldi.";
             }
         }
-        public bool Update(string productName, int stock, int stockWarningThreshold)
+        public string Update(string productName, int stock, int stockWarningThreshold)
         {
             try
             {
-                return _productRepository.Update(productName, stock, stockWarningThreshold);
+                if (_productRepository.Update(productName, stock, stockWarningThreshold))
+                {
+                    return "Ürün güncellendi.";
+                }
+                else
+                {
+                    return "Ürün güncellenemedi.";
+                }
             }
-            catch (Exception)
+            catch
             {
-                return false;
+                return "Veri tabanına ulaşım sırasında bir sıkıntı meydana geldi.";
             }
         }
     }
