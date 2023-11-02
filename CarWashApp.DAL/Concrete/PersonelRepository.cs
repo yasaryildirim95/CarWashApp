@@ -40,7 +40,6 @@ namespace CarWashApp.DAL.Concrete
                 IsWasher = isWasher,
                 IsWorking = false
             };
-
             Insert(newPersonel);
             return DbSet.Where(p => p.Name == newPersonel.Name && p.Surname == newPersonel.Surname).Any();
         }
@@ -52,7 +51,6 @@ namespace CarWashApp.DAL.Concrete
                 Username = username,
                 Password = password
             };
-
             loginDetails.Add(newLoginDetails);
             DbContext.SaveChanges();
             return loginDetails.Where(p => p.PersonelID == newLoginDetails.PersonelID).Any();
