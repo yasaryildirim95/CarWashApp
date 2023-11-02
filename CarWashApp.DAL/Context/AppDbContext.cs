@@ -72,8 +72,6 @@ namespace CarWashApp.DAL.Context
                 .WithMany()
                 .HasForeignKey(p => p.ShifTypeID);
 
-            modelBuilder.Entity<LoginDetail>()
-                .HasKey(x => x.PersonelID);
             modelBuilder.Entity<Shift>()
                 .HasKey(x => x.ShiftTypeID);
 
@@ -144,7 +142,7 @@ namespace CarWashApp.DAL.Context
             );
 
             modelBuilder.Entity<LoginDetail>().HasData(
-                new LoginDetail { IsAdmin = true, Password = "admin", PersonelID = 1, Username = "admin", }
+                new LoginDetail { ID = 1, IsAdmin = true, Password = "admin", PersonelID = 1, Username = "admin", }
             );
 
         }

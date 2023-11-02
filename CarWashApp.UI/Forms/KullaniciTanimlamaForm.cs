@@ -24,11 +24,11 @@ namespace CarWashApp.UI.Forms
                 MessageBox.Show(IsValid);
                 return;
             }
-            var loginDetails = FormHelper.PersonelService.AddLoginDetails(
-                FormHelper.SelectedIndexTransform<Personel>((ListItem)personelComboBox.SelectedItem).PersonelID,
-                kullanici_AdiTextBox.Text, sifreTextBox.Text, isAdminCheckBox.Checked);
-
-            MessageBox.Show(loginDetails);
+            FormHelper.GetBaseManager<LoginDetail>().Add(new() { IsAdmin = isAdminCheckBox.Checked, PersonelID = FormHelper.SelectedIndexTransform<Personel>((ListItem)personelComboBox.SelectedItem).PersonelID, Password = sifreTextBox.Text, Username = kullanici_AdiTextBox.Text });
+            //var loginDetails = FormHelper.PersonelService.AddLoginDetails(
+            //    FormHelper.SelectedIndexTransform<Personel>((ListItem)personelComboBox.SelectedItem).PersonelID,
+            //    kullanici_AdiTextBox.Text, sifreTextBox.Text, isAdminCheckBox.Checked);
+            //MessageBox.Show(loginDetails);
 
             FormHelper.ResetItems(kullaniciPanel);
             FormHelper.ComboOrListBoxMaker(kullaniciListBox, FormHelper.GetBaseManager<LoginDetail>().GetAll());
@@ -36,6 +36,7 @@ namespace CarWashApp.UI.Forms
 
         private void resetBtn_Click(object sender, EventArgs e)
         {
+            personelComboBox.Enabled = true;
             FormHelper.ResetItems(kullaniciPanel);
             FormHelper.guncelleSilBtn(false, kullaniciPanel);
         }
@@ -48,29 +49,35 @@ namespace CarWashApp.UI.Forms
                 MessageBox.Show(IsValid);
                 return;
             }
+            personelComboBox.Enabled = true;
             FormHelper.GetBaseManager<LoginDetail>().Delete(FormHelper.SelectedIndexTransform<LoginDetail>((ListItem)kullaniciListBox.SelectedItem));
             FormHelper.ComboOrListBoxMaker(kullaniciListBox, FormHelper.GetBaseManager<LoginDetail>().GetAll());
             FormHelper.ResetItems(kullaniciPanel);
             FormHelper.guncelleSilBtn(false, kullaniciPanel);
         }
 
+        //todo sil butonunda bir değişikliğe gidilcek
         private void guncelleBtn_Click(object sender, EventArgs e)
         {
-
-            var IsValid = FormHelper.IsValid(kullaniciPanel);
-            if (IsValid != string.Empty)
-            {
-                MessageBox.Show(IsValid);
-                return;
-            }
+            personelComboBox.Enabled = true;
+            //var IsValid = FormHelper.IsValid(kullaniciPanel);
+            //if (IsValid != string.Empty)
+            //{
+            //    MessageBox.Show(IsValid);
+            //    return;
+            //}
 
             var tempLoginDetail = FormHelper.SelectedIndexTransform<LoginDetail>((ListItem)kullaniciListBox.SelectedItem);
+
+
 
             tempLoginDetail.PersonelID = FormHelper
                 .SelectedIndexTransform<Personel>((ListItem)personelComboBox.SelectedItem).PersonelID;
             tempLoginDetail.IsAdmin = isAdminCheckBox.Checked;
             tempLoginDetail.Password = sifreTextBox.Text;
             tempLoginDetail.Username = kullanici_AdiTextBox.Text;
+
+
             FormHelper.GetBaseManager<LoginDetail>().Update(tempLoginDetail);
             FormHelper.ComboOrListBoxMaker(kullaniciListBox, FormHelper.GetBaseManager<LoginDetail>().GetAll());
 
@@ -82,11 +89,12 @@ namespace CarWashApp.UI.Forms
         {
             if (kullaniciListBox.SelectedIndex != -1)
             {
+                personelComboBox.Enabled = false;
                 FormHelper.guncelleSilBtn(true, kullaniciPanel);
                 var tempLoginDetail =
-                    FormHelper.SelectedIndexTransform<LoginDetail>((ListItem)(personelComboBox.SelectedItem));
+                    FormHelper.SelectedIndexTransform<LoginDetail>((ListItem)(kullaniciListBox.SelectedItem));
 
-                var tempx = personelComboBox.FindString(tempLoginDetail.Personel.ToString());
+                var tempx = personelComboBox.FindStringExact(FormHelper.PersonelService.GetById(tempLoginDetail.PersonelID).ToString());
                 personelComboBox.SelectedIndex = tempx;
                 kullanici_AdiTextBox.Text = tempLoginDetail.Username;
                 sifreTextBox.Text = tempLoginDetail.Password;

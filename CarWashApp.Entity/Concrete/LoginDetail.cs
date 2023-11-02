@@ -4,6 +4,7 @@ namespace CarWashApp.Entity.Concrete
 {
     public class LoginDetail : IEntity
     {
+        public int ID { get; set; }
         public int PersonelID { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }

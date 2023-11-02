@@ -64,8 +64,11 @@ namespace CarWashApp.DAL.Migrations
 
             modelBuilder.Entity("CarWashApp.Entity.Concrete.LoginDetail", b =>
                 {
-                    b.Property<int>("PersonelID")
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<bool>("IsAdmin")
                         .HasColumnType("bit");
@@ -74,20 +77,27 @@ namespace CarWashApp.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("PersonelID")
+                        .HasColumnType("int");
+
                     b.Property<string>("Username")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("PersonelID");
+                    b.HasKey("ID");
+
+                    b.HasIndex("PersonelID")
+                        .IsUnique();
 
                     b.ToTable("LoginDetails");
 
                     b.HasData(
                         new
                         {
-                            PersonelID = 1,
+                            ID = 1,
                             IsAdmin = true,
                             Password = "admin",
+                            PersonelID = 1,
                             Username = "admin"
                         });
                 });

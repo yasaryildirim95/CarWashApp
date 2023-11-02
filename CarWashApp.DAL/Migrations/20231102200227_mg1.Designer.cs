@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarWashApp.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231030191252_4Mig")]
-    partial class _4Mig
+    [Migration("20231102200227_mg1")]
+    partial class mg1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -67,8 +67,11 @@ namespace CarWashApp.DAL.Migrations
 
             modelBuilder.Entity("CarWashApp.Entity.Concrete.LoginDetail", b =>
                 {
-                    b.Property<int>("PersonelID")
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<bool>("IsAdmin")
                         .HasColumnType("bit");
@@ -77,13 +80,29 @@ namespace CarWashApp.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("PersonelID")
+                        .HasColumnType("int");
+
                     b.Property<string>("Username")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("PersonelID");
+                    b.HasKey("ID");
+
+                    b.HasIndex("PersonelID")
+                        .IsUnique();
 
                     b.ToTable("LoginDetails");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            IsAdmin = true,
+                            Password = "admin",
+                            PersonelID = 1,
+                            Username = "admin"
+                        });
                 });
 
             modelBuilder.Entity("CarWashApp.Entity.Concrete.Personel", b =>
@@ -93,6 +112,12 @@ namespace CarWashApp.DAL.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PersonelID"));
+
+                    b.Property<bool>("IsWasher")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsWorking")
+                        .HasColumnType("bit");
 
                     b.Property<int>("LeavesLeft")
                         .HasColumnType("int");
@@ -116,6 +141,19 @@ namespace CarWashApp.DAL.Migrations
                     b.HasIndex("ShifTypeID");
 
                     b.ToTable("Personels");
+
+                    b.HasData(
+                        new
+                        {
+                            PersonelID = 1,
+                            IsWasher = false,
+                            IsWorking = false,
+                            LeavesLeft = 14,
+                            Name = "admin",
+                            Salary = 1,
+                            ShifTypeID = 1,
+                            Surname = "admin"
+                        });
                 });
 
             modelBuilder.Entity("CarWashApp.Entity.Concrete.PersonelLeave", b =>
@@ -232,7 +270,7 @@ namespace CarWashApp.DAL.Migrations
 
                     b.Property<string>("Plate")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("VehicleOwnerID")
                         .HasColumnType("int");
@@ -241,6 +279,9 @@ namespace CarWashApp.DAL.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("VehicleID");
+
+                    b.HasIndex("Plate")
+                        .IsUnique();
 
                     b.HasIndex("VehicleOwnerID");
 
@@ -335,14 +376,14 @@ namespace CarWashApp.DAL.Migrations
                     b.Property<DateTime>("EndTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("IsDone")
+                        .HasColumnType("bit");
+
                     b.Property<int>("PersonelID")
                         .HasColumnType("int");
 
                     b.Property<int>("Price")
                         .HasColumnType("int");
-
-                    b.Property<DateTime>("StartTime")
-                        .HasColumnType("datetime2");
 
                     b.Property<int>("VehicleId")
                         .HasColumnType("int");
