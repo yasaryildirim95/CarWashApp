@@ -43,13 +43,14 @@ namespace CarWashApp.DAL.Concrete
             Insert(newPersonel);
             return DbSet.Where(p => p.Name == newPersonel.Name && p.Surname == newPersonel.Surname).Any();
         }
-        public bool AddLoginDetails(int personelId, string username, string password)
+        public bool AddLoginDetails(int personelId, string username, string password, bool IsAdmin)
         {
             var newLoginDetails = new LoginDetail()
             {
                 PersonelID = personelId,
                 Username = username,
-                Password = password
+                Password = password,
+                IsAdmin = IsAdmin
             };
             loginDetails.Add(newLoginDetails);
             DbContext.SaveChanges();

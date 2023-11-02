@@ -34,10 +34,10 @@
             resetBtn = new Button();
             silBtn = new Button();
             ekleBtn = new Button();
-            checkBox1 = new CheckBox();
+            isAdminCheckBox = new CheckBox();
             sifreTextBox = new TextBox();
-            kullaniciAdiTextBox = new TextBox();
-            personelComBox = new ComboBox();
+            kullanici_AdiTextBox = new TextBox();
+            personelComboBox = new ComboBox();
             label3 = new Label();
             label2 = new Label();
             label4 = new Label();
@@ -52,10 +52,10 @@
             kullaniciPanel.Controls.Add(resetBtn);
             kullaniciPanel.Controls.Add(silBtn);
             kullaniciPanel.Controls.Add(ekleBtn);
-            kullaniciPanel.Controls.Add(checkBox1);
+            kullaniciPanel.Controls.Add(isAdminCheckBox);
             kullaniciPanel.Controls.Add(sifreTextBox);
-            kullaniciPanel.Controls.Add(kullaniciAdiTextBox);
-            kullaniciPanel.Controls.Add(personelComBox);
+            kullaniciPanel.Controls.Add(kullanici_AdiTextBox);
+            kullaniciPanel.Controls.Add(personelComboBox);
             kullaniciPanel.Controls.Add(label3);
             kullaniciPanel.Controls.Add(label2);
             kullaniciPanel.Controls.Add(label4);
@@ -70,7 +70,6 @@
             // 
             kullaniciListBox.FormattingEnabled = true;
             kullaniciListBox.ItemHeight = 15;
-            kullaniciListBox.Items.AddRange(new object[] { "31" });
             kullaniciListBox.Location = new Point(511, 67);
             kullaniciListBox.Name = "kullaniciListBox";
             kullaniciListBox.Size = new Size(227, 304);
@@ -121,16 +120,16 @@
             ekleBtn.UseVisualStyleBackColor = true;
             ekleBtn.Click += ekleBtn_Click;
             // 
-            // checkBox1
+            // isAdminCheckBox
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            checkBox1.Location = new Point(230, 221);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(89, 32);
-            checkBox1.TabIndex = 21;
-            checkBox1.Text = "Admin";
-            checkBox1.UseVisualStyleBackColor = true;
+            isAdminCheckBox.AutoSize = true;
+            isAdminCheckBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            isAdminCheckBox.Location = new Point(230, 221);
+            isAdminCheckBox.Name = "isAdminCheckBox";
+            isAdminCheckBox.Size = new Size(89, 32);
+            isAdminCheckBox.TabIndex = 21;
+            isAdminCheckBox.Text = "Admin";
+            isAdminCheckBox.UseVisualStyleBackColor = true;
             // 
             // sifreTextBox
             // 
@@ -140,22 +139,22 @@
             sifreTextBox.Size = new Size(176, 34);
             sifreTextBox.TabIndex = 19;
             // 
-            // kullaniciAdiTextBox
+            // kullanici_AdiTextBox
             // 
-            kullaniciAdiTextBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            kullaniciAdiTextBox.Location = new Point(189, 93);
-            kullaniciAdiTextBox.Name = "kullaniciAdiTextBox";
-            kullaniciAdiTextBox.Size = new Size(176, 34);
-            kullaniciAdiTextBox.TabIndex = 20;
+            kullanici_AdiTextBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            kullanici_AdiTextBox.Location = new Point(189, 93);
+            kullanici_AdiTextBox.Name = "kullanici_AdiTextBox";
+            kullanici_AdiTextBox.Size = new Size(176, 34);
+            kullanici_AdiTextBox.TabIndex = 20;
             // 
-            // personelComBox
+            // personelComboBox
             // 
-            personelComBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            personelComBox.FormattingEnabled = true;
-            personelComBox.Location = new Point(189, 30);
-            personelComBox.Name = "personelComBox";
-            personelComBox.Size = new Size(176, 36);
-            personelComBox.TabIndex = 18;
+            personelComboBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            personelComboBox.FormattingEnabled = true;
+            personelComboBox.Location = new Point(189, 30);
+            personelComboBox.Name = "personelComboBox";
+            personelComboBox.Size = new Size(176, 36);
+            personelComboBox.TabIndex = 18;
             // 
             // label3
             // 
@@ -227,10 +226,10 @@
         private Button resetBtn;
         private Button silBtn;
         private Button ekleBtn;
-        private CheckBox checkBox1;
+        private CheckBox isAdminCheckBox;
         private TextBox sifreTextBox;
-        private TextBox kullaniciAdiTextBox;
-        private ComboBox personelComBox;
+        private TextBox kullanici_AdiTextBox;
+        private ComboBox personelComboBox;
         private Label label3;
         private Label label2;
         private Label label4;
