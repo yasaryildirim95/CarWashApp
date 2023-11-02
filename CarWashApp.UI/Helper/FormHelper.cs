@@ -1,6 +1,7 @@
 ﻿using CarWashApp.BLL.Manager;
 using CarWashApp.DAL.Concrete;
 using CarWashApp.DAL.Context;
+using CarWashApp.Entity.Abstract;
 
 namespace CarWashApp.UI.Helper
 {
@@ -30,6 +31,11 @@ namespace CarWashApp.UI.Helper
             {
                 temp.Visible = false;
             }
+        }
+
+        public static BaseManager<T> GetBaseManager<T>() where T : class, IEntity
+        {
+            return new BaseManager<T>(new GenericRepository<T>(new AppDbContext()));
         }
         public static void ResetItems(Panel temp)
         {
@@ -102,27 +108,48 @@ namespace CarWashApp.UI.Helper
             }
         }
 
-        public static string IsValid(bool temp, Panel pnl)
+        public static string IsValid(Panel pnl)
         {
             string tempString = "";
             foreach (var textBox in pnl.Controls.OfType<TextBox>())
             {
                 if (string.IsNullOrEmpty(textBox.Text))
-                    tempString += textBox.Name + " boş bırakılamaz!\n";
+                    tempString += textBox.Name.Replace('_', ' ').Replace("TextBox", "").ToLower() + " boş bırakılamaz!\n";
             }
 
             foreach (var comboBox in pnl.Controls.OfType<ComboBox>())
             {
                 if (comboBox.SelectedIndex == -1)
-                    tempString += comboBox.Name + " seçilmeli!\n";
+                    tempString += comboBox.Name.Replace('_', ' ').Replace("TextBox", "").ToLower() + " seçilmeli!\n";
             }
 
             foreach (var numericUpDown in pnl.Controls.OfType<NumericUpDown>())
             {
                 if (numericUpDown.Value == 0)
-                    tempString += numericUpDown.Name + " 0 olamaz!\n";
+                    tempString += numericUpDown.Name.Replace('_', ' ').Replace("NumericUpD", " ").ToLower() + " 0 olamaz!\n";
             }
             return tempString;
+        }
+        public static void ComboOrListBoxMaker<T>(Control control, List<T> objects) where T : class
+        {
+            if (control is ListBox listBox)
+            {
+
+                listBox.Items.Clear();
+                foreach (var value in objects)
+                {
+                    listBox.Items.Add(new ListItem($"{value}", value));
+                }
+            }
+
+            if (control is ComboBox comboBox)
+            {
+                comboBox.Items.Clear();
+                foreach (var value in objects)
+                {
+                    comboBox.Items.Add(new ListItem($"{value}", value));
+                }
+            }
         }
     }
 }

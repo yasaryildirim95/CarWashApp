@@ -60,6 +60,8 @@ namespace CarWashApp.DAL.Context
                 .WithMany()
                 .HasForeignKey(v => v.VehicleOwnerID);
 
+            modelBuilder.Entity<Vehicle>().HasIndex(x => x.Plate).IsUnique();
+
             modelBuilder.Entity<LoginDetail>()
                 .HasOne(ld => ld.Personel)
                 .WithOne()
@@ -126,6 +128,25 @@ namespace CarWashApp.DAL.Context
                     VehicleTypeName = "Truck",
                     PriceMultiplier = 2
                 });
+
+            modelBuilder.Entity<Personel>().HasData(
+                new Personel
+                {
+                    PersonelID = 1,
+                    IsWasher = false,
+                    IsWorking = false,
+                    LeavesLeft = 14,
+                    Name = "admin",
+                    Surname = "admin",
+                    Salary = 1,
+                    ShifTypeID = 1
+                }
+            );
+
+            modelBuilder.Entity<LoginDetail>().HasData(
+                new LoginDetail { IsAdmin = true, Password = "admin", PersonelID = 1, Username = "admin", }
+            );
+
         }
     }
 }

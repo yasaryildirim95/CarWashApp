@@ -1,10 +1,4 @@
 ﻿using CarWashApp.Entity.Abstract;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CarWashApp.Entity.Concrete
 {
@@ -15,5 +9,10 @@ namespace CarWashApp.Entity.Concrete
         public string Surname { get; set; }
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
+
+        public override string ToString()
+        {
+            return $"{VehicleOwnerID} {Name} {PhoneNumber}";
+        }
     }
 }

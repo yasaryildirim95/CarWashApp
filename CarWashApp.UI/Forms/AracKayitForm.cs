@@ -1,4 +1,5 @@
-﻿using CarWashApp.UI.Helper;
+﻿using CarWashApp.Entity.Concrete;
+using CarWashApp.UI.Helper;
 
 namespace CarWashApp.UI.Forms
 {
@@ -11,16 +12,17 @@ namespace CarWashApp.UI.Forms
             InitializeComponent();
         }
 
-        private void araBtn_Click(object sender, EventArgs e)
+        private void AracKayitForm_Load(object sender, EventArgs e)
         {
-            //TODO arama mantığı yazılcak
-            mainForm.yikamaBtn_Click(btn, e);
+
         }
 
+        #region Menu Panel
         private void aramaBtn_Click(object sender, EventArgs e)
         {
             FormHelper.ActivateButton(sender, menuPanel);
             FormHelper.HidePanels(this);
+            FormHelper.ResetItems(aramaPanel);
             aramaPanel.Show();
         }
 
@@ -29,18 +31,75 @@ namespace CarWashApp.UI.Forms
             FormHelper.ActivateButton(sender, menuPanel);
             FormHelper.HidePanels(this);
             aracKayitPanel.Show();
+            FormHelper.ResetItems(aracKayitPanel);
+            FormHelper.ComboOrListBoxMaker<VehicleOwner>(arac_SahipComboBox, FormHelper.OwnerVehicleService.GetAll());
+            FormHelper.ComboOrListBoxMaker<VehicleType>(arac_TipComboBox, FormHelper.GetBaseManager<VehicleType>().GetAll());
         }
 
         private void aracSahibiBtn_Click(object sender, EventArgs e)
         {
             FormHelper.ActivateButton(sender, menuPanel);
             FormHelper.HidePanels(this);
+
+            FormHelper.ResetItems(aracSahibiPanel);
             aracSahibiPanel.Show();
         }
 
-        private void AracKayitForm_Load(object sender, EventArgs e)
+        #endregion
+
+        #region Arama Panel
+
+        private void araBtn_Click(object sender, EventArgs e)
         {
-            FormHelper.HidePanels(this);
+            var temp = FormHelper.IsValid(aramaPanel);
+            if (temp == string.Empty)
+            {
+                mainForm.yikamaBtn_Click(btn, e);
+                //todo yan yıkama eklendikten sonra duruma göre plaka dönülcek
+                return;
+            }
+            MessageBox.Show(temp);
+        }
+
+        #endregion
+
+        #region Araç Sahibi Panel
+        private void aracSahibiEkle_Click(object sender, EventArgs e)
+        {
+            var temp = FormHelper.IsValid(aracSahibiPanel);
+            if (temp == string.Empty)
+            {
+
+                var tempx = FormHelper.OwnerVehicleService.AddOwner(adTextBox.Text, soyadTextBox.Text, telefonTextBox.Text,
+                    mailTextBox.Text);
+                MessageBox.Show(tempx);
+                FormHelper.ResetItems(aracKayitPanel);
+                return;
+            }
+            MessageBox.Show(temp);
+        }
+
+
+        #endregion
+
+
+        private void AracEkleBtn_Click(object sender, EventArgs e)
+        {
+            var temp = FormHelper.IsValid(aracKayitPanel);
+            if (temp == string.Empty)
+            {
+                var vehicleOwner = (VehicleOwner)((ListItem)arac_SahipComboBox.SelectedItem).Value;
+
+                var vehicleType = (VehicleType)((ListItem)arac_TipComboBox.SelectedItem).Value;
+
+                var tempx = FormHelper.OwnerVehicleService.AddVehicle(vehicleOwner.PhoneNumber, arac_PlakaTextBox.Text,
+                     arac_MarkaTextBox.Text, arac_ModelTextBox.Text, arac_RenkTextBox.Text, vehicleType.VehicleTypeName);
+                FormHelper.ResetItems(aracKayitPanel);
+                MessageBox.Show(tempx);
+                return;
+            }
+
+            MessageBox.Show(temp);
         }
     }
 }

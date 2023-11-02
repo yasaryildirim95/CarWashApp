@@ -78,8 +78,29 @@ namespace CarWashApp.UI
 
         private void girisYapBtn_Click(object sender, EventArgs e)
         {
-            //TODO login mant��� yaz�lcak
-            panelMenuHideOrShow(true);
+            var IsValid = FormHelper.IsValid(girisPanel);
+            if (IsValid != string.Empty)
+            {
+                MessageBox.Show(IsValid);
+                return;
+            }
+            var checkLoginInfo = FormHelper.PersonelService.CheckLoginInfo(kullaniciTextBox.Text, sifreTextBox.Text);
+            if (!checkLoginInfo.Item1 || !checkLoginInfo.Item2)
+            {
+                MessageBox.Show("Giriş Başarısız");
+            }
+            else if (checkLoginInfo.Item1 && checkLoginInfo.Item2)
+            {
+                panelMenuHideOrShow(true);
+                titleLbl.Text = "Admin";
+            }
+            else
+            {
+                panelMenuHideOrShow(true);
+                titleLbl.Text = "Kullanıcı";
+                personelBtn.Visible = false;
+                uygulamaKullaniciBtn.Visible = false;
+            }
         }
 
         private void aracKayitBtn_Click(object sender, EventArgs e)
@@ -124,13 +145,13 @@ namespace CarWashApp.UI
 
         private void pictureBox1_MouseHover(object sender, EventArgs e)
         {
-            sifreTextbox.PasswordChar = '\0';
+            sifreTextBox.PasswordChar = '\0';
             eyeImg.Image = Resources.eye;
         }
 
         private void pictureBox1_MouseLeave(object sender, EventArgs e)
         {
-            sifreTextbox.PasswordChar = '*';
+            sifreTextBox.PasswordChar = '*';
             eyeImg.Image = Resources.Eye_icon;
         }
     }

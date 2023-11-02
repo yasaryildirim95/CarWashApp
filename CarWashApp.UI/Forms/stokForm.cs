@@ -39,6 +39,9 @@ namespace CarWashApp.UI.Forms
 
         private void ekleBtn_Click(object sender, EventArgs e)
         {
+            var temp = FormHelper.IsValid(stokPanel);
+            //if ()
+            //    FormHelper.ProductService.Add();
             FormHelper.ResetItems(stokPanel);
         }
 

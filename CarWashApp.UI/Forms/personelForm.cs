@@ -35,18 +35,30 @@ namespace CarWashApp.UI.Forms
         #region izinPanel
         private void izinEkleBtn_Click(object sender, EventArgs e)
         {
+
+
+
+
             FormHelper.ResetItems(izinPanel);
             FormHelper.guncelleSilBtn(false, izinPanel);
         }
 
         private void silIzinBtn_Click(object sender, EventArgs e)
         {
+
+
+
+
             FormHelper.ResetItems(izinPanel);
             FormHelper.guncelleSilBtn(false, izinPanel);
         }
 
         private void guncelleIzinBtn_Click(object sender, EventArgs e)
         {
+
+
+
+
             FormHelper.ResetItems(izinPanel);
             FormHelper.guncelleSilBtn(false, izinPanel);
         }
@@ -61,6 +73,12 @@ namespace CarWashApp.UI.Forms
             FormHelper.ResetItems(izinPanel);
             FormHelper.guncelleSilBtn(false, izinPanel);
         }
+
+        private void IzinListBoxMaker()
+        {
+            izinGunleriListBox.Items.Clear();
+            //izinGunleriListBox.Items.Add(new ListItem()) // todo get all bağlancak
+        }
         #endregion
 
         #region kayitPanel
@@ -69,19 +87,10 @@ namespace CarWashApp.UI.Forms
         private void kayitEkleBtn_Click(object sender, EventArgs e)
         {
 
-            //var temp = PersonelOlustur();
 
-            //FormHelper.PersonelService
-            //    .AddUser(adTextBox.Text, soyadTextBox.Text, int.Parse(maasTextBox.Text), "Sabah", yikamaciCheckBox.Checked);
-            //Personel temp;
-            //temp = PersonelOlustur(temp);
-            //FormHelper.PersonelService.Add(temp);
-            //personelListBox.Items.Add(new ListItem(temp.Name + temp.Surname, temp));
-            ////personelListBox.Items.Clear();
-            ////foreach (var personel in FormHelper.PersonelService.GetAll())
-            ////{
-            ////    personelListBox.Items.Add(new ListItem($"{personel.Name} {personel.Surname}", personel));
-            ////}
+
+
+            //PersonelListBoxMaker();
             FormHelper.ResetItems(kayitPanel);
         }
 
@@ -89,36 +98,27 @@ namespace CarWashApp.UI.Forms
         private void silKayitBtn_Click(object sender, EventArgs e)
         {
 
+
+
+
             var value = ((ListItem)personelListBox.SelectedItem).Value;
             FormHelper.PersonelService.Delete((Personel)value);
-            personelListBox.Items.Clear();
-            foreach (var personel in FormHelper.PersonelService.GetAll())
-            {
-                personelListBox.Items.Add(new ListItem($"{personel.Name} {personel.Surname}", personel));
-            }
-
-
-
+            //FormHelper.ComboOrListBoxMaker(personelListBox,);
             FormHelper.ResetItems(kayitPanel);
             FormHelper.guncelleSilBtn(false, kayitPanel);
         }
 
+
         private void guncelleKayitBtn_Click(object sender, EventArgs e)
         {
 
+
+
+
             var value = (Personel)((ListItem)personelListBox.SelectedItem).Value;
-            var temp = FormHelper.PersonelService.GetById(value.PersonelID);
-            temp = PersonelOlustur(temp);
-            //personelGuncelleBind(temp);
-            FormHelper.PersonelService.Update(temp);
-            //personelListBox.Items.Clear();
-            //foreach (var personel in FormHelper.PersonelService.GetAll())
-            //{
-            //    personelListBox.Items.Add(new ListItem($"{personel.Name} {personel.Surname}", personel));
-            //}
-
-
-
+            value = PersonelGuncelleOlustur(value);
+            FormHelper.PersonelService.Update(value);
+            //PersonelListBoxMaker();
 
             FormHelper.ResetItems(kayitPanel);
             FormHelper.guncelleSilBtn(false, kayitPanel);
@@ -146,8 +146,9 @@ namespace CarWashApp.UI.Forms
             vardiyaComboBox.SelectedIndex = personel.ShifTypeID - 1;
             yikamaciCheckBox.Checked = personel.IsWasher;
         }
-        private Personel PersonelOlustur(Personel personel)
+        private Personel PersonelGuncelleOlustur(Personel? personel)
         {
+            personel ??= new Personel();
             personel.Name = adTextBox.Text;
             personel.Surname = soyadTextBox.Text;
             personel.Salary = int.Parse(maasTextBox.Text);
@@ -158,18 +159,12 @@ namespace CarWashApp.UI.Forms
 
 
         }
-
         #endregion
 
         private void personelForm_Load(object sender, EventArgs e)
         {
-            foreach (var personel in FormHelper.PersonelService.GetAll())
-            {
-                personelListBox.Items.Add(new ListItem($"{personel.Name} {personel.Surname}", personel));
-            }
+            //PersonelListBoxMaker();
 
-            vardiyaComboBox.Items.Add("Sabah");
-            vardiyaComboBox.Items.Add("Akşam");
         }
     }
 }

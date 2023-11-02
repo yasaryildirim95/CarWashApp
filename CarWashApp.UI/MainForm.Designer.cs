@@ -34,8 +34,8 @@
             girisYapBtn = new Button();
             sifreLabel = new Label();
             kullaniciLabel = new Label();
-            sifreTextbox = new TextBox();
-            kullaniciTextbox = new TextBox();
+            sifreTextBox = new TextBox();
+            kullaniciTextBox = new TextBox();
             menuPanel.SuspendLayout();
             panel2.SuspendLayout();
             panelTitle.SuspendLayout();
@@ -160,9 +160,8 @@
             titleLbl.ForeColor = Color.LightGray;
             titleLbl.Location = new Point(47, 32);
             titleLbl.Name = "titleLbl";
-            titleLbl.Size = new Size(52, 21);
+            titleLbl.Size = new Size(0, 21);
             titleLbl.TabIndex = 0;
-            titleLbl.Text = "label2";
             // 
             // panelTitle
             // 
@@ -201,8 +200,8 @@
             girisPanel.Controls.Add(girisYapBtn);
             girisPanel.Controls.Add(sifreLabel);
             girisPanel.Controls.Add(kullaniciLabel);
-            girisPanel.Controls.Add(sifreTextbox);
-            girisPanel.Controls.Add(kullaniciTextbox);
+            girisPanel.Controls.Add(sifreTextBox);
+            girisPanel.Controls.Add(kullaniciTextBox);
             girisPanel.Dock = DockStyle.Fill;
             girisPanel.Location = new Point(164, 80);
             girisPanel.Name = "girisPanel";
@@ -252,22 +251,22 @@
             kullaniciLabel.TabIndex = 6;
             kullaniciLabel.Text = "Kullanıcı Adı :";
             // 
-            // sifreTextbox
+            // sifreTextBox
             // 
-            sifreTextbox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            sifreTextbox.Location = new Point(334, 146);
-            sifreTextbox.Name = "sifreTextbox";
-            sifreTextbox.PasswordChar = '*';
-            sifreTextbox.Size = new Size(247, 34);
-            sifreTextbox.TabIndex = 5;
+            sifreTextBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            sifreTextBox.Location = new Point(334, 146);
+            sifreTextBox.Name = "sifreTextBox";
+            sifreTextBox.PasswordChar = '*';
+            sifreTextBox.Size = new Size(247, 34);
+            sifreTextBox.TabIndex = 5;
             // 
-            // kullaniciTextbox
+            // kullaniciTextBox
             // 
-            kullaniciTextbox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            kullaniciTextbox.Location = new Point(337, 78);
-            kullaniciTextbox.Name = "kullaniciTextbox";
-            kullaniciTextbox.Size = new Size(244, 34);
-            kullaniciTextbox.TabIndex = 4;
+            kullaniciTextBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            kullaniciTextBox.Location = new Point(337, 78);
+            kullaniciTextBox.Name = "kullaniciTextBox";
+            kullaniciTextBox.Size = new Size(244, 34);
+            kullaniciTextBox.TabIndex = 4;
             // 
             // MainForm
             // 
@@ -309,8 +308,8 @@
         private Button girisYapBtn;
         private Label sifreLabel;
         private Label kullaniciLabel;
-        private TextBox sifreTextbox;
-        private TextBox kullaniciTextbox;
+        private TextBox sifreTextBox;
+        private TextBox kullaniciTextBox;
         private Button uygulamaKullaniciBtn;
         private PictureBox eyeImg;
     }
