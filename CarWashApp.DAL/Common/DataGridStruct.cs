@@ -3,6 +3,7 @@
     public struct DataGridStruct
     {
         public int SIRA { get; set; }
+        public int YIKAMA_ID { get; set; }
         public string PLAKA { get; set; }
         public string MARKA { get; set; }
         public string MODEL { get; set; }

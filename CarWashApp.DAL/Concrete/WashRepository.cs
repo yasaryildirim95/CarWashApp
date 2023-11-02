@@ -62,14 +62,14 @@ namespace CarWashApp.DAL.Concrete
             foreach (var wash in mainList)
             {
                 outputList.Add(new DataGridStruct
-
                 {
                     SIRA = queueNum,
+                    YIKAMA_ID = wash.WashID,
                     PLAKA = wash.Vehicle.Plate,
                     MARKA = wash.Vehicle.Brand,
                     MODEL = wash.Vehicle.Model,
                     YIKAMA_TİPİ = wash.WashType.WashTypeName,
-                    ÇALIŞAN_KİŞİ = wash.Personel != null ? wash.Personel.Name : "Çalışan Bekleniyor.",
+                    ÇALIŞAN_KİŞİ = wash.Personel != null ? wash.Personel.Name+" "+wash.Personel.Surname : "Çalışan Bekleniyor.",
                     YIKAMA_DURUMU = (!wash.IsDone && wash.Personel == null) ? "Sırada" : ((wash.EndTime - DateTime.Now).Minutes > 0) ? "İşlemde." : "Bitti.",
                     KALAN_SÜRE = (wash.EndTime - DateTime.Now).Minutes > 0 ? (wash.EndTime - DateTime.Now).Minutes : 0
                 });
@@ -82,13 +82,14 @@ namespace CarWashApp.DAL.Concrete
 
         private void CheckWashes()
         {
-            var list = DbSet.Include(w => w.Personel).ToList();
+            var list = DbSet.Include(w => w.Personel).Where(w => w.IsDone == false && w.Personel != null && w.EndTime < DateTime.Now).ToList();
 
-            if (list.Count() > 1)
+            if (list.Count() > 0)
             {
-                foreach (var wash in list.Where(w => w.IsDone == false && w.Personel != null && w.EndTime < DateTime.Now))
+
+                foreach (var wash in list)
                 {
-                    var currentWash = DbSet.Where(w => w.WashID == wash.WashID).FirstOrDefault();
+                    var currentWash = DbSet.Where(w => w.WashID == wash.WashID).First();
                     currentWash.IsDone = true;
                     currentWash.Personel.IsWorking = false;
 
@@ -100,21 +101,23 @@ namespace CarWashApp.DAL.Concrete
         public void AssignPersonel()
         {
             var personel = Personel.Where(p => p.IsWasher == true && p.IsWorking == false).ToList();
-            var washes = DbSet.Include(w => w.WashType).Include(w => w.DirtinessLevel).Where(w => w.Personel == null).ToList();
 
-            if (washes.Count > 0)
+            if(personel.Count() > 0) 
+            {
                 foreach (var person in personel)
                 {
-                    var wash = washes.FirstOrDefault();
+                    var wash = DbSet.Include(w => w.DirtinessLevel).Include(w => w.WashType).Where(w => w.Personel == null).FirstOrDefault();
+
                     if (wash != null)
                     {
                         wash.PersonelID = person.PersonelID;
                         wash.EndTime = DateTime.Now.AddMinutes(wash.DirtinessLevel.AdditionalDuration + wash.WashType.Duration);
-                        person.IsWorking = true;
+                        Personel.Where(p=> p.PersonelID == person.PersonelID).First().IsWorking = true;
 
                         DbContext.SaveChanges();
                     }
                 }
+            }    
         }
     }
 }
