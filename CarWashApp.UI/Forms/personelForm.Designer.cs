@@ -33,6 +33,8 @@
             personelTakipBtn = new Button();
             kayitBtn = new Button();
             kayitPanel = new Panel();
+            yikamaciCheckBox = new CheckBox();
+            label12 = new Label();
             personelListBox = new ListBox();
             guncelleKayitBtn = new Button();
             resetKayitBtn = new Button();
@@ -128,6 +130,8 @@
             // 
             // kayitPanel
             // 
+            kayitPanel.Controls.Add(yikamaciCheckBox);
+            kayitPanel.Controls.Add(label12);
             kayitPanel.Controls.Add(personelListBox);
             kayitPanel.Controls.Add(guncelleKayitBtn);
             kayitPanel.Controls.Add(resetKayitBtn);
@@ -149,11 +153,29 @@
             kayitPanel.TabIndex = 1;
             kayitPanel.Visible = false;
             // 
+            // yikamaciCheckBox
+            // 
+            yikamaciCheckBox.AutoSize = true;
+            yikamaciCheckBox.Location = new Point(225, 288);
+            yikamaciCheckBox.Name = "yikamaciCheckBox";
+            yikamaciCheckBox.Size = new Size(15, 14);
+            yikamaciCheckBox.TabIndex = 29;
+            yikamaciCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            label12.Location = new Point(23, 282);
+            label12.Name = "label12";
+            label12.Size = new Size(95, 25);
+            label12.TabIndex = 28;
+            label12.Text = "Yıkamacı : ";
+            // 
             // personelListBox
             // 
             personelListBox.FormattingEnabled = true;
             personelListBox.ItemHeight = 15;
-            personelListBox.Items.AddRange(new object[] { "31" });
             personelListBox.Location = new Point(392, 76);
             personelListBox.Name = "personelListBox";
             personelListBox.Size = new Size(227, 304);
@@ -208,74 +230,74 @@
             // 
             // vardiyaComboBox
             // 
-            vardiyaComboBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            vardiyaComboBox.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
             vardiyaComboBox.FormattingEnabled = true;
-            vardiyaComboBox.Location = new Point(144, 246);
+            vardiyaComboBox.Location = new Point(140, 239);
             vardiyaComboBox.Name = "vardiyaComboBox";
-            vardiyaComboBox.Size = new Size(179, 36);
+            vardiyaComboBox.Size = new Size(179, 31);
             vardiyaComboBox.TabIndex = 4;
             // 
             // maasTextBox
             // 
-            maasTextBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            maasTextBox.Location = new Point(144, 180);
+            maasTextBox.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            maasTextBox.Location = new Point(140, 173);
             maasTextBox.Name = "maasTextBox";
-            maasTextBox.Size = new Size(179, 34);
+            maasTextBox.Size = new Size(179, 31);
             maasTextBox.TabIndex = 3;
             // 
             // soyadTextBox
             // 
-            soyadTextBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            soyadTextBox.Location = new Point(144, 112);
+            soyadTextBox.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            soyadTextBox.Location = new Point(140, 105);
             soyadTextBox.Name = "soyadTextBox";
-            soyadTextBox.Size = new Size(179, 34);
+            soyadTextBox.Size = new Size(179, 31);
             soyadTextBox.TabIndex = 3;
             // 
             // adTextBox
             // 
-            adTextBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            adTextBox.Location = new Point(144, 55);
+            adTextBox.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            adTextBox.Location = new Point(140, 48);
             adTextBox.Name = "adTextBox";
-            adTextBox.Size = new Size(179, 34);
+            adTextBox.Size = new Size(179, 31);
             adTextBox.TabIndex = 3;
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(27, 246);
+            label9.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            label9.Location = new Point(23, 239);
             label9.Name = "label9";
-            label9.Size = new Size(86, 28);
+            label9.Size = new Size(79, 25);
             label9.TabIndex = 2;
             label9.Text = "Vardiya :";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(27, 186);
+            label7.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.Location = new Point(23, 179);
             label7.Name = "label7";
-            label7.Size = new Size(72, 28);
+            label7.Size = new Size(68, 25);
             label7.TabIndex = 2;
             label7.Text = "Maaş : ";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(27, 118);
+            label6.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.Location = new Point(23, 111);
             label6.Name = "label6";
-            label6.Size = new Size(81, 28);
+            label6.Size = new Size(76, 25);
             label6.TabIndex = 2;
             label6.Text = "Soyad : ";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(27, 58);
+            label5.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Location = new Point(23, 51);
             label5.Name = "label5";
-            label5.Size = new Size(51, 28);
+            label5.Size = new Size(49, 25);
             label5.TabIndex = 2;
             label5.Text = "Ad : ";
             // 
@@ -457,12 +479,13 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(759, 400);
-            Controls.Add(izinPanel);
             Controls.Add(kayitPanel);
+            Controls.Add(izinPanel);
             Controls.Add(personelTakipPanel);
             Controls.Add(menuPanel);
             Name = "personelForm";
             Text = "Personel";
+            Load += personelForm_Load;
             menuPanel.ResumeLayout(false);
             kayitPanel.ResumeLayout(false);
             kayitPanel.PerformLayout();
@@ -512,5 +535,7 @@
         private Button guncelleKayitBtn;
         private Button silKayitBtn;
         private ListBox personelListBox;
+        private CheckBox yikamaciCheckBox;
+        private Label label12;
     }
 }

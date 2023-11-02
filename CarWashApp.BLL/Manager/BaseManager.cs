@@ -1,11 +1,6 @@
 ﻿using CarWashApp.BLL.Service;
 using CarWashApp.DAL.Concrete;
 using CarWashApp.Entity.Abstract;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CarWashApp.BLL.Manager
 {
@@ -18,7 +13,7 @@ namespace CarWashApp.BLL.Manager
             _genericRepository = genericRepository;
         }
 
-        public void Add(T entity)
+        public virtual void Add(T entity)
         {
             _genericRepository.Insert(entity);
         }

@@ -26,6 +26,7 @@ namespace CarWashApp.DAL.Concrete
 
         public bool AddWash(string washTypeName, string plate, string dirtinessLevelName)
         {
+            //todo burası güncellencek
             var vehicle = vehicles.Where(v => v.Plate == plate).FirstOrDefault();
             var washType = washTypes.Where(w => w.WashTypeName == washTypeName).FirstOrDefault();
             var vehicleType = vehicleTypes.Where(v => v.VehicleTypeID == vehicle.VehicleTypeID).FirstOrDefault();
