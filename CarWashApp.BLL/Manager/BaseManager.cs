@@ -4,7 +4,7 @@ using CarWashApp.Entity.Abstract;
 
 namespace CarWashApp.BLL.Manager
 {
-    public abstract class BaseManager<T> : IService<T> where T : class, IEntity
+    public class BaseManager<T> : IService<T> where T : class, IEntity
     {
         protected GenericRepository<T> _genericRepository;
 

@@ -4,7 +4,7 @@ using CarWashApp.Entity.Concrete;
 
 namespace CarWashApp.BLL.Manager
 {
-    public class OwnerVehicleManager : BaseManager<VehicleOwner>, IOwnerVehicleService
+    public class OwnerVehicleManager : BaseManager<VehicleOwner>,IOwnerVehicleService
     {
         protected OwnerVehicleRepository _ownerVehicleRepository;
 

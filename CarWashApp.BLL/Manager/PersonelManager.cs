@@ -24,11 +24,11 @@ namespace CarWashApp.BLL.Manager
                 return (false, false);
             }
         }
-        public bool AddUser(string name, string surname, int salary, string shiftName, bool isWasher)
+        public bool AddUser(string name, string surname, int salary, int shiftTypeId, bool isWasher)
         {
             try
             {
-                return _personelRepository.AddUser(name, surname, salary, shiftName, isWasher);
+                return _personelRepository.AddUser(name, surname, salary, shiftTypeId, isWasher);
             }
             catch (Exception)
             {
