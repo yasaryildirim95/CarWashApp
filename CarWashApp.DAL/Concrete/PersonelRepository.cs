@@ -45,15 +45,20 @@ namespace CarWashApp.DAL.Concrete
         }
         public bool AddLoginDetails(int personelId, string username, string password)
         {
-            var newLoginDetails = new LoginDetail()
+            if(loginDetails.Where(ld => ld.PersonelID != personelId).Any())
             {
-                PersonelID = personelId,
-                Username = username,
-                Password = password
-            };
-            loginDetails.Add(newLoginDetails);
-            DbContext.SaveChanges();
-            return loginDetails.Where(p => p.PersonelID == newLoginDetails.PersonelID).Any();
+                var newLoginDetails = new LoginDetail()
+                {
+                    PersonelID = personelId,
+                    Username = username,
+                    Password = password
+                };
+                loginDetails.Add(newLoginDetails);
+                DbContext.SaveChanges();
+                return loginDetails.Where(p => p.PersonelID == newLoginDetails.PersonelID).Any();
+            }
+            return false;
+            
         }
         public bool AddPersonelLeave(int personelId, DateTime startDate, int dayCount)
         {
