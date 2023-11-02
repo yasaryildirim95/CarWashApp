@@ -8,8 +8,8 @@ namespace CarWashApp.BLL.Service
 {
     public interface IOwnerVehicleService
     {
-        bool SearchByPlate(string plate);
-        bool AddOwner(string name, string surname, string phoneNumber, string email);
-        bool AddVehicle(string phoneNumber, string plate, string brand, string model, string color, string vehicleTypeName);
+        string SearchByPlate(string plate);
+        string AddOwner(string name, string surname, string phoneNumber, string email);
+        string AddVehicle(string phoneNumber, string plate, string brand, string model, string color, string vehicleTypeName);
     }
 }

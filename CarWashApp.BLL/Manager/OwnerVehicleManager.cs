@@ -13,39 +13,64 @@ namespace CarWashApp.BLL.Manager
             _ownerVehicleRepository = ownerVehicleRepository;
         }
 
-        public bool SearchByPlate(string plate)
+        public string SearchByPlate(string plate)
         {
             try
             {
-                return _ownerVehicleRepository.SearchByPlate(plate);
+                if (_ownerVehicleRepository.SearchByPlate(plate))
+                {
+                    return "Plaka bulundu.";
+                }
+                else
+                {
+                    return "Plaka kayıtlı değil.";
+                }
             }
-            catch (Exception)
+            catch
             {
-                return false;
+                return "Veri tabanına ulaşım sırasında bir sıkıntı meydana geldi.";
             }
         }
-        public bool AddOwner(string name, string surname, string phoneNumber, string email)
+        public string AddOwner(string name, string surname, string phoneNumber, string email)
         {
             try
             {
-                return _ownerVehicleRepository.AddOwner(name, surname, phoneNumber, email);
+                var newOwner = new VehicleOwner()
+                {
+                    Name = name,
+                    Surname = surname,
+                    PhoneNumber = phoneNumber,
+                    Email = email,
+                };
+
+                if(_ownerVehicleRepository.AddOwner(newOwner))
+                {
+                    return "Araç sahibi eklemesi gerçekleştirildi.";
+                }
+                else
+                {
+                    return "Araç sahibi eklemesi gerçekleştirilemedi.";
+                }
             }
-            catch (Exception)
+            catch
             {
-                return false;
+                return "Veri tabanına ulaşım sırasında bir sıkıntı meydana geldi.";
             }
 
         }
-        public bool AddVehicle(string phoneNumber, string plate, string brand, string model, string color, string vehicleTypeName)
+        public string AddVehicle(string phoneNumber, string plate, string brand, string model, string color, string vehicleTypeName)
         {
             try
             {
-                return _ownerVehicleRepository.AddVehicle(phoneNumber, plate, brand, model, color, vehicleTypeName);
+                if(_ownerVehicleRepository.AddVehicle(phoneNumber, plate, brand, model, color, vehicleTypeName))
+                {
+                    return "Araç eklendi";
+                }
+                return "Araç eklenemedi";
             }
-            catch (Exception)
+            catch
             {
-
-                return false;
+                return "Veri tabanına ulaşım sırasında bir sıkıntı meydana geldi.";
             }
         }
     }

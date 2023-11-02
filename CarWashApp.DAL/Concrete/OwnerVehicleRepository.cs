@@ -24,17 +24,10 @@ namespace CarWashApp.DAL.Concrete
             return vehicles.Where(v => v.Plate == plate).Any();
         }
 
-        public bool AddOwner(string name, string surname, string phoneNumber, string email)
+        public bool AddOwner(VehicleOwner vehicleOwner)
         {
-            var newOwner = new VehicleOwner()
-            {
-                Name = name,
-                Surname = surname,
-                PhoneNumber = phoneNumber,
-                Email = email,
-            };
-            Insert(newOwner);
-            return DbSet.Where(o => o.PhoneNumber == phoneNumber).Any();
+            Insert(vehicleOwner);
+            return DbSet.Where(o => o.PhoneNumber == vehicleOwner.PhoneNumber).Any();
         }
 
         public bool AddVehicle(string phoneNumber, string plate, string brand, string model, string color, string vehicleTypeName) 
