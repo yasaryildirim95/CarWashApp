@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarWashApp.Entity.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace CarWashApp.BLL.Service
 {
     public interface IWashTypeService
     {
-        string Add(string washTypeName, int duration, int price, int usage, params string[] productNames);
+        string AddWashTypeProduct(WashTypeProduct washTypeProduct);
     }
 }

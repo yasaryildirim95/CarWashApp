@@ -14,38 +14,13 @@ namespace CarWashApp.DAL.Concrete
             products = dbContext.Set<Product>();
         }
 
-        public bool Add(string washTypeName, int duration, int price, int usage, params string[] productNames)
+        public bool AddWashTypeProduct(WashTypeProduct washTypeProduct)
         {
-            //washtypeName unique olmalı
-            var newWashType = new WashType()
+            if(!washTypeProducts.Where(wtp => wtp.WashTypeID == washTypeProduct.WashTypeID && wtp.ProductTypeID == washTypeProduct.ProductTypeID).Any())
             {
-                WashTypeName = washTypeName,
-                Duration = duration,
-                Price = price
-            };
-
-            Insert(newWashType);
-
-            newWashType = DbSet.Where(wt => wt.WashTypeName == washTypeName).FirstOrDefault();
-
-            if (newWashType != null)
-            {
-                for (int i = 0; i < productNames.Length; i++)
-                {
-                    var productTypeID = products.Where(p => p.ProductName == productNames[i]).Select(p => p.ProductID).FirstOrDefault();
-
-                    var newWashTypeProduct = new WashTypeProduct()
-                    {
-                        WashTypeID = newWashType.WashTypeID,
-                        ProductTypeID = productTypeID,
-                        Quantity = usage
-                    };
-
-                    washTypeProducts.Add(newWashTypeProduct);
-                }
-
+                washTypeProducts.Add(washTypeProduct);
                 DbContext.SaveChanges();
-                return true;
+                return washTypeProducts.Where(wtp => wtp.WashTypeID == washTypeProduct.WashTypeID && wtp.ProductTypeID == washTypeProduct.ProductTypeID).Any();
             }
             return false;
         }
