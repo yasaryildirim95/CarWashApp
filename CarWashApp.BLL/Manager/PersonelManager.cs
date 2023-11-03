@@ -55,16 +55,20 @@ namespace CarWashApp.BLL.Manager
                 return "Veri tabanına ulaşım sırasında bir sıkıntı meydana geldi.";
             }
         }
-        public bool AddPersonelLeave(string idAndName, DateTime startDate, int dayCount)
+        public string AddPersonelLeave(PersonelLeave personelLeave)
         {
             try
             {
-                var splittedParts = idAndName.Split('-');
-                return _personelRepository.AddPersonelLeave(int.Parse(splittedParts[0]), startDate, dayCount);
+                if (_personelRepository.AddPersonelLeave(personelLeave))
+                {
+                    return "İzin tanımlandı.";
+                }
+
+                return "İzin tanımlanamadı.";
             }
-            catch (Exception)
+            catch
             {
-                return false;
+                return "Veri tabanına ulaşım sırasında bir sıkıntı meydana geldi.";
             }
         }
         public List<string> FillCombobox()

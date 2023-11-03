@@ -61,22 +61,16 @@ namespace CarWashApp.DAL.Concrete
             return false;
 
         }
-        public bool AddPersonelLeave(int personelId, DateTime startDate, int dayCount)
+        public bool AddPersonelLeave(PersonelLeave pl)
         {
-            if (DbSet.Where(p => p.PersonelID == personelId && p.LeavesLeft > dayCount).Any())
+            if (DbSet.Where(p => p.PersonelID == pl.PersonelID && p.LeavesLeft > pl.NumOfDays).Any())
             {
-                DbSet.Where(p => p.PersonelID == personelId).FirstOrDefault().LeavesLeft -= dayCount;
+                DbSet.Where(p => p.PersonelID == pl.PersonelID).First().LeavesLeft -= pl.NumOfDays;
 
-                var newPersonelLeave = new PersonelLeave()
-                {
-                    PersonelID = personelId,
-                    StartDate = startDate,
-                    NumOfDays = dayCount
-                };
+                personelLeaves.Add(pl);
 
-                personelLeaves.Add(newPersonelLeave);
                 DbContext.SaveChanges();
-                return personelLeaves.Where(p => p.PersonelID == newPersonelLeave.PersonelID && p.StartDate == startDate).Any();
+                return personelLeaves.Where(p => p.PersonelID == pl.PersonelID && p.StartDate == pl.StartDate).Any();
             }
             return false;
         }
