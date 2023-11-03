@@ -18,8 +18,8 @@ namespace CarWashApp.Entity.Concrete
         public int WashTypeID { get; set; }
         public DirtinessLevel DirtinessLevel { get; set; }
         public int DirtinessLevelID { get; set; }
-        public Personel Personel { get; set; }
-        public int PersonelID { get; set;}
+        public Personel? Personel { get; set; }
+        public int? PersonelID { get; set;}
         public DateTime EndTime { get; set; }
     }
 }

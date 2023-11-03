@@ -31,6 +31,44 @@ namespace CarWashApp.BLL.Manager
                 return "Veri tabanına ulaşım sırasında bir sıkıntı meydana geldi.";
             }
         }
+
+        public string RemoveWashByID(int id)
+        {
+            try
+            {
+                if (_washRepository.DeleteByID(id))
+                {
+                    return "Yıkama eklendi.";
+                }
+                else
+                {
+                    return "Yıkama eklenemedi.";
+                }
+            }
+            catch
+            {
+                return "Veri tabanına ulaşım sırasında bir sıkıntı meydana geldi.";
+            }
+        }
+
+        public string UpdateWash(int id, string washTypeName, string plate, string dirtinessLevelName)
+        {
+            try
+            {
+                if (_washRepository.UpdateWash(id, washTypeName, plate, dirtinessLevelName))
+                {
+                    return "Yıkama güncellendi.";
+                }
+                else
+                {
+                    return "Yıkama güncellenemedi.";
+                }
+            }
+            catch
+            {
+                return "Veri tabanına ulaşım sırasında bir sıkıntı meydana geldi.";
+            }
+        }
         public List<DataGridStruct> RunCarWash()
         {
             try

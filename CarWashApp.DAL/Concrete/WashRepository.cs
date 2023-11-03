@@ -26,7 +26,6 @@ namespace CarWashApp.DAL.Concrete
 
         public bool AddWash(string washTypeName, string plate, string dirtinessLevelName)
         {
-            //todo burası güncellencek
             var vehicle = vehicles.Where(v => v.Plate == plate).FirstOrDefault();
             var washType = washTypes.Where(w => w.WashTypeName == washTypeName).FirstOrDefault();
             var vehicleType = vehicleTypes.Where(v => v.VehicleTypeID == vehicle.VehicleTypeID).FirstOrDefault();
@@ -45,6 +44,33 @@ namespace CarWashApp.DAL.Concrete
             washes.Add(newWash);
 
             return washes.Where(x => x.WashID == newWash.WashID).Any();
+        }
+
+        public bool UpdateWash(int id, string washTypeName, string plate, string dirtinessLevelName)
+        {
+            var currentWash = DbSet.Include(w => w.DirtinessLevel).Include(w => w.WashType).Include(w => w.Vehicle).ThenInclude(w => w.VehicleType).Where(w => w.WashID == id).FirstOrDefault();
+
+            var vehicle = vehicles.Include(v => v.VehicleType).Where(v => v.Plate == plate).FirstOrDefault();
+            var washType = washTypes.Where(w => w.WashTypeName == washTypeName).FirstOrDefault();
+            var dirtinessLevel = dirtinessLevels.Where(v => v.DirtinessLevelName == dirtinessLevelName).FirstOrDefault();
+
+            currentWash.Price = washType.Price * vehicle.VehicleType.PriceMultiplier;
+            currentWash.VehicleId = vehicle.VehicleID;
+            currentWash.WashTypeID = washType.WashTypeID;
+            currentWash.DirtinessLevelID = dirtinessLevel.DirtinessLevelID;
+            currentWash.PersonelID = null;
+
+            DbContext.SaveChanges();
+
+            return DbSet.Include(w => w.DirtinessLevel).Include(w => w.WashType).Include(w => w.Vehicle).Where(w => w.WashID == id && w.WashTypeID == washType.WashTypeID && w.Vehicle.VehicleTypeID == vehicle.VehicleTypeID && w.DirtinessLevelID == dirtinessLevel.DirtinessLevelID).Any();
+        }
+        public bool DeleteByID(int id)
+        {
+            var wash = DbSet.Where(w => w.WashID == id).FirstOrDefault();
+
+            if (wash != null) Delete(wash);
+
+            return !DbSet.Where(w => w.WashID == id).Any();
         }
 
         public List<DataGridStruct> RunCarWash()
@@ -86,7 +112,6 @@ namespace CarWashApp.DAL.Concrete
 
             if (list.Count() > 0)
             {
-
                 foreach (var wash in list)
                 {
                     var currentWash = DbSet.Where(w => w.WashID == wash.WashID).First();
