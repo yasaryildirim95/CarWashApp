@@ -6,37 +6,49 @@ using CarWashApp.Entity.Abstract;
 namespace CarWashApp.UI.Helper
 {
     /// <summary>
-    /// Utility class providing helper methods for WinForm components. Made by xxKralTr
+    /// Utility class providing helper methods for WinForm components
     /// </summary>
     internal static class FormHelper
     {
         /// <summary>
         /// Holds the reference to the currently active button.
         /// </summary>
-        public static Button currentButton;
-
-        public static OwnerVehicleManager
-            OwnerVehicleService = new OwnerVehicleManager(new OwnerVehicleRepository(new AppDbContext()));
-
-        public static PersonelManager
-            PersonelService = new PersonelManager(new PersonelRepository(new AppDbContext()));
-
-        public static ProductManager
-            ProductService = new ProductManager(new ProductRepository(new AppDbContext()));
-
-        public static WashManager
-            WashService = new WashManager(new WashRepository(new AppDbContext()));
-
-        public static WashTypeManager
-            WashTypeService = new WashTypeManager(new WashTypeRepository(new AppDbContext()));
+        private static Button currentButton;
 
         /// <summary>
-        /// Hides all panels within the specified control except the menu panel.
+        /// Manages operations related to owner vehicles, including registration, maintenance, and ownership details.
+        /// </summary>
+        public static OwnerVehicleManager OwnerVehicleService { get; } = new OwnerVehicleManager(new OwnerVehicleRepository(new AppDbContext()));
+
+        /// <summary>
+        /// Handles personnel-related functionality, such as employee management, roles, and permissions.
+        /// </summary>
+        public static PersonelManager PersonelService { get; } = new PersonelManager(new PersonelRepository(new AppDbContext()));
+
+        /// <summary>
+        /// Manages product-related tasks, including inventory, pricing, and product information.
+        /// </summary>
+        public static ProductManager ProductService { get; } = new ProductManager(new ProductRepository(new AppDbContext()));
+
+        /// <summary>
+        /// Manages car wash service operations, including scheduling, execution, and tracking of washing services.
+        /// </summary>
+        public static WashManager WashService { get; } = new WashManager(new WashRepository(new AppDbContext()));
+
+        /// <summary>
+        /// Manages different types of car wash type services, defining wash methods, pricing, and service specifications.
+        /// </summary>
+        public static WashTypeManager WashTypeService { get; } = new WashTypeManager(new WashTypeRepository(new AppDbContext()));
+
+
+
+        /// <summary>
+        /// Hides all panels within the specified control except the menu panel.But you need "menu" in the name of panel
         /// </summary>
         /// <param name="control">The container control to look for panels.</param>
         public static void HidePanels(Control control)
         {
-            var temp = control.Controls.OfType<Panel>().FirstOrDefault(x => x.Visible == true && x.Name != "menuPanel");
+            var temp = control.Controls.OfType<Panel>().FirstOrDefault(x => x.Visible == true && !x.Name.Contains("menu"));
             if (temp != null)
             {
                 temp.Visible = false;
@@ -53,7 +65,7 @@ namespace CarWashApp.UI.Helper
         }
 
         /// <summary>
-        /// Resets the input controls within the specified panel to their default values.
+        /// Resets the input controls within the specified panel to their default values.Supported types are TextBox,ComboBox,NumericUpDown,DateTimePicker,ListBox,CheckBox.
         /// </summary>
         /// <param name="activePanel">The panel containing input controls to be reset.</param>
         public static void ResetItems(Panel activePanel)
@@ -126,7 +138,7 @@ namespace CarWashApp.UI.Helper
         }
 
         /// <summary>
-        /// Configures the visibility and enabled state of buttons based on their text content.
+        /// Configures the visibility and enabled state of buttons based on their text content.You need name convention on this method.So "güncelle" and "sil" must be on the text of the button.
         /// </summary>
         /// <param name="IsGuncelleSilEnabled">Determines if 'Güncelle/Sil' buttons should be enabled/visible.</param>
         /// <param name="pnl">The panel containing the buttons to be configured.</param>
@@ -144,7 +156,7 @@ namespace CarWashApp.UI.Helper
         }
 
         /// <summary>
-        /// Validates the input fields within the provided panel.
+        /// Validates the input fields within the provided panel.In order to work this function you need to separate word with "_".
         /// </summary>
         /// <param name="activePanel">The panel containing the input fields to be validated.</param>
         /// <returns>A string containing error messages for each invalid input field.</returns>
@@ -207,6 +219,5 @@ namespace CarWashApp.UI.Helper
         {
             return (T)((ListItem)item).Value;
         }
-
     }
 }
