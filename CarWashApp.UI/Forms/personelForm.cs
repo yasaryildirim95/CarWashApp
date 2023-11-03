@@ -12,21 +12,21 @@ namespace CarWashApp.UI.Forms
         #region menuPanel
         private void kayitBtn_Click(object sender, EventArgs e)
         {
-            FormHelper.ActivateButton(sender, menuPanel);
+            FormHelper.HighlightSelectedButton(sender, menuPanel);
             FormHelper.HidePanels(this);
             kayitPanel.Show();
         }
 
         private void izinBtn_Click(object sender, EventArgs e)
         {
-            FormHelper.ActivateButton(sender, menuPanel);
+            FormHelper.HighlightSelectedButton(sender, menuPanel);
             FormHelper.HidePanels(this);
             izinPanel.Show();
         }
 
         private void personelTakipBtn_Click(object sender, EventArgs e)
         {
-            FormHelper.ActivateButton(sender, menuPanel);
+            FormHelper.HighlightSelectedButton(sender, menuPanel);
             FormHelper.HidePanels(this);
             personelTakipPanel.Show();
         }

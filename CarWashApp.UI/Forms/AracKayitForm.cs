@@ -20,7 +20,7 @@ namespace CarWashApp.UI.Forms
         #region Menu Panel
         private void aramaBtn_Click(object sender, EventArgs e)
         {
-            FormHelper.ActivateButton(sender, menuPanel);
+            FormHelper.HighlightSelectedButton(sender, menuPanel);
             FormHelper.HidePanels(this);
             FormHelper.ResetItems(aramaPanel);
             aramaPanel.Show();
@@ -28,7 +28,7 @@ namespace CarWashApp.UI.Forms
 
         private void aracKayitBtn_Click(object sender, EventArgs e)
         {
-            FormHelper.ActivateButton(sender, menuPanel);
+            FormHelper.HighlightSelectedButton(sender, menuPanel);
             FormHelper.HidePanels(this);
             aracKayitPanel.Show();
             FormHelper.ResetItems(aracKayitPanel);
@@ -38,7 +38,7 @@ namespace CarWashApp.UI.Forms
 
         private void aracSahibiBtn_Click(object sender, EventArgs e)
         {
-            FormHelper.ActivateButton(sender, menuPanel);
+            FormHelper.HighlightSelectedButton(sender, menuPanel);
             FormHelper.HidePanels(this);
 
             FormHelper.ResetItems(aracSahibiPanel);
@@ -88,9 +88,9 @@ namespace CarWashApp.UI.Forms
             var temp = FormHelper.IsValid(aracKayitPanel);
             if (temp == string.Empty)
             {
-                var vehicleOwner = (VehicleOwner)((ListItem)arac_SahipComboBox.SelectedItem).Value;
+                var vehicleOwner = FormHelper.SelectedIndexTransform<VehicleOwner>(arac_SahipComboBox.SelectedItem);
 
-                var vehicleType = (VehicleType)((ListItem)arac_TipComboBox.SelectedItem).Value;
+                var vehicleType = FormHelper.SelectedIndexTransform<VehicleType>(arac_TipComboBox.SelectedItem);
 
                 var tempx = FormHelper.OwnerVehicleService.AddVehicle(vehicleOwner.PhoneNumber, arac_PlakaTextBox.Text,
                      arac_MarkaTextBox.Text, arac_ModelTextBox.Text, arac_RenkTextBox.Text, vehicleType.VehicleTypeName);

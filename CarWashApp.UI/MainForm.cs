@@ -61,7 +61,7 @@ namespace CarWashApp.UI
             {
                 activeForm.Close();
             }
-            FormHelper.ActivateButton(sender, menuPanel);
+            FormHelper.HighlightSelectedButton(sender, menuPanel);
             activeForm = childForm;
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
