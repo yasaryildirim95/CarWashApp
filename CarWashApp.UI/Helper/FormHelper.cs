@@ -15,32 +15,93 @@ namespace CarWashApp.UI.Helper
         /// </summary>
         private static Button currentButton;
 
+        private static OwnerVehicleManager _ownerVehicleManager;
         /// <summary>
         /// Manages operations related to owner vehicles, including registration, maintenance, and ownership details.
         /// </summary>
-        public static OwnerVehicleManager OwnerVehicleService { get; } = new OwnerVehicleManager(new OwnerVehicleRepository(new AppDbContext()));
+        public static OwnerVehicleManager OwnerVehicleService
+        {
+            get
+            {
+                if (_ownerVehicleManager == null)
+                {
+                    _ownerVehicleManager = new OwnerVehicleManager(new OwnerVehicleRepository(new AppDbContext()));
+                }
 
+                return _ownerVehicleManager;
+            }
+            private set { }
+        }
+
+
+        private static PersonelManager _personelService;
         /// <summary>
-        /// Handles personnel-related functionality, such as employee management, roles, and permissions.
+        /// Manages personnel-related functionality, such as employee management, roles, and permissions.
         /// </summary>
-        public static PersonelManager PersonelService { get; } = new PersonelManager(new PersonelRepository(new AppDbContext()));
 
+        public static PersonelManager PersonelService
+        {
+            get
+            {
+                if (_personelService == null)
+                {
+                    _personelService = new PersonelManager(new PersonelRepository(new AppDbContext()));
+                }
+                return _personelService;
+            }
+            private set { }
+        }
+
+
+        private static ProductManager _productService;
         /// <summary>
         /// Manages product-related tasks, including inventory, pricing, and product information.
         /// </summary>
-        public static ProductManager ProductService { get; } = new ProductManager(new ProductRepository(new AppDbContext()));
+        public static ProductManager ProductService
+        {
+            get
+            {
+                if (_productService == null)
+                {
+                    _productService = new ProductManager(new ProductRepository(new AppDbContext()));
+                }
+                return _productService;
+            }
+            private set { }
+        }
 
+        private static WashManager _washService;
         /// <summary>
         /// Manages car wash service operations, including scheduling, execution, and tracking of washing services.
         /// </summary>
-        public static WashManager WashService { get; } = new WashManager(new WashRepository(new AppDbContext()));
-
+        public static WashManager WashService
+        {
+            get
+            {
+                if (_washService == null)
+                {
+                    _washService = new WashManager(new WashRepository(new AppDbContext()));
+                }
+                return _washService;
+            }
+            private set { }
+        }
+        private static WashTypeManager _washTypeService;
         /// <summary>
         /// Manages different types of car wash type services, defining wash methods, pricing, and service specifications.
         /// </summary>
-        public static WashTypeManager WashTypeService { get; } = new WashTypeManager(new WashTypeRepository(new AppDbContext()));
-
-
+        public static WashTypeManager WashTypeService
+        {
+            get
+            {
+                if (_washTypeService == null)
+                {
+                    _washTypeService = new WashTypeManager(new WashTypeRepository(new AppDbContext()));
+                }
+                return _washTypeService;
+            }
+            private set { }
+        }
 
         /// <summary>
         /// Hides all panels within the specified control except the menu panel.But you need "menu" in the name of panel
@@ -159,7 +220,7 @@ namespace CarWashApp.UI.Helper
         /// Validates the input fields within the provided panel.In order to work this function you need to separate word with "_".
         /// </summary>
         /// <param name="activePanel">The panel containing the input fields to be validated.</param>
-        /// <returns>A string containing error messages for each invalid input field.</returns>
+        /// <returns>A string containing error messages for each invalid input field.Returning string is empty there are no errors.</returns>
         public static string IsValid(Panel activePanel)
         {
             string tempString = "";
@@ -180,6 +241,7 @@ namespace CarWashApp.UI.Helper
                 if (numericUpDown.Value == 0)
                     tempString += numericUpDown.Name.Replace('_', ' ').ToLower().Replace("numericupd", " ") + " 0 olamaz!\n";
             }
+
             return tempString;
         }
         /// <summary>

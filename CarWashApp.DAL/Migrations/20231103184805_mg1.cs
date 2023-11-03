@@ -234,7 +234,7 @@ namespace CarWashApp.DAL.Migrations
                     VehicleId = table.Column<int>(type: "int", nullable: false),
                     WashTypeID = table.Column<int>(type: "int", nullable: false),
                     DirtinessLevelID = table.Column<int>(type: "int", nullable: false),
-                    PersonelID = table.Column<int>(type: "int", nullable: false),
+                    PersonelID = table.Column<int>(type: "int", nullable: true),
                     EndTime = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -250,8 +250,7 @@ namespace CarWashApp.DAL.Migrations
                         name: "FK_Washes_Personels_PersonelID",
                         column: x => x.PersonelID,
                         principalTable: "Personels",
-                        principalColumn: "PersonelID",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "PersonelID");
                     table.ForeignKey(
                         name: "FK_Washes_Vehicles_VehicleId",
                         column: x => x.VehicleId,

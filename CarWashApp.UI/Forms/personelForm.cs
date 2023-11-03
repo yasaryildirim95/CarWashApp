@@ -9,6 +9,15 @@ namespace CarWashApp.UI.Forms
         {
             InitializeComponent();
         }
+        private void personelForm_Load(object sender, EventArgs e)
+        {
+            FormHelper.ComboOrListBoxMaker(personelListBox, FormHelper.PersonelService.GetAll());
+            FormHelper.ComboOrListBoxMaker(izinGunleriListBox, FormHelper.GetBaseManager<PersonelLeave>().GetAll());
+            FormHelper.ComboOrListBoxMaker(personelComboBox, FormHelper.GetBaseManager<Personel>().GetAll());
+            FormHelper.ComboOrListBoxMaker(vardiyaComboBox, FormHelper.GetBaseManager<Shift>().GetAll());
+            baslangic_TarihiDTP.MinDate = DateTime.Now;
+            baslangic_TarihiDTP.MaxDate = DateTime.Now.AddYears(1);
+        }
         #region menuPanel
         private void kayitBtn_Click(object sender, EventArgs e)
         {
@@ -35,10 +44,17 @@ namespace CarWashApp.UI.Forms
         #region izinPanel
         private void izinEkleBtn_Click(object sender, EventArgs e)
         {
+            var isValid = FormHelper.IsValid(izinPanel);
+            if (isValid != string.Empty)
+            {
+                MessageBox.Show(isValid);
+                return;
+            }
 
-
-
-
+            PersonelLeave personelLeave = null;
+            personelLeave = personelLeaveMaker(personelLeave);
+            FormHelper.PersonelService.AddPersonelLeave(personelLeave);
+            FormHelper.ComboOrListBoxMaker(izinGunleriListBox, FormHelper.GetBaseManager<PersonelLeave>().GetAll());
             FormHelper.ResetItems(izinPanel);
             FormHelper.guncelleSilBtn(false, izinPanel);
         }
@@ -47,18 +63,29 @@ namespace CarWashApp.UI.Forms
         {
 
 
+            PersonelLeave personelLeave = FormHelper.SelectedIndexTransform<PersonelLeave>(izinGunleriListBox.SelectedItem);
+            FormHelper.GetBaseManager<PersonelLeave>().Delete(personelLeave);
 
-
+            FormHelper.ComboOrListBoxMaker(izinGunleriListBox, FormHelper.GetBaseManager<PersonelLeave>().GetAll());
             FormHelper.ResetItems(izinPanel);
             FormHelper.guncelleSilBtn(false, izinPanel);
         }
 
         private void guncelleIzinBtn_Click(object sender, EventArgs e)
         {
+            var isValid = FormHelper.IsValid(izinPanel);
+            if (isValid != string.Empty)
+            {
+                MessageBox.Show(isValid);
+                return;
+            }
 
+            PersonelLeave personelLeave = FormHelper.SelectedIndexTransform<PersonelLeave>(izinGunleriListBox.SelectedItem);
+            personelLeave = personelLeaveMaker(personelLeave);
 
-
-
+            FormHelper.GetBaseManager<PersonelLeave>().Update(personelLeave);
+            FormHelper.PersonelService.AddPersonelLeave(personelLeave);
+            FormHelper.ComboOrListBoxMaker(izinGunleriListBox, FormHelper.GetBaseManager<PersonelLeave>().GetAll());
             FormHelper.ResetItems(izinPanel);
             FormHelper.guncelleSilBtn(false, izinPanel);
         }
@@ -66,18 +93,33 @@ namespace CarWashApp.UI.Forms
         private void izinGunleriListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (izinGunleriListBox.SelectedIndex != -1)
+            {
+                izinPanelDoldur(FormHelper.SelectedIndexTransform<PersonelLeave>(izinGunleriListBox.SelectedItem));
                 FormHelper.guncelleSilBtn(true, izinPanel);
+            }
         }
+
         private void resetIzinBtn_Click(object sender, EventArgs e)
         {
             FormHelper.ResetItems(izinPanel);
             FormHelper.guncelleSilBtn(false, izinPanel);
         }
 
-        private void IzinListBoxMaker()
+        private PersonelLeave personelLeaveMaker(PersonelLeave? personelLeave)
         {
-            izinGunleriListBox.Items.Clear();
-            //izinGunleriListBox.Items.Add(new ListItem()) // todo get all bağlancak
+            personelLeave ??= new PersonelLeave();
+            personelLeave.Personel = FormHelper.SelectedIndexTransform<Personel>(personelComboBox.SelectedItem);
+            personelLeave.NumOfDays = (int)izin_SuresiNumericUpD.Value;
+            personelLeave.StartDate = baslangic_TarihiDTP.Value;
+            personelLeave.PersonelID = personelLeave.Personel.PersonelID;
+            return personelLeave;
+        }
+
+        private void izinPanelDoldur(PersonelLeave personelLeave)
+        {
+            personelComboBox.SelectedItem = personelLeave.Personel;
+            izin_SuresiNumericUpD.Value = personelLeave.NumOfDays;
+            baslangic_TarihiDTP.Value = personelLeave.StartDate;
         }
         #endregion
 
@@ -86,12 +128,18 @@ namespace CarWashApp.UI.Forms
 
         private void kayitEkleBtn_Click(object sender, EventArgs e)
         {
-
-
-
-
-            //PersonelListBoxMaker();
+            var isValid = FormHelper.IsValid(kayitPanel);
+            if (isValid != string.Empty)
+            {
+                MessageBox.Show(isValid);
+                return;
+            }
+            Personel temp = null;
+            temp = PersonelGuncelleOlustur(temp);
+            FormHelper.PersonelService.Add(temp);
+            FormHelper.ComboOrListBoxMaker(personelListBox, FormHelper.PersonelService.GetAll());
             FormHelper.ResetItems(kayitPanel);
+            FormHelper.guncelleSilBtn(false, kayitPanel);
         }
 
 
@@ -99,11 +147,9 @@ namespace CarWashApp.UI.Forms
         {
 
 
-
-
-            var value = ((ListItem)personelListBox.SelectedItem).Value;
-            FormHelper.PersonelService.Delete((Personel)value);
-            //FormHelper.ComboOrListBoxMaker(personelListBox,);
+            var value = FormHelper.SelectedIndexTransform<Personel>(personelListBox.SelectedItem);
+            FormHelper.PersonelService.Delete(value);
+            FormHelper.ComboOrListBoxMaker(personelListBox, FormHelper.PersonelService.GetAll());
             FormHelper.ResetItems(kayitPanel);
             FormHelper.guncelleSilBtn(false, kayitPanel);
         }
@@ -112,10 +158,10 @@ namespace CarWashApp.UI.Forms
         private void guncelleKayitBtn_Click(object sender, EventArgs e)
         {
 
-            var value = (Personel)((ListItem)personelListBox.SelectedItem).Value;
+            var value = FormHelper.SelectedIndexTransform<Personel>(personelListBox.SelectedItem);
             value = PersonelGuncelleOlustur(value);
             FormHelper.PersonelService.Update(value);
-            //PersonelListBoxMaker();
+            FormHelper.ComboOrListBoxMaker(personelListBox, FormHelper.PersonelService.GetAll());
 
             FormHelper.ResetItems(kayitPanel);
             FormHelper.guncelleSilBtn(false, kayitPanel);
@@ -130,8 +176,8 @@ namespace CarWashApp.UI.Forms
             if (personelListBox.SelectedIndex != -1)
             {
                 FormHelper.guncelleSilBtn(true, kayitPanel);
-                var value = ((ListItem)personelListBox.SelectedItem).Value;
-                personelGuncelleBind((Personel)value);
+                var value = FormHelper.SelectedIndexTransform<Personel>(personelListBox.SelectedItem);
+                personelGuncelleBind(value);
             }
         }
 
@@ -139,7 +185,7 @@ namespace CarWashApp.UI.Forms
         {
             adTextBox.Text = personel.Name;
             soyadTextBox.Text = personel.Surname;
-            maasTextBox.Text = personel.Salary.ToString();
+            maasNumericUpD.Value = personel.Salary;
             vardiyaComboBox.SelectedIndex = personel.ShifTypeID - 1;
             yikamaciCheckBox.Checked = personel.IsWasher;
         }
@@ -148,7 +194,7 @@ namespace CarWashApp.UI.Forms
             personel ??= new Personel();
             personel.Name = adTextBox.Text;
             personel.Surname = soyadTextBox.Text;
-            personel.Salary = int.Parse(maasTextBox.Text);
+            personel.Salary = (int)maasNumericUpD.Value;
             personel.ShifTypeID = vardiyaComboBox.SelectedIndex + 1;
             personel.IsWasher = yikamaciCheckBox.Checked;
 
@@ -158,10 +204,5 @@ namespace CarWashApp.UI.Forms
         }
         #endregion
 
-        private void personelForm_Load(object sender, EventArgs e)
-        {
-            //PersonelListBoxMaker();
-
-        }
     }
 }

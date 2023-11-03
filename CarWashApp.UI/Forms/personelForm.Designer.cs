@@ -33,6 +33,7 @@
             personelTakipBtn = new Button();
             kayitBtn = new Button();
             kayitPanel = new Panel();
+            maasNumericUpD = new NumericUpDown();
             yikamaciCheckBox = new CheckBox();
             label12 = new Label();
             personelListBox = new ListBox();
@@ -41,7 +42,6 @@
             silKayitBtn = new Button();
             kayitEkleBtn = new Button();
             vardiyaComboBox = new ComboBox();
-            maasTextBox = new TextBox();
             soyadTextBox = new TextBox();
             adTextBox = new TextBox();
             label9 = new Label();
@@ -55,8 +55,8 @@
             silIzinBtn = new Button();
             resetIzinBtn = new Button();
             izinEkleBtn = new Button();
-            izinSuresiNumericUpD = new NumericUpDown();
-            baslangicTarihiDTP = new DateTimePicker();
+            izin_SuresiNumericUpD = new NumericUpDown();
+            baslangic_TarihiDTP = new DateTimePicker();
             personelComboBox = new ComboBox();
             label11 = new Label();
             label10 = new Label();
@@ -66,8 +66,9 @@
             label3 = new Label();
             menuPanel.SuspendLayout();
             kayitPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)maasNumericUpD).BeginInit();
             izinPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)izinSuresiNumericUpD).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)izin_SuresiNumericUpD).BeginInit();
             personelTakipPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -130,6 +131,7 @@
             // 
             // kayitPanel
             // 
+            kayitPanel.Controls.Add(maasNumericUpD);
             kayitPanel.Controls.Add(yikamaciCheckBox);
             kayitPanel.Controls.Add(label12);
             kayitPanel.Controls.Add(personelListBox);
@@ -138,7 +140,6 @@
             kayitPanel.Controls.Add(silKayitBtn);
             kayitPanel.Controls.Add(kayitEkleBtn);
             kayitPanel.Controls.Add(vardiyaComboBox);
-            kayitPanel.Controls.Add(maasTextBox);
             kayitPanel.Controls.Add(soyadTextBox);
             kayitPanel.Controls.Add(adTextBox);
             kayitPanel.Controls.Add(label9);
@@ -152,6 +153,14 @@
             kayitPanel.Size = new Size(631, 400);
             kayitPanel.TabIndex = 1;
             kayitPanel.Visible = false;
+            // 
+            // maasNumericUpD
+            // 
+            maasNumericUpD.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            maasNumericUpD.Location = new Point(140, 177);
+            maasNumericUpD.Name = "maasNumericUpD";
+            maasNumericUpD.Size = new Size(179, 31);
+            maasNumericUpD.TabIndex = 30;
             // 
             // yikamaciCheckBox
             // 
@@ -237,14 +246,6 @@
             vardiyaComboBox.Size = new Size(179, 31);
             vardiyaComboBox.TabIndex = 4;
             // 
-            // maasTextBox
-            // 
-            maasTextBox.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            maasTextBox.Location = new Point(140, 173);
-            maasTextBox.Name = "maasTextBox";
-            maasTextBox.Size = new Size(179, 31);
-            maasTextBox.TabIndex = 3;
-            // 
             // soyadTextBox
             // 
             soyadTextBox.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
@@ -318,8 +319,8 @@
             izinPanel.Controls.Add(silIzinBtn);
             izinPanel.Controls.Add(resetIzinBtn);
             izinPanel.Controls.Add(izinEkleBtn);
-            izinPanel.Controls.Add(izinSuresiNumericUpD);
-            izinPanel.Controls.Add(baslangicTarihiDTP);
+            izinPanel.Controls.Add(izin_SuresiNumericUpD);
+            izinPanel.Controls.Add(baslangic_TarihiDTP);
             izinPanel.Controls.Add(personelComboBox);
             izinPanel.Controls.Add(label11);
             izinPanel.Controls.Add(label10);
@@ -389,21 +390,22 @@
             izinEkleBtn.UseVisualStyleBackColor = true;
             izinEkleBtn.Click += izinEkleBtn_Click;
             // 
-            // izinSuresiNumericUpD
+            // izin_SuresiNumericUpD
             // 
-            izinSuresiNumericUpD.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            izinSuresiNumericUpD.Location = new Point(171, 195);
-            izinSuresiNumericUpD.Name = "izinSuresiNumericUpD";
-            izinSuresiNumericUpD.Size = new Size(172, 34);
-            izinSuresiNumericUpD.TabIndex = 6;
+            izin_SuresiNumericUpD.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            izin_SuresiNumericUpD.Location = new Point(171, 195);
+            izin_SuresiNumericUpD.Maximum = new decimal(new int[] { 14, 0, 0, 0 });
+            izin_SuresiNumericUpD.Name = "izin_SuresiNumericUpD";
+            izin_SuresiNumericUpD.Size = new Size(172, 34);
+            izin_SuresiNumericUpD.TabIndex = 6;
             // 
-            // baslangicTarihiDTP
+            // baslangic_TarihiDTP
             // 
-            baslangicTarihiDTP.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            baslangicTarihiDTP.Location = new Point(171, 133);
-            baslangicTarihiDTP.Name = "baslangicTarihiDTP";
-            baslangicTarihiDTP.Size = new Size(172, 34);
-            baslangicTarihiDTP.TabIndex = 5;
+            baslangic_TarihiDTP.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            baslangic_TarihiDTP.Location = new Point(171, 133);
+            baslangic_TarihiDTP.Name = "baslangic_TarihiDTP";
+            baslangic_TarihiDTP.Size = new Size(172, 34);
+            baslangic_TarihiDTP.TabIndex = 5;
             // 
             // personelComboBox
             // 
@@ -479,8 +481,8 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(759, 400);
-            Controls.Add(kayitPanel);
             Controls.Add(izinPanel);
+            Controls.Add(kayitPanel);
             Controls.Add(personelTakipPanel);
             Controls.Add(menuPanel);
             Name = "personelForm";
@@ -489,9 +491,10 @@
             menuPanel.ResumeLayout(false);
             kayitPanel.ResumeLayout(false);
             kayitPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)maasNumericUpD).EndInit();
             izinPanel.ResumeLayout(false);
             izinPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)izinSuresiNumericUpD).EndInit();
+            ((System.ComponentModel.ISupportInitialize)izin_SuresiNumericUpD).EndInit();
             personelTakipPanel.ResumeLayout(false);
             personelTakipPanel.PerformLayout();
             ResumeLayout(false);
@@ -517,12 +520,11 @@
         private Label label5;
         private TextBox adTextBox;
         private ComboBox vardiyaComboBox;
-        private TextBox maasTextBox;
         private TextBox soyadTextBox;
         private Button kayitEkleBtn;
         private Button izinEkleBtn;
-        private NumericUpDown izinSuresiNumericUpD;
-        private DateTimePicker baslangicTarihiDTP;
+        private NumericUpDown izin_SuresiNumericUpD;
+        private DateTimePicker baslangic_TarihiDTP;
         private ComboBox personelComboBox;
         private Label label11;
         private Label label10;
@@ -537,5 +539,6 @@
         private ListBox personelListBox;
         private CheckBox yikamaciCheckBox;
         private Label label12;
+        private NumericUpDown maasNumericUpD;
     }
 }

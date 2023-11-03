@@ -63,9 +63,9 @@ namespace CarWashApp.DAL.Concrete
         }
         public bool AddPersonelLeave(PersonelLeave pl)
         {
-            if (DbSet.Where(p => p.PersonelID == pl.PersonelID && p.LeavesLeft > pl.NumOfDays).Any())
+            if (DbSet.Where(p => p.PersonelID == pl.Personel.PersonelID && p.LeavesLeft > pl.NumOfDays).Any())
             {
-                DbSet.Where(p => p.PersonelID == pl.PersonelID).First().LeavesLeft -= pl.NumOfDays;
+                DbSet.Where(p => p.PersonelID == pl.Personel.PersonelID).First().LeavesLeft -= pl.NumOfDays;
 
                 personelLeaves.Add(pl);
 

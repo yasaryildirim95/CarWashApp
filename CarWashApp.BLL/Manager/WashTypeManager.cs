@@ -11,12 +11,11 @@ namespace CarWashApp.BLL.Manager
         {
             _washTypeRepository = washTypeRepository;
         }
-
         public string AddWashTypeProduct(WashTypeProduct washTypeProduct)
         {
             try
             {
-                if(_washTypeRepository.AddWashTypeProduct(washTypeProduct))
+                if (_washTypeRepository.AddWashTypeProduct(washTypeProduct))
                 {
                     return "Yıkama tipi eklendi";
                 }
@@ -26,6 +25,11 @@ namespace CarWashApp.BLL.Manager
             {
                 return "Veri tabanına ulaşım sırasında bir sıkıntı meydana geldi.";
             }
+        }
+
+        public List<WashTypeProduct> GetAllWashTypeProducts()
+        {
+            return _washTypeRepository.GetAllWashTypeProducts();
         }
     }
 }

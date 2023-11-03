@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarWashApp.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231102200227_mg1")]
+    [Migration("20231103184805_mg1")]
     partial class mg1
     {
         /// <inheritdoc />
@@ -379,7 +379,7 @@ namespace CarWashApp.DAL.Migrations
                     b.Property<bool>("IsDone")
                         .HasColumnType("bit");
 
-                    b.Property<int>("PersonelID")
+                    b.Property<int?>("PersonelID")
                         .HasColumnType("int");
 
                     b.Property<int>("Price")
@@ -556,9 +556,7 @@ namespace CarWashApp.DAL.Migrations
 
                     b.HasOne("CarWashApp.Entity.Concrete.Personel", "Personel")
                         .WithMany()
-                        .HasForeignKey("PersonelID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PersonelID");
 
                     b.HasOne("CarWashApp.Entity.Concrete.Vehicle", "Vehicle")
                         .WithMany()

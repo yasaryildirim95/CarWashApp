@@ -87,7 +87,11 @@ namespace CarWashApp.UI
             var checkLoginInfo = FormHelper.PersonelService.CheckLoginInfo(kullaniciTextBox.Text, sifreTextBox.Text);
             if (!checkLoginInfo.Item1 || !checkLoginInfo.Item2)
             {
-                MessageBox.Show("Giriş Başarısız");
+                panelMenuHideOrShow(true);
+                titleLbl.Text = "Kullanıcı";
+                personelBtn.Visible = false;
+                uygulamaKullaniciBtn.Visible = false;
+
             }
             else if (checkLoginInfo.Item1 && checkLoginInfo.Item2)
             {
@@ -96,10 +100,7 @@ namespace CarWashApp.UI
             }
             else
             {
-                panelMenuHideOrShow(true);
-                titleLbl.Text = "Kullanıcı";
-                personelBtn.Visible = false;
-                uygulamaKullaniciBtn.Visible = false;
+                MessageBox.Show("Giriş Başarısız");
             }
         }
 

@@ -1,9 +1,4 @@
 ﻿using CarWashApp.Entity.Abstract;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CarWashApp.Entity.Concrete
 {
@@ -14,5 +9,9 @@ namespace CarWashApp.Entity.Concrete
         public Product Product { get; set; }
         public int ProductTypeID { get; set; }
         public int Quantity { get; set; }
+        public override string ToString()
+        {
+            return WashType.WashTypeName + " " + Product.ProductName + " " + Quantity;
+        }
     }
 }

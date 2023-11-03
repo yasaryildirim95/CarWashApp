@@ -39,12 +39,12 @@
             yikamaPanelResetBtn = new Button();
             silYikamaPanelBtn = new Button();
             yikamaPanelEkleBtn = new Button();
-            yikamaFiyatiNumericUpD = new NumericUpDown();
-            yikamaSuresiNumericUpD = new NumericUpDown();
+            yikama_FiyatiNumericUpD = new NumericUpDown();
+            yikama_SuresiNumericUpD = new NumericUpDown();
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
-            yikamaAdiTextBox = new TextBox();
+            yikama_AdiTextBox = new TextBox();
             label2 = new Label();
             aracTipiPanel = new Panel();
             guncelleAracTipBtn = new Button();
@@ -54,23 +54,22 @@
             aracTipleriListBox = new ListBox();
             label7 = new Label();
             label6 = new Label();
-            numericUpDown1 = new NumericUpDown();
-            textBox1 = new TextBox();
+            fiyat_CarpaniNumericUpD = new NumericUpDown();
+            arac_TipiTextBox = new TextBox();
             label1 = new Label();
             kirlilikPanel = new Panel();
-            kirlilikSuresiNumericUpD = new NumericUpDown();
-            guncelleIzinBtn = new Button();
-            silIzinBtn = new Button();
-            resetIzinBtn = new Button();
-            izinEkleBtn = new Button();
+            kirlilik_SuresiNumericUpD = new NumericUpDown();
+            guncelleBtn = new Button();
+            silBtn = new Button();
+            resetBtn = new Button();
+            EkleBtn = new Button();
             label9 = new Label();
             label8 = new Label();
-            kirlilikAdiTextBox = new TextBox();
+            kirlilik_AdiTextBox = new TextBox();
             kirlilikAyarlariListBox = new ListBox();
             label12 = new Label();
-            urunAyarlariPanel = new Panel();
+            yıkamaUrunAyarlariPanel = new Panel();
             urunAyarlariListBox = new ListBox();
-            urunAyarlariGuncelleBtn = new Button();
             urunAyarlariSilBtn = new Button();
             urunAyarlariResetBtn = new Button();
             urunAyarlariEkleBtn = new Button();
@@ -79,17 +78,17 @@
             label11 = new Label();
             adetNumericUpD = new NumericUpDown();
             urunComboBox = new ComboBox();
-            kirlilikTipiComboBox = new ComboBox();
+            yikama_TipiComboBox = new ComboBox();
             label10 = new Label();
             menuPanel.SuspendLayout();
             yikamaPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)yikamaFiyatiNumericUpD).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)yikamaSuresiNumericUpD).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)yikama_FiyatiNumericUpD).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)yikama_SuresiNumericUpD).BeginInit();
             aracTipiPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)fiyat_CarpaniNumericUpD).BeginInit();
             kirlilikPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)kirlilikSuresiNumericUpD).BeginInit();
-            urunAyarlariPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)kirlilik_SuresiNumericUpD).BeginInit();
+            yıkamaUrunAyarlariPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)adetNumericUpD).BeginInit();
             SuspendLayout();
             // 
@@ -173,12 +172,12 @@
             yikamaPanel.Controls.Add(yikamaPanelResetBtn);
             yikamaPanel.Controls.Add(silYikamaPanelBtn);
             yikamaPanel.Controls.Add(yikamaPanelEkleBtn);
-            yikamaPanel.Controls.Add(yikamaFiyatiNumericUpD);
-            yikamaPanel.Controls.Add(yikamaSuresiNumericUpD);
+            yikamaPanel.Controls.Add(yikama_FiyatiNumericUpD);
+            yikamaPanel.Controls.Add(yikama_SuresiNumericUpD);
             yikamaPanel.Controls.Add(label5);
             yikamaPanel.Controls.Add(label4);
             yikamaPanel.Controls.Add(label3);
-            yikamaPanel.Controls.Add(yikamaAdiTextBox);
+            yikamaPanel.Controls.Add(yikama_AdiTextBox);
             yikamaPanel.Controls.Add(label2);
             yikamaPanel.Dock = DockStyle.Fill;
             yikamaPanel.Location = new Point(128, 0);
@@ -192,7 +191,6 @@
             yikamaUrunListBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             yikamaUrunListBox.FormattingEnabled = true;
             yikamaUrunListBox.ItemHeight = 28;
-            yikamaUrunListBox.Items.AddRange(new object[] { "x" });
             yikamaUrunListBox.Location = new Point(392, 76);
             yikamaUrunListBox.Name = "yikamaUrunListBox";
             yikamaUrunListBox.Size = new Size(227, 312);
@@ -245,21 +243,23 @@
             yikamaPanelEkleBtn.UseVisualStyleBackColor = true;
             yikamaPanelEkleBtn.Click += yikamaPanelEkleBtn_Click;
             // 
-            // yikamaFiyatiNumericUpD
+            // yikama_FiyatiNumericUpD
             // 
-            yikamaFiyatiNumericUpD.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            yikamaFiyatiNumericUpD.Location = new Point(175, 180);
-            yikamaFiyatiNumericUpD.Name = "yikamaFiyatiNumericUpD";
-            yikamaFiyatiNumericUpD.Size = new Size(147, 34);
-            yikamaFiyatiNumericUpD.TabIndex = 23;
+            yikama_FiyatiNumericUpD.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            yikama_FiyatiNumericUpD.Location = new Point(175, 180);
+            yikama_FiyatiNumericUpD.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
+            yikama_FiyatiNumericUpD.Name = "yikama_FiyatiNumericUpD";
+            yikama_FiyatiNumericUpD.Size = new Size(147, 34);
+            yikama_FiyatiNumericUpD.TabIndex = 23;
             // 
-            // yikamaSuresiNumericUpD
+            // yikama_SuresiNumericUpD
             // 
-            yikamaSuresiNumericUpD.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            yikamaSuresiNumericUpD.Location = new Point(175, 127);
-            yikamaSuresiNumericUpD.Name = "yikamaSuresiNumericUpD";
-            yikamaSuresiNumericUpD.Size = new Size(147, 34);
-            yikamaSuresiNumericUpD.TabIndex = 23;
+            yikama_SuresiNumericUpD.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            yikama_SuresiNumericUpD.Location = new Point(175, 127);
+            yikama_SuresiNumericUpD.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
+            yikama_SuresiNumericUpD.Name = "yikama_SuresiNumericUpD";
+            yikama_SuresiNumericUpD.Size = new Size(147, 34);
+            yikama_SuresiNumericUpD.TabIndex = 23;
             // 
             // label5
             // 
@@ -291,13 +291,14 @@
             label3.TabIndex = 22;
             label3.Text = "Yıkama Adı : ";
             // 
-            // yikamaAdiTextBox
+            // yikama_AdiTextBox
             // 
-            yikamaAdiTextBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            yikamaAdiTextBox.Location = new Point(175, 73);
-            yikamaAdiTextBox.Name = "yikamaAdiTextBox";
-            yikamaAdiTextBox.Size = new Size(147, 34);
-            yikamaAdiTextBox.TabIndex = 21;
+            yikama_AdiTextBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            yikama_AdiTextBox.Location = new Point(175, 73);
+            yikama_AdiTextBox.MaxLength = 32;
+            yikama_AdiTextBox.Name = "yikama_AdiTextBox";
+            yikama_AdiTextBox.Size = new Size(147, 34);
+            yikama_AdiTextBox.TabIndex = 21;
             // 
             // label2
             // 
@@ -318,8 +319,8 @@
             aracTipiPanel.Controls.Add(aracTipleriListBox);
             aracTipiPanel.Controls.Add(label7);
             aracTipiPanel.Controls.Add(label6);
-            aracTipiPanel.Controls.Add(numericUpDown1);
-            aracTipiPanel.Controls.Add(textBox1);
+            aracTipiPanel.Controls.Add(fiyat_CarpaniNumericUpD);
+            aracTipiPanel.Controls.Add(arac_TipiTextBox);
             aracTipiPanel.Controls.Add(label1);
             aracTipiPanel.Dock = DockStyle.Fill;
             aracTipiPanel.Location = new Point(128, 0);
@@ -337,6 +338,7 @@
             guncelleAracTipBtn.TabIndex = 25;
             guncelleAracTipBtn.Text = "Güncelle";
             guncelleAracTipBtn.UseVisualStyleBackColor = true;
+            guncelleAracTipBtn.Visible = false;
             guncelleAracTipBtn.Click += guncelleAracTipBtn_Click;
             // 
             // silAracTipBtn
@@ -348,6 +350,7 @@
             silAracTipBtn.TabIndex = 26;
             silAracTipBtn.Text = "Sil";
             silAracTipBtn.UseVisualStyleBackColor = true;
+            silAracTipBtn.Visible = false;
             silAracTipBtn.Click += aracTipSilBtn_Click;
             // 
             // resetAracTipBtn
@@ -377,7 +380,6 @@
             aracTipleriListBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             aracTipleriListBox.FormattingEnabled = true;
             aracTipleriListBox.ItemHeight = 28;
-            aracTipleriListBox.Items.AddRange(new object[] { "31" });
             aracTipleriListBox.Location = new Point(392, 76);
             aracTipleriListBox.Name = "aracTipleriListBox";
             aracTipleriListBox.Size = new Size(227, 312);
@@ -404,21 +406,21 @@
             label6.TabIndex = 23;
             label6.Text = "Araç Tipi :";
             // 
-            // numericUpDown1
+            // fiyat_CarpaniNumericUpD
             // 
-            numericUpDown1.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            numericUpDown1.Location = new Point(158, 170);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(152, 34);
-            numericUpDown1.TabIndex = 22;
+            fiyat_CarpaniNumericUpD.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            fiyat_CarpaniNumericUpD.Location = new Point(158, 170);
+            fiyat_CarpaniNumericUpD.Name = "fiyat_CarpaniNumericUpD";
+            fiyat_CarpaniNumericUpD.Size = new Size(152, 34);
+            fiyat_CarpaniNumericUpD.TabIndex = 22;
             // 
-            // textBox1
+            // arac_TipiTextBox
             // 
-            textBox1.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(159, 97);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(152, 34);
-            textBox1.TabIndex = 21;
+            arac_TipiTextBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            arac_TipiTextBox.Location = new Point(159, 97);
+            arac_TipiTextBox.Name = "arac_TipiTextBox";
+            arac_TipiTextBox.Size = new Size(152, 34);
+            arac_TipiTextBox.TabIndex = 21;
             // 
             // label1
             // 
@@ -432,14 +434,14 @@
             // 
             // kirlilikPanel
             // 
-            kirlilikPanel.Controls.Add(kirlilikSuresiNumericUpD);
-            kirlilikPanel.Controls.Add(guncelleIzinBtn);
-            kirlilikPanel.Controls.Add(silIzinBtn);
-            kirlilikPanel.Controls.Add(resetIzinBtn);
-            kirlilikPanel.Controls.Add(izinEkleBtn);
+            kirlilikPanel.Controls.Add(kirlilik_SuresiNumericUpD);
+            kirlilikPanel.Controls.Add(guncelleBtn);
+            kirlilikPanel.Controls.Add(silBtn);
+            kirlilikPanel.Controls.Add(resetBtn);
+            kirlilikPanel.Controls.Add(EkleBtn);
             kirlilikPanel.Controls.Add(label9);
             kirlilikPanel.Controls.Add(label8);
-            kirlilikPanel.Controls.Add(kirlilikAdiTextBox);
+            kirlilikPanel.Controls.Add(kirlilik_AdiTextBox);
             kirlilikPanel.Controls.Add(kirlilikAyarlariListBox);
             kirlilikPanel.Controls.Add(label12);
             kirlilikPanel.Dock = DockStyle.Fill;
@@ -449,57 +451,59 @@
             kirlilikPanel.TabIndex = 19;
             kirlilikPanel.Visible = false;
             // 
-            // kirlilikSuresiNumericUpD
+            // kirlilik_SuresiNumericUpD
             // 
-            kirlilikSuresiNumericUpD.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            kirlilikSuresiNumericUpD.Location = new Point(149, 156);
-            kirlilikSuresiNumericUpD.Name = "kirlilikSuresiNumericUpD";
-            kirlilikSuresiNumericUpD.Size = new Size(176, 34);
-            kirlilikSuresiNumericUpD.TabIndex = 28;
+            kirlilik_SuresiNumericUpD.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            kirlilik_SuresiNumericUpD.Location = new Point(149, 156);
+            kirlilik_SuresiNumericUpD.Name = "kirlilik_SuresiNumericUpD";
+            kirlilik_SuresiNumericUpD.Size = new Size(176, 34);
+            kirlilik_SuresiNumericUpD.TabIndex = 28;
             // 
-            // guncelleIzinBtn
+            // guncelleBtn
             // 
-            guncelleIzinBtn.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            guncelleIzinBtn.Location = new Point(170, 342);
-            guncelleIzinBtn.Name = "guncelleIzinBtn";
-            guncelleIzinBtn.Size = new Size(118, 37);
-            guncelleIzinBtn.TabIndex = 24;
-            guncelleIzinBtn.Text = "Güncelle";
-            guncelleIzinBtn.UseVisualStyleBackColor = true;
-            guncelleIzinBtn.Click += guncelleIzinBtn_Click;
+            guncelleBtn.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            guncelleBtn.Location = new Point(170, 342);
+            guncelleBtn.Name = "guncelleBtn";
+            guncelleBtn.Size = new Size(118, 37);
+            guncelleBtn.TabIndex = 24;
+            guncelleBtn.Text = "Güncelle";
+            guncelleBtn.UseVisualStyleBackColor = true;
+            guncelleBtn.Visible = false;
+            guncelleBtn.Click += guncelleBtn_Click;
             // 
-            // silIzinBtn
+            // silBtn
             // 
-            silIzinBtn.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            silIzinBtn.Location = new Point(29, 342);
-            silIzinBtn.Name = "silIzinBtn";
-            silIzinBtn.Size = new Size(118, 37);
-            silIzinBtn.TabIndex = 25;
-            silIzinBtn.Text = "Sil";
-            silIzinBtn.UseVisualStyleBackColor = true;
-            silIzinBtn.Click += silIzinBtn_Click;
+            silBtn.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            silBtn.Location = new Point(29, 342);
+            silBtn.Name = "silBtn";
+            silBtn.Size = new Size(118, 37);
+            silBtn.TabIndex = 25;
+            silBtn.Text = "Sil";
+            silBtn.UseVisualStyleBackColor = true;
+            silBtn.Visible = false;
+            silBtn.Click += silBtn_Click;
             // 
-            // resetIzinBtn
+            // resetBtn
             // 
-            resetIzinBtn.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            resetIzinBtn.Location = new Point(170, 287);
-            resetIzinBtn.Name = "resetIzinBtn";
-            resetIzinBtn.Size = new Size(118, 37);
-            resetIzinBtn.TabIndex = 26;
-            resetIzinBtn.Text = "Reset";
-            resetIzinBtn.UseVisualStyleBackColor = true;
-            resetIzinBtn.Click += resetIzinBtn_Click;
+            resetBtn.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            resetBtn.Location = new Point(170, 287);
+            resetBtn.Name = "resetBtn";
+            resetBtn.Size = new Size(118, 37);
+            resetBtn.TabIndex = 26;
+            resetBtn.Text = "Reset";
+            resetBtn.UseVisualStyleBackColor = true;
+            resetBtn.Click += resetBtn_Click;
             // 
-            // izinEkleBtn
+            // EkleBtn
             // 
-            izinEkleBtn.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            izinEkleBtn.Location = new Point(29, 287);
-            izinEkleBtn.Name = "izinEkleBtn";
-            izinEkleBtn.Size = new Size(118, 37);
-            izinEkleBtn.TabIndex = 27;
-            izinEkleBtn.Text = "Ekle";
-            izinEkleBtn.UseVisualStyleBackColor = true;
-            izinEkleBtn.Click += izinEkleBtn_Click;
+            EkleBtn.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            EkleBtn.Location = new Point(29, 287);
+            EkleBtn.Name = "EkleBtn";
+            EkleBtn.Size = new Size(118, 37);
+            EkleBtn.TabIndex = 27;
+            EkleBtn.Text = "Ekle";
+            EkleBtn.UseVisualStyleBackColor = true;
+            EkleBtn.Click += EkleBtn_Click;
             // 
             // label9
             // 
@@ -521,13 +525,13 @@
             label8.TabIndex = 23;
             label8.Text = "Kirlilik Adı :";
             // 
-            // kirlilikAdiTextBox
+            // kirlilik_AdiTextBox
             // 
-            kirlilikAdiTextBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            kirlilikAdiTextBox.Location = new Point(149, 81);
-            kirlilikAdiTextBox.Name = "kirlilikAdiTextBox";
-            kirlilikAdiTextBox.Size = new Size(176, 34);
-            kirlilikAdiTextBox.TabIndex = 22;
+            kirlilik_AdiTextBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            kirlilik_AdiTextBox.Location = new Point(149, 81);
+            kirlilik_AdiTextBox.Name = "kirlilik_AdiTextBox";
+            kirlilik_AdiTextBox.Size = new Size(176, 34);
+            kirlilik_AdiTextBox.TabIndex = 22;
             // 
             // kirlilikAyarlariListBox
             // 
@@ -550,26 +554,25 @@
             label12.TabIndex = 20;
             label12.Text = "Kirlilik Ayarları";
             // 
-            // urunAyarlariPanel
+            // yıkamaUrunAyarlariPanel
             // 
-            urunAyarlariPanel.Controls.Add(urunAyarlariListBox);
-            urunAyarlariPanel.Controls.Add(urunAyarlariGuncelleBtn);
-            urunAyarlariPanel.Controls.Add(urunAyarlariSilBtn);
-            urunAyarlariPanel.Controls.Add(urunAyarlariResetBtn);
-            urunAyarlariPanel.Controls.Add(urunAyarlariEkleBtn);
-            urunAyarlariPanel.Controls.Add(label14);
-            urunAyarlariPanel.Controls.Add(label13);
-            urunAyarlariPanel.Controls.Add(label11);
-            urunAyarlariPanel.Controls.Add(adetNumericUpD);
-            urunAyarlariPanel.Controls.Add(urunComboBox);
-            urunAyarlariPanel.Controls.Add(kirlilikTipiComboBox);
-            urunAyarlariPanel.Controls.Add(label10);
-            urunAyarlariPanel.Dock = DockStyle.Fill;
-            urunAyarlariPanel.Location = new Point(128, 0);
-            urunAyarlariPanel.Name = "urunAyarlariPanel";
-            urunAyarlariPanel.Size = new Size(631, 400);
-            urunAyarlariPanel.TabIndex = 29;
-            urunAyarlariPanel.Visible = false;
+            yıkamaUrunAyarlariPanel.Controls.Add(urunAyarlariListBox);
+            yıkamaUrunAyarlariPanel.Controls.Add(urunAyarlariSilBtn);
+            yıkamaUrunAyarlariPanel.Controls.Add(urunAyarlariResetBtn);
+            yıkamaUrunAyarlariPanel.Controls.Add(urunAyarlariEkleBtn);
+            yıkamaUrunAyarlariPanel.Controls.Add(label14);
+            yıkamaUrunAyarlariPanel.Controls.Add(label13);
+            yıkamaUrunAyarlariPanel.Controls.Add(label11);
+            yıkamaUrunAyarlariPanel.Controls.Add(adetNumericUpD);
+            yıkamaUrunAyarlariPanel.Controls.Add(urunComboBox);
+            yıkamaUrunAyarlariPanel.Controls.Add(yikama_TipiComboBox);
+            yıkamaUrunAyarlariPanel.Controls.Add(label10);
+            yıkamaUrunAyarlariPanel.Dock = DockStyle.Fill;
+            yıkamaUrunAyarlariPanel.Location = new Point(128, 0);
+            yıkamaUrunAyarlariPanel.Name = "yıkamaUrunAyarlariPanel";
+            yıkamaUrunAyarlariPanel.Size = new Size(631, 400);
+            yıkamaUrunAyarlariPanel.TabIndex = 29;
+            yıkamaUrunAyarlariPanel.Visible = false;
             // 
             // urunAyarlariListBox
             // 
@@ -582,17 +585,6 @@
             urunAyarlariListBox.TabIndex = 29;
             urunAyarlariListBox.SelectedIndexChanged += urunAyarlariListBox_SelectedIndexChanged;
             // 
-            // urunAyarlariGuncelleBtn
-            // 
-            urunAyarlariGuncelleBtn.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            urunAyarlariGuncelleBtn.Location = new Point(170, 342);
-            urunAyarlariGuncelleBtn.Name = "urunAyarlariGuncelleBtn";
-            urunAyarlariGuncelleBtn.Size = new Size(118, 37);
-            urunAyarlariGuncelleBtn.TabIndex = 25;
-            urunAyarlariGuncelleBtn.Text = "Güncelle";
-            urunAyarlariGuncelleBtn.UseVisualStyleBackColor = true;
-            urunAyarlariGuncelleBtn.Click += urunAyarlariGuncelleBtn_Click;
-            // 
             // urunAyarlariSilBtn
             // 
             urunAyarlariSilBtn.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
@@ -602,6 +594,7 @@
             urunAyarlariSilBtn.TabIndex = 26;
             urunAyarlariSilBtn.Text = "Sil";
             urunAyarlariSilBtn.UseVisualStyleBackColor = true;
+            urunAyarlariSilBtn.Visible = false;
             urunAyarlariSilBtn.Click += urunAyarlariSilBtn_Click;
             // 
             // urunAyarlariResetBtn
@@ -652,9 +645,9 @@
             label11.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             label11.Location = new Point(14, 79);
             label11.Name = "label11";
-            label11.Size = new Size(112, 28);
+            label11.Size = new Size(126, 28);
             label11.TabIndex = 24;
-            label11.Text = "Kirlilik Tipi :";
+            label11.Text = "Yıkama Tipi : ";
             // 
             // adetNumericUpD
             // 
@@ -673,14 +666,14 @@
             urunComboBox.Size = new Size(160, 36);
             urunComboBox.TabIndex = 22;
             // 
-            // kirlilikTipiComboBox
+            // yikama_TipiComboBox
             // 
-            kirlilikTipiComboBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            kirlilikTipiComboBox.FormattingEnabled = true;
-            kirlilikTipiComboBox.Location = new Point(149, 76);
-            kirlilikTipiComboBox.Name = "kirlilikTipiComboBox";
-            kirlilikTipiComboBox.Size = new Size(160, 36);
-            kirlilikTipiComboBox.TabIndex = 22;
+            yikama_TipiComboBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            yikama_TipiComboBox.FormattingEnabled = true;
+            yikama_TipiComboBox.Location = new Point(149, 76);
+            yikama_TipiComboBox.Name = "yikama_TipiComboBox";
+            yikama_TipiComboBox.Size = new Size(160, 36);
+            yikama_TipiComboBox.TabIndex = 22;
             // 
             // label10
             // 
@@ -688,18 +681,18 @@
             label10.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             label10.Location = new Point(12, 9);
             label10.Name = "label10";
-            label10.Size = new Size(127, 28);
+            label10.Size = new Size(195, 28);
             label10.TabIndex = 21;
-            label10.Text = "Ürün Ayarları";
+            label10.Text = "Yıkama Ürün Ayarları";
             // 
             // AyarlarForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(759, 400);
-            Controls.Add(urunAyarlariPanel);
-            Controls.Add(aracTipiPanel);
+            Controls.Add(yıkamaUrunAyarlariPanel);
             Controls.Add(kirlilikPanel);
+            Controls.Add(aracTipiPanel);
             Controls.Add(yikamaPanel);
             Controls.Add(menuPanel);
             Name = "AyarlarForm";
@@ -708,16 +701,16 @@
             menuPanel.ResumeLayout(false);
             yikamaPanel.ResumeLayout(false);
             yikamaPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)yikamaFiyatiNumericUpD).EndInit();
-            ((System.ComponentModel.ISupportInitialize)yikamaSuresiNumericUpD).EndInit();
+            ((System.ComponentModel.ISupportInitialize)yikama_FiyatiNumericUpD).EndInit();
+            ((System.ComponentModel.ISupportInitialize)yikama_SuresiNumericUpD).EndInit();
             aracTipiPanel.ResumeLayout(false);
             aracTipiPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)fiyat_CarpaniNumericUpD).EndInit();
             kirlilikPanel.ResumeLayout(false);
             kirlilikPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)kirlilikSuresiNumericUpD).EndInit();
-            urunAyarlariPanel.ResumeLayout(false);
-            urunAyarlariPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)kirlilik_SuresiNumericUpD).EndInit();
+            yıkamaUrunAyarlariPanel.ResumeLayout(false);
+            yıkamaUrunAyarlariPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)adetNumericUpD).EndInit();
             ResumeLayout(false);
         }
@@ -736,9 +729,9 @@
         private Label label1;
         private Label label12;
         private Label label3;
-        private TextBox yikamaAdiTextBox;
-        private NumericUpDown yikamaFiyatiNumericUpD;
-        private NumericUpDown yikamaSuresiNumericUpD;
+        private TextBox yikama_AdiTextBox;
+        private NumericUpDown yikama_FiyatiNumericUpD;
+        private NumericUpDown yikama_SuresiNumericUpD;
         private Label label5;
         private Label label4;
         private ListBox yikamaUrunListBox;
@@ -748,31 +741,30 @@
         private Button silYikamaPanelBtn;
         private Label label7;
         private Label label6;
-        private NumericUpDown numericUpDown1;
-        private TextBox textBox1;
+        private NumericUpDown fiyat_CarpaniNumericUpD;
+        private TextBox arac_TipiTextBox;
         private ListBox aracTipleriListBox;
         private Button guncelleAracTipBtn;
         private Button silAracTipBtn;
         private Button resetAracTipBtn;
         private Button ekleAracTipBtn;
         private ListBox kirlilikAyarlariListBox;
-        private TextBox kirlilikAdiTextBox;
+        private TextBox kirlilik_AdiTextBox;
         private Label label9;
         private Label label8;
-        private Button guncelleIzinBtn;
-        private Button silIzinBtn;
-        private Button resetIzinBtn;
-        private Button izinEkleBtn;
-        private NumericUpDown kirlilikSuresiNumericUpD;
-        private Panel urunAyarlariPanel;
+        private Button guncelleBtn;
+        private Button silBtn;
+        private Button resetBtn;
+        private Button EkleBtn;
+        private NumericUpDown kirlilik_SuresiNumericUpD;
+        private Panel yıkamaUrunAyarlariPanel;
         private Label label14;
         private Label label13;
         private Label label11;
         private NumericUpDown adetNumericUpD;
         private ComboBox urunComboBox;
-        private ComboBox kirlilikTipiComboBox;
+        private ComboBox yikama_TipiComboBox;
         private Label label10;
-        private Button urunAyarlariGuncelleBtn;
         private Button urunAyarlariSilBtn;
         private Button urunAyarlariResetBtn;
         private Button urunAyarlariEkleBtn;

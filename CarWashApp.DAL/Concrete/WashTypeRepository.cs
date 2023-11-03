@@ -16,13 +16,18 @@ namespace CarWashApp.DAL.Concrete
 
         public bool AddWashTypeProduct(WashTypeProduct washTypeProduct)
         {
-            if(!washTypeProducts.Where(wtp => wtp.WashTypeID == washTypeProduct.WashTypeID && wtp.ProductTypeID == washTypeProduct.ProductTypeID).Any())
+            if (!washTypeProducts.Where(wtp => wtp.WashTypeID == washTypeProduct.WashTypeID && wtp.ProductTypeID == washTypeProduct.ProductTypeID).Any())
             {
                 washTypeProducts.Add(washTypeProduct);
                 DbContext.SaveChanges();
                 return washTypeProducts.Where(wtp => wtp.WashTypeID == washTypeProduct.WashTypeID && wtp.ProductTypeID == washTypeProduct.ProductTypeID).Any();
             }
             return false;
+        }
+
+        public List<WashTypeProduct> GetAllWashTypeProducts()
+        {
+            return washTypeProducts.Include(x => x.WashType).Include(x => x.Product).ToList();
         }
     }
 }
