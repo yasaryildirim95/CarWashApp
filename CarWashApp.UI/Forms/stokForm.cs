@@ -26,7 +26,7 @@ namespace CarWashApp.UI.Forms
                 MessageBox.Show(IsValid);
                 return;
             }
-            var product = FormHelper.SelectedIndexTransform<Product>((ListItem)stokUrunListBox.SelectedItem);
+            var product = FormHelper.SelectedIndexTransform<Product>(stokUrunListBox.SelectedItem);
             var update = FormHelper.ProductService.Update(urun_AdıTextBox.Text, (int)stok_AdetNumericUpD.Value, (int)uyari_EsigiNumericUpD.Value);
             FormHelper.guncelleSilBtn(false, stokPanel);
             FormHelper.ResetItems(stokPanel);
@@ -43,7 +43,7 @@ namespace CarWashApp.UI.Forms
                 return;
             }
 
-            var product = FormHelper.SelectedIndexTransform<Product>((ListItem)stokUrunListBox.SelectedItem);
+            var product = FormHelper.SelectedIndexTransform<Product>(stokUrunListBox.SelectedItem);
             FormHelper.ProductService.Delete(product);
             FormHelper.guncelleSilBtn(false, stokPanel);
             FormHelper.ResetItems(stokPanel);
@@ -54,7 +54,7 @@ namespace CarWashApp.UI.Forms
         {
             if (stokUrunListBox.SelectedIndex != -1)
             {
-                ProductGuncelleBind(FormHelper.SelectedIndexTransform<Product>((ListItem)stokUrunListBox.SelectedItem));
+                ProductGuncelleBind(FormHelper.SelectedIndexTransform<Product>(stokUrunListBox.SelectedItem));
                 FormHelper.guncelleSilBtn(true, stokPanel);
             }
 

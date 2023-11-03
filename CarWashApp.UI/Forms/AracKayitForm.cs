@@ -88,9 +88,9 @@ namespace CarWashApp.UI.Forms
             var temp = FormHelper.IsValid(aracKayitPanel);
             if (temp == string.Empty)
             {
-                var vehicleOwner = (VehicleOwner)((ListItem)arac_SahipComboBox.SelectedItem).Value;
+                var vehicleOwner = FormHelper.SelectedIndexTransform<VehicleOwner>(arac_SahipComboBox.SelectedItem);
 
-                var vehicleType = (VehicleType)((ListItem)arac_TipComboBox.SelectedItem).Value;
+                var vehicleType = FormHelper.SelectedIndexTransform<VehicleType>(arac_TipComboBox.SelectedItem);
 
                 var tempx = FormHelper.OwnerVehicleService.AddVehicle(vehicleOwner.PhoneNumber, arac_PlakaTextBox.Text,
                      arac_MarkaTextBox.Text, arac_ModelTextBox.Text, arac_RenkTextBox.Text, vehicleType.VehicleTypeName);
