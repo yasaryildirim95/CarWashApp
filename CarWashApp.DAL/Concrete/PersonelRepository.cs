@@ -85,5 +85,11 @@ namespace CarWashApp.DAL.Concrete
             }
             return personels;
         }
+
+        public List<PersonelLeave> GetAllPersonelLeaves()
+        {
+            var list = personelLeaves.ToList();
+            return list;
+        }
     }
 }

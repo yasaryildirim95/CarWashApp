@@ -94,5 +94,10 @@ namespace CarWashApp.BLL.Manager
         {
             return _personelRepository.GetAll(temp);
         }
+
+        public List<PersonelLeave> GetAllPersonelLeaves()
+        {
+            return _personelRepository.GetAllPersonelLeaves();
+        }
     }
 }
