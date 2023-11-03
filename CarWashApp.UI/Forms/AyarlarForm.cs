@@ -24,27 +24,27 @@ namespace CarWashApp.UI.Forms
         private void yıkamaAyarBtn_Click(object sender, EventArgs e)
         {
             FormHelper.HidePanels(this);
-            FormHelper.ActivateButton(sender, menuPanel);
+            FormHelper.HighlightSelectedButton(sender, menuPanel);
             yikamaPanel.Show();
         }
 
         private void aracTipiBtn_Click(object sender, EventArgs e)
         {
             FormHelper.HidePanels(this);
-            FormHelper.ActivateButton(sender, menuPanel);
+            FormHelper.HighlightSelectedButton(sender, menuPanel);
             aracTipiPanel.Show();
         }
 
         private void kirlilikAyarBtn_Click(object sender, EventArgs e)
         {
             FormHelper.HidePanels(this);
-            FormHelper.ActivateButton(sender, menuPanel);
+            FormHelper.HighlightSelectedButton(sender, menuPanel);
             kirlilikPanel.Show();
         }
         private void urunAyarlariBtn_Click(object sender, EventArgs e)
         {
             FormHelper.HidePanels(this);
-            FormHelper.ActivateButton(sender, menuPanel);
+            FormHelper.HighlightSelectedButton(sender, menuPanel);
             urunAyarlariPanel.Show();
 
         }

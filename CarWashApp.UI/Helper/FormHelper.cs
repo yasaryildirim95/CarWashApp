@@ -72,7 +72,7 @@ namespace CarWashApp.UI.Helper
 
             foreach (var numericUpDown in activePanel.Controls.OfType<NumericUpDown>())
             {
-                numericUpDown.Text = "0";
+                numericUpDown.Value = numericUpDown.Minimum;
             }
 
             foreach (var dateTimePicker in activePanel.Controls.OfType<DateTimePicker>())
@@ -96,7 +96,7 @@ namespace CarWashApp.UI.Helper
         /// </summary>
         /// <param name="sender">The button being activated.</param>
         /// <param name="activePanel">The panel containing the buttons.</param>
-        public static void ActivateButton(object sender, Panel activePanel)
+        public static void HighlightSelectedButton(object sender, Panel activePanel)
         {
             if (sender != null)
             {

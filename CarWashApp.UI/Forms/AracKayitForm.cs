@@ -20,7 +20,7 @@ namespace CarWashApp.UI.Forms
         #region Menu Panel
         private void aramaBtn_Click(object sender, EventArgs e)
         {
-            FormHelper.ActivateButton(sender, menuPanel);
+            FormHelper.HighlightSelectedButton(sender, menuPanel);
             FormHelper.HidePanels(this);
             FormHelper.ResetItems(aramaPanel);
             aramaPanel.Show();
@@ -28,7 +28,7 @@ namespace CarWashApp.UI.Forms
 
         private void aracKayitBtn_Click(object sender, EventArgs e)
         {
-            FormHelper.ActivateButton(sender, menuPanel);
+            FormHelper.HighlightSelectedButton(sender, menuPanel);
             FormHelper.HidePanels(this);
             aracKayitPanel.Show();
             FormHelper.ResetItems(aracKayitPanel);
@@ -38,7 +38,7 @@ namespace CarWashApp.UI.Forms
 
         private void aracSahibiBtn_Click(object sender, EventArgs e)
         {
-            FormHelper.ActivateButton(sender, menuPanel);
+            FormHelper.HighlightSelectedButton(sender, menuPanel);
             FormHelper.HidePanels(this);
 
             FormHelper.ResetItems(aracSahibiPanel);
