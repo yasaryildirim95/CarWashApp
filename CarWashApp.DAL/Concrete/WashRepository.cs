@@ -1,4 +1,7 @@
-﻿namespace CarWashApp.DAL.Concrete
+﻿using CarWashApp.Entity.Concrete;
+using Microsoft.EntityFrameworkCore;
+
+namespace CarWashApp.DAL.Concrete
 {
     public class WashRepository : GenericRepository<Wash>
     {
