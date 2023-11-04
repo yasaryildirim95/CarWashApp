@@ -139,6 +139,8 @@ namespace CarWashApp.UI.Helper
 
             foreach (var comboBox in activePanel.Controls.OfType<ComboBox>())
             {
+                if (comboBox.Name.Contains("sureComboBox"))
+                    continue;
                 comboBox.Text = string.Empty;
                 comboBox.SelectedIndex = -1;
             }
@@ -161,6 +163,11 @@ namespace CarWashApp.UI.Helper
             foreach (var checkBox in activePanel.Controls.OfType<CheckBox>())
             {
                 checkBox.Checked = false;
+            }
+
+            foreach (var dataGridView in activePanel.Controls.OfType<DataGridView>())
+            {
+                dataGridView.ClearSelection();
             }
 
         }
@@ -226,12 +233,16 @@ namespace CarWashApp.UI.Helper
             string tempString = "";
             foreach (var textBox in activePanel.Controls.OfType<TextBox>())
             {
+                if (textBox.Name.Contains("yikamaTextBox"))
+                    continue;
                 if (string.IsNullOrEmpty(textBox.Text))
                     tempString += textBox.Name.Replace('_', ' ').ToLower().Replace("textbox", "") + " boş bırakılamaz!\n";
             }
 
             foreach (var comboBox in activePanel.Controls.OfType<ComboBox>())
             {
+                if (comboBox.Name.ToLower().Contains("sure"))
+                    continue;
                 if (comboBox.SelectedIndex == -1)
                     tempString += comboBox.Name.Replace('_', ' ').ToLower().Replace("combobox", "") + " seçilmeli!\n";
             }

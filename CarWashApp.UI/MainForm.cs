@@ -6,8 +6,6 @@ namespace CarWashApp.UI
 {
     public partial class MainForm : Form
     {
-        //Fields
-        private Button currentButton;
         private Form activeForm;
         public MainForm()
         {
@@ -91,7 +89,6 @@ namespace CarWashApp.UI
                 titleLbl.Text = "Kullanıcı";
                 personelBtn.Visible = false;
                 uygulamaKullaniciBtn.Visible = false;
-
             }
             else if (checkLoginInfo.Item1 && checkLoginInfo.Item2)
             {

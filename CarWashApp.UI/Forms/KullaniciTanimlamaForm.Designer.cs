@@ -68,11 +68,12 @@
             // 
             // kullaniciListBox
             // 
+            kullaniciListBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             kullaniciListBox.FormattingEnabled = true;
-            kullaniciListBox.ItemHeight = 15;
-            kullaniciListBox.Location = new Point(511, 67);
+            kullaniciListBox.ItemHeight = 28;
+            kullaniciListBox.Location = new Point(520, 76);
             kullaniciListBox.Name = "kullaniciListBox";
-            kullaniciListBox.Size = new Size(227, 304);
+            kullaniciListBox.Size = new Size(227, 312);
             kullaniciListBox.TabIndex = 26;
             kullaniciListBox.SelectedIndexChanged += kullaniciListBox_SelectedIndexChanged;
             // 

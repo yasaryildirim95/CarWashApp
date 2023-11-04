@@ -55,10 +55,12 @@ namespace CarWashApp.UI.Forms
             if (temp == string.Empty)
             {
                 mainForm.yikamaBtn_Click(btn, e);
-                //todo yan yıkama eklendikten sonra duruma göre plaka dönülcek
+                MessageBox.Show(temp);
                 return;
             }
-            MessageBox.Show(temp);
+
+            var tempString = FormHelper.OwnerVehicleService.SearchByPlate(plaka_AramaTextBox.Text);
+            MessageBox.Show(tempString);
         }
 
         #endregion

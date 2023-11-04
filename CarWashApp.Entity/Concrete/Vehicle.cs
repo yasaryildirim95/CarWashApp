@@ -1,9 +1,4 @@
 ﻿using CarWashApp.Entity.Abstract;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CarWashApp.Entity.Concrete
 {
@@ -18,5 +13,9 @@ namespace CarWashApp.Entity.Concrete
         public int VehicleOwnerID { get; set; }
         public VehicleType VehicleType { get; set; }
         public int VehicleTypeID { get; set; }
+        public override string ToString()
+        {
+            return Plate;
+        }
     }
 }

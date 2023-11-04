@@ -42,7 +42,7 @@ namespace CarWashApp.DAL.Concrete
             };
 
             washes.Add(newWash);
-
+            DbContext.SaveChanges();
             return washes.Where(x => x.WashID == newWash.WashID).Any();
         }
 
@@ -95,7 +95,7 @@ namespace CarWashApp.DAL.Concrete
                     MARKA = wash.Vehicle.Brand,
                     MODEL = wash.Vehicle.Model,
                     YIKAMA_TİPİ = wash.WashType.WashTypeName,
-                    ÇALIŞAN_KİŞİ = wash.Personel != null ? wash.Personel.Name+" "+wash.Personel.Surname : "Çalışan Bekleniyor.",
+                    ÇALIŞAN_KİŞİ = wash.Personel != null ? wash.Personel.Name + " " + wash.Personel.Surname : "Çalışan Bekleniyor.",
                     YIKAMA_DURUMU = (!wash.IsDone && wash.Personel == null) ? "Sırada" : ((wash.EndTime - DateTime.Now).Minutes > 0) ? "İşlemde." : "Bitti.",
                     KALAN_SÜRE = (wash.EndTime - DateTime.Now).Minutes > 0 ? (wash.EndTime - DateTime.Now).Minutes : 0
                 });
@@ -127,7 +127,7 @@ namespace CarWashApp.DAL.Concrete
         {
             var personel = Personel.Where(p => p.IsWasher == true && p.IsWorking == false).ToList();
 
-            if(personel.Count() > 0) 
+            if (personel.Count() > 0)
             {
                 foreach (var person in personel)
                 {
@@ -137,12 +137,12 @@ namespace CarWashApp.DAL.Concrete
                     {
                         wash.PersonelID = person.PersonelID;
                         wash.EndTime = DateTime.Now.AddMinutes(wash.DirtinessLevel.AdditionalDuration + wash.WashType.Duration);
-                        Personel.Where(p=> p.PersonelID == person.PersonelID).First().IsWorking = true;
+                        Personel.Where(p => p.PersonelID == person.PersonelID).First().IsWorking = true;
 
                         DbContext.SaveChanges();
                     }
                 }
-            }    
+            }
         }
     }
 }
