@@ -12,7 +12,7 @@ namespace CarWashApp.UI.Forms
         private void personelForm_Load(object sender, EventArgs e)
         {
             FormHelper.ComboOrListBoxMaker(personelListBox, FormHelper.PersonelService.GetAll());
-            FormHelper.ComboOrListBoxMaker(izinGunleriListBox, FormHelper.GetBaseManager<PersonelLeave>().GetAll());
+            FormHelper.ComboOrListBoxMaker(izinGunleriListBox, FormHelper.PersonelService.GetAllPersonelLeaves());
             FormHelper.ComboOrListBoxMaker(personelComboBox, FormHelper.GetBaseManager<Personel>().GetAll());
             FormHelper.ComboOrListBoxMaker(vardiyaComboBox, FormHelper.GetBaseManager<Shift>().GetAll());
             baslangic_TarihiDTP.MinDate = DateTime.Now;
@@ -54,7 +54,7 @@ namespace CarWashApp.UI.Forms
             PersonelLeave personelLeave = null;
             personelLeave = personelLeaveMaker(personelLeave);
             FormHelper.PersonelService.AddPersonelLeave(personelLeave);
-            FormHelper.ComboOrListBoxMaker(izinGunleriListBox, FormHelper.GetBaseManager<PersonelLeave>().GetAll());
+            FormHelper.ComboOrListBoxMaker(izinGunleriListBox, FormHelper.PersonelService.GetAllPersonelLeaves());
             FormHelper.ResetItems(izinPanel);
             FormHelper.guncelleSilBtn(false, izinPanel);
         }
@@ -66,7 +66,7 @@ namespace CarWashApp.UI.Forms
             PersonelLeave personelLeave = FormHelper.SelectedIndexTransform<PersonelLeave>(izinGunleriListBox.SelectedItem);
             FormHelper.GetBaseManager<PersonelLeave>().Delete(personelLeave);
 
-            FormHelper.ComboOrListBoxMaker(izinGunleriListBox, FormHelper.GetBaseManager<PersonelLeave>().GetAll());
+            FormHelper.ComboOrListBoxMaker(izinGunleriListBox, FormHelper.PersonelService.GetAllPersonelLeaves());
             FormHelper.ResetItems(izinPanel);
             FormHelper.guncelleSilBtn(false, izinPanel);
         }
@@ -85,7 +85,7 @@ namespace CarWashApp.UI.Forms
 
             FormHelper.GetBaseManager<PersonelLeave>().Update(personelLeave);
             FormHelper.PersonelService.AddPersonelLeave(personelLeave);
-            FormHelper.ComboOrListBoxMaker(izinGunleriListBox, FormHelper.GetBaseManager<PersonelLeave>().GetAll());
+            FormHelper.ComboOrListBoxMaker(izinGunleriListBox, FormHelper.PersonelService.GetAllPersonelLeaves());
             FormHelper.ResetItems(izinPanel);
             FormHelper.guncelleSilBtn(false, izinPanel);
         }
@@ -107,19 +107,18 @@ namespace CarWashApp.UI.Forms
 
         private PersonelLeave personelLeaveMaker(PersonelLeave? personelLeave)
         {
+            //todo sil güncelle 2sinden biri yada 2side override edilcek personel izin sürelerine geri vermiyo ama özel sektöre uyan bir tavır böylede bırakabiliriz.
             personelLeave ??= new PersonelLeave();
-            personelLeave.Personel = FormHelper.SelectedIndexTransform<Personel>(personelComboBox.SelectedItem);
             personelLeave.NumOfDays = (int)izin_SuresiNumericUpD.Value;
             personelLeave.StartDate = baslangic_TarihiDTP.Value;
-            personelLeave.PersonelID = personelLeave.Personel.PersonelID;
+            personelLeave.PersonelID = FormHelper.SelectedIndexTransform<Personel>(personelComboBox.SelectedItem).PersonelID;
             return personelLeave;
         }
 
         private void izinPanelDoldur(PersonelLeave personelLeave)
         {
-            personelComboBox.SelectedItem = personelLeave.Personel;
+            personelComboBox.SelectedIndex = personelComboBox.FindString(personelLeave.Personel.ToString());
             izin_SuresiNumericUpD.Value = personelLeave.NumOfDays;
-            baslangic_TarihiDTP.Value = personelLeave.StartDate;
         }
         #endregion
 
