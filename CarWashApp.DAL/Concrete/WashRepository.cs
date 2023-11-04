@@ -26,24 +26,28 @@ namespace CarWashApp.DAL.Concrete
 
         public bool AddWash(string washTypeName, string plate, string dirtinessLevelName)
         {
-            var vehicle = vehicles.Where(v => v.Plate == plate).FirstOrDefault();
-            var washType = washTypes.Where(w => w.WashTypeName == washTypeName).FirstOrDefault();
-            var vehicleType = vehicleTypes.Where(v => v.VehicleTypeID == vehicle.VehicleTypeID).FirstOrDefault();
-            var dirtinessLevel = dirtinessLevels.Where(v => v.DirtinessLevelName == dirtinessLevelName).FirstOrDefault();
-
-            Wash newWash = new Wash()
+            if(!DbSet.Include(w => w.Vehicle).Where(w => w.Vehicle.Plate == plate && w.IsDone == false).Any())
             {
-                Price = washType.Price * vehicleType.PriceMultiplier,
-                VehicleId = vehicle.VehicleID,
-                WashTypeID = washType.WashTypeID,
-                DirtinessLevelID = dirtinessLevel.DirtinessLevelID,
-                IsDone = false
-                //Personel ataması sonra yapılacak
-            };
+                var vehicle = vehicles.Where(v => v.Plate == plate).FirstOrDefault();
+                var washType = washTypes.Where(w => w.WashTypeName == washTypeName).FirstOrDefault();
+                var vehicleType = vehicleTypes.Where(v => v.VehicleTypeID == vehicle.VehicleTypeID).FirstOrDefault();
+                var dirtinessLevel = dirtinessLevels.Where(v => v.DirtinessLevelName == dirtinessLevelName).FirstOrDefault();
 
-            washes.Add(newWash);
+                Wash newWash = new Wash()
+                {
+                    Price = washType.Price * vehicleType.PriceMultiplier,
+                    VehicleId = vehicle.VehicleID,
+                    WashTypeID = washType.WashTypeID,
+                    DirtinessLevelID = dirtinessLevel.DirtinessLevelID,
+                    IsDone = false
+                    //Personel ataması sonra yapılacak
+                };
 
-            return washes.Where(x => x.WashID == newWash.WashID).Any();
+                washes.Add(newWash);
+
+                return washes.Where(x => x.WashID == newWash.WashID).Any();
+            }
+            return false;
         }
 
         public bool UpdateWash(int id, string washTypeName, string plate, string dirtinessLevelName)
