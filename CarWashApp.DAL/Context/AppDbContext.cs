@@ -43,7 +43,7 @@ namespace CarWashApp.DAL.Context
                 .HasForeignKey(w => w.DirtinessLevelID);
 
             modelBuilder.Entity<WashTypeProduct>()
-                .HasKey(wtp => new { wtp.WashTypeID, wtp.ProductTypeID });
+                .HasKey(wtp => new { wtp.WashTypeProductID });
 
             modelBuilder.Entity<WashTypeProduct>()
                 .HasOne(wtp => wtp.WashType)
@@ -101,10 +101,10 @@ namespace CarWashApp.DAL.Context
                 );
 
             modelBuilder.Entity<WashTypeProduct>().HasData(
-                new WashTypeProduct { ProductTypeID = 1, WashTypeID = 1, Quantity = 1 },
-                new WashTypeProduct { ProductTypeID = 2, WashTypeID = 2, Quantity = 1 },
-                new WashTypeProduct { ProductTypeID = 1, WashTypeID = 3, Quantity = 1 },
-                new WashTypeProduct { ProductTypeID = 2, WashTypeID = 3, Quantity = 1 }
+                new WashTypeProduct { WashTypeProductID = 1, ProductTypeID = 1, WashTypeID = 1, Quantity = 1 },
+                new WashTypeProduct { WashTypeProductID = 2, ProductTypeID = 2, WashTypeID = 2, Quantity = 1 },
+                new WashTypeProduct { WashTypeProductID = 3, ProductTypeID = 1, WashTypeID = 3, Quantity = 1 },
+                new WashTypeProduct { WashTypeProductID = 4, ProductTypeID = 2, WashTypeID = 3, Quantity = 1 }
                 );
 
             modelBuilder.Entity<VehicleType>().HasData(

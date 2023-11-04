@@ -49,7 +49,7 @@ namespace CarWashApp.UI.Forms
         {
             FormHelper.WashService.UpdateWash(Convert.ToInt32(yikamaTextBox.Text), yikama_TipiComboBox.Text, plakaComboBox.Text,
                 kirlilikComboBox.Text);
-
+            yikamaDataGrid.DataSource = FormHelper.WashService.RunCarWash();
             FormHelper.ResetItems(yikamaPanel);
         }
 

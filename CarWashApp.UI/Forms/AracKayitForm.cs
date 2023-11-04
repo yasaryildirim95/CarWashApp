@@ -14,7 +14,6 @@ namespace CarWashApp.UI.Forms
 
         private void AracKayitForm_Load(object sender, EventArgs e)
         {
-
         }
 
         #region Menu Panel
@@ -51,16 +50,11 @@ namespace CarWashApp.UI.Forms
 
         private void araBtn_Click(object sender, EventArgs e)
         {
-            var temp = FormHelper.IsValid(aramaPanel);
-            if (temp == string.Empty)
-            {
-                mainForm.yikamaBtn_Click(btn, e);
-                MessageBox.Show(temp);
-                return;
-            }
 
             var tempString = FormHelper.OwnerVehicleService.SearchByPlate(plaka_AramaTextBox.Text);
             MessageBox.Show(tempString);
+            if (tempString.Contains("bulundu"))
+                mainForm.yikamaBtn_Click(btn, e);
         }
 
         #endregion

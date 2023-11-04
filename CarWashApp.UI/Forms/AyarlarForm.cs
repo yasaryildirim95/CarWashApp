@@ -48,6 +48,9 @@ namespace CarWashApp.UI.Forms
         }
         private void urunAyarlariBtn_Click(object sender, EventArgs e)
         {
+
+            FormHelper.ComboOrListBoxMaker(urunComboBox, FormHelper.ProductService.GetAll());
+            FormHelper.ComboOrListBoxMaker(yikama_TipiComboBox, FormHelper.GetBaseManager<WashType>().GetAll());
             FormHelper.HidePanels(this);
             FormHelper.HighlightSelectedButton(sender, menuPanel);
             yıkamaUrunAyarlariPanel.Show();
@@ -323,9 +326,10 @@ namespace CarWashApp.UI.Forms
 
         private WashTypeProduct ekleWashTypeProduct(WashTypeProduct? washTypeProduct)
         {
+            washTypeProduct ??= new WashTypeProduct();
             washTypeProduct.Quantity = (int)adetNumericUpD.Value;
-            washTypeProduct.WashType = FormHelper.SelectedIndexTransform<WashType>(yikama_TipiComboBox.SelectedItem);
-            washTypeProduct.Product = FormHelper.SelectedIndexTransform<Product>(urunComboBox.SelectedItem);
+            washTypeProduct.WashTypeID = FormHelper.SelectedIndexTransform<WashType>(yikama_TipiComboBox.SelectedItem).WashTypeID;
+            washTypeProduct.ProductTypeID = FormHelper.SelectedIndexTransform<Product>(urunComboBox.SelectedItem).ProductID;
             return washTypeProduct;
         }
 

@@ -63,6 +63,10 @@
             label8 = new Label();
             label4 = new Label();
             personelTakipPanel = new Panel();
+            bostakilerDataGrid = new DataGridView();
+            calisanlarDataGrid = new DataGridView();
+            label14 = new Label();
+            label13 = new Label();
             label3 = new Label();
             menuPanel.SuspendLayout();
             kayitPanel.SuspendLayout();
@@ -70,6 +74,8 @@
             izinPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)izin_SuresiNumericUpD).BeginInit();
             personelTakipPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)bostakilerDataGrid).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)calisanlarDataGrid).BeginInit();
             SuspendLayout();
             // 
             // menuPanel
@@ -458,6 +464,10 @@
             // 
             // personelTakipPanel
             // 
+            personelTakipPanel.Controls.Add(bostakilerDataGrid);
+            personelTakipPanel.Controls.Add(calisanlarDataGrid);
+            personelTakipPanel.Controls.Add(label14);
+            personelTakipPanel.Controls.Add(label13);
             personelTakipPanel.Controls.Add(label3);
             personelTakipPanel.Dock = DockStyle.Fill;
             personelTakipPanel.Location = new Point(128, 0);
@@ -465,6 +475,48 @@
             personelTakipPanel.Size = new Size(631, 400);
             personelTakipPanel.TabIndex = 0;
             personelTakipPanel.Visible = false;
+            // 
+            // bostakilerDataGrid
+            // 
+            bostakilerDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            bostakilerDataGrid.Location = new Point(325, 105);
+            bostakilerDataGrid.MultiSelect = false;
+            bostakilerDataGrid.Name = "bostakilerDataGrid";
+            bostakilerDataGrid.ReadOnly = true;
+            bostakilerDataGrid.RowTemplate.Height = 25;
+            bostakilerDataGrid.Size = new Size(294, 275);
+            bostakilerDataGrid.TabIndex = 5;
+            // 
+            // calisanlarDataGrid
+            // 
+            calisanlarDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            calisanlarDataGrid.Location = new Point(23, 105);
+            calisanlarDataGrid.MultiSelect = false;
+            calisanlarDataGrid.Name = "calisanlarDataGrid";
+            calisanlarDataGrid.ReadOnly = true;
+            calisanlarDataGrid.RowTemplate.Height = 25;
+            calisanlarDataGrid.Size = new Size(296, 275);
+            calisanlarDataGrid.TabIndex = 5;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            label14.Location = new Point(352, 63);
+            label14.Name = "label14";
+            label14.Size = new Size(97, 28);
+            label14.TabIndex = 4;
+            label14.Text = "Boştakiler";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            label13.Location = new Point(62, 63);
+            label13.Name = "label13";
+            label13.Size = new Size(95, 28);
+            label13.TabIndex = 4;
+            label13.Text = "Çalışanlar";
             // 
             // label3
             // 
@@ -481,9 +533,9 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(759, 400);
+            Controls.Add(personelTakipPanel);
             Controls.Add(izinPanel);
             Controls.Add(kayitPanel);
-            Controls.Add(personelTakipPanel);
             Controls.Add(menuPanel);
             Name = "personelForm";
             Text = "Personel";
@@ -497,6 +549,8 @@
             ((System.ComponentModel.ISupportInitialize)izin_SuresiNumericUpD).EndInit();
             personelTakipPanel.ResumeLayout(false);
             personelTakipPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)bostakilerDataGrid).EndInit();
+            ((System.ComponentModel.ISupportInitialize)calisanlarDataGrid).EndInit();
             ResumeLayout(false);
         }
 
@@ -540,5 +594,9 @@
         private CheckBox yikamaciCheckBox;
         private Label label12;
         private NumericUpDown maasNumericUpD;
+        private Label label14;
+        private Label label13;
+        private DataGridView bostakilerDataGrid;
+        private DataGridView calisanlarDataGrid;
     }
 }

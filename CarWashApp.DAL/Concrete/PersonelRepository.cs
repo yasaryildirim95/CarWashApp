@@ -92,7 +92,7 @@ namespace CarWashApp.DAL.Concrete
         public (List<PersonelAvailabilityStruct>, List<PersonelAvailabilityStruct>) ShowPersonelavailability()
         {
             var mainList1 = washes.Where(w => w.IsDone == false).Include(w => w.Personel).Include(w => w.Vehicle).ToList();
-            var mainList2 = DbSet.Where(p => p.IsWorking).ToList();
+            var mainList2 = DbSet.Where(p => !p.IsWorking).ToList();
 
             var outputList1 = new List<PersonelAvailabilityStruct>();
             var outputList2 = new List<PersonelAvailabilityStruct>();
@@ -111,7 +111,7 @@ namespace CarWashApp.DAL.Concrete
 
             foreach (var item in mainList2)
             {
-                if(item.IsWorking == false)
+                if (item.IsWorking == false)
                 {
                     outputList2.Add(new PersonelAvailabilityStruct
                     {
@@ -122,7 +122,7 @@ namespace CarWashApp.DAL.Concrete
                         ÇALIŞTIGI_ARAC = ""
                     }); ;
                 }
-                
+
             }
 
             return (outputList1, outputList2);

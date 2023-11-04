@@ -4,6 +4,7 @@ namespace CarWashApp.Entity.Concrete
 {
     public class WashTypeProduct : IEntity
     {
+        public int WashTypeProductID { get; set; }
         public WashType WashType { get; set; }
         public int WashTypeID { get; set; }
         public Product Product { get; set; }

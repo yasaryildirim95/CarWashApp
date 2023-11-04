@@ -17,6 +17,7 @@ namespace CarWashApp.UI.Forms
             FormHelper.ComboOrListBoxMaker(vardiyaComboBox, FormHelper.GetBaseManager<Shift>().GetAll());
             baslangic_TarihiDTP.MinDate = DateTime.Now;
             baslangic_TarihiDTP.MaxDate = DateTime.Now.AddYears(1);
+
         }
         #region menuPanel
         private void kayitBtn_Click(object sender, EventArgs e)
@@ -37,6 +38,10 @@ namespace CarWashApp.UI.Forms
         {
             FormHelper.HighlightSelectedButton(sender, menuPanel);
             FormHelper.HidePanels(this);
+            var temp = FormHelper.PersonelService.ShowPersonelavailability();
+            calisanlarDataGrid.DataSource = temp.Item1;
+            bostakilerDataGrid.DataSource = temp.Item2;
+
             personelTakipPanel.Show();
         }
         #endregion

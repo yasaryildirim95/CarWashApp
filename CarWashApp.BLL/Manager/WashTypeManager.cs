@@ -17,9 +17,9 @@ namespace CarWashApp.BLL.Manager
             {
                 if (_washTypeRepository.AddWashTypeProduct(washTypeProduct))
                 {
-                    return "Yıkama tipi eklendi";
+                    return "Yıkama tipi ürünü eklendi";
                 }
-                return "Yıkama tipi eklenemedi";
+                return "Yıkama tipi ürünü eklenemedi";
             }
             catch
             {
