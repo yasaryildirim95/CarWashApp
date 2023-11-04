@@ -8,12 +8,14 @@ namespace CarWashApp.DAL.Concrete
         private DbSet<LoginDetail> loginDetails;
         private DbSet<PersonelLeave> personelLeaves;
         private DbSet<Shift> shifts;
+        private DbSet<Wash> washes;
 
         public PersonelRepository(DbContext dbContext) : base(dbContext)
         {
             loginDetails = dbContext.Set<LoginDetail>();
             personelLeaves = dbContext.Set<PersonelLeave>();
             shifts = dbContext.Set<Shift>();
+            washes = dbContext.Set<Wash>();
         }
 
         public (bool, bool) CheckLoginInfo(string username, string password)
@@ -85,6 +87,11 @@ namespace CarWashApp.DAL.Concrete
             }
             return personels;
         }
+
+        //public ICollection ShowPersonelavailability()
+        //{
+        //    washes.Include(w => w.Personel).
+        //}
 
         public List<PersonelLeave> GetAllPersonelLeaves()
         {
