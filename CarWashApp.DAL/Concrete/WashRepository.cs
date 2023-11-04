@@ -66,7 +66,13 @@ namespace CarWashApp.DAL.Concrete
             currentWash.VehicleId = vehicle.VehicleID;
             currentWash.WashTypeID = washType.WashTypeID;
             currentWash.DirtinessLevelID = dirtinessLevel.DirtinessLevelID;
-            Personel.Where(p => p.PersonelID == currentWash.PersonelID).FirstOrDefault().IsWorking = false;
+
+            var currentPersonel = Personel.Where(p => p.PersonelID == currentWash.PersonelID).FirstOrDefault();
+
+            if (currentPersonel != null)
+            {
+                currentPersonel.IsWorking = false;
+            }
 
             currentWash.PersonelID = null;
 
