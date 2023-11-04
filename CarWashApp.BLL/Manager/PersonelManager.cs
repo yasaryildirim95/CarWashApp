@@ -1,4 +1,5 @@
 ﻿using CarWashApp.BLL.Service;
+using CarWashApp.DAL.Common;
 using CarWashApp.DAL.Concrete;
 using CarWashApp.Entity.Concrete;
 
@@ -98,6 +99,11 @@ namespace CarWashApp.BLL.Manager
         public List<PersonelLeave> GetAllPersonelLeaves()
         {
             return _personelRepository.GetAllPersonelLeaves();
+        }
+
+        public (List<PersonelAvailabilityStruct>, List<PersonelAvailabilityStruct>) ShowPersonelavailability()
+        {
+            return _personelRepository.ShowPersonelavailability();
         }
     }
 }
