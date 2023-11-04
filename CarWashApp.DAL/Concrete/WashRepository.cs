@@ -1,8 +1,4 @@
-﻿using CarWashApp.DAL.Common;
-using CarWashApp.Entity.Concrete;
-using Microsoft.EntityFrameworkCore;
-
-namespace CarWashApp.DAL.Concrete
+﻿namespace CarWashApp.DAL.Concrete
 {
     public class WashRepository : GenericRepository<Wash>
     {
@@ -26,123 +22,128 @@ namespace CarWashApp.DAL.Concrete
 
         public bool AddWash(string washTypeName, string plate, string dirtinessLevelName)
         {
-            var vehicle = vehicles.Where(v => v.Plate == plate).FirstOrDefault();
-            var washType = washTypes.Where(w => w.WashTypeName == washTypeName).FirstOrDefault();
-            var vehicleType = vehicleTypes.Where(v => v.VehicleTypeID == vehicle.VehicleTypeID).FirstOrDefault();
-            var dirtinessLevel = dirtinessLevels.Where(v => v.DirtinessLevelName == dirtinessLevelName).FirstOrDefault();
-
-            Wash newWash = new Wash()
+            if (!DbSet.Include(w => w.Vehicle).Where(w => w.Vehicle.Plate == plate && w.IsDone == false).Any())
             {
-                Price = washType.Price * vehicleType.PriceMultiplier,
-                VehicleId = vehicle.VehicleID,
-                WashTypeID = washType.WashTypeID,
-                DirtinessLevelID = dirtinessLevel.DirtinessLevelID,
-                IsDone = false
-                //Personel ataması sonra yapılacak
-            };
+                var vehicle = vehicles.Where(v => v.Plate == plate).FirstOrDefault();
+                var washType = washTypes.Where(w => w.WashTypeName == washTypeName).FirstOrDefault();
+                var vehicleType = vehicleTypes.Where(v => v.VehicleTypeID == vehicle.VehicleTypeID).FirstOrDefault();
+                var dirtinessLevel = dirtinessLevels.Where(v => v.DirtinessLevelName == dirtinessLevelName).FirstOrDefault();
 
-            washes.Add(newWash);
-            DbContext.SaveChanges();
-            return washes.Where(x => x.WashID == newWash.WashID).Any();
-        }
-
-        public bool UpdateWash(int id, string washTypeName, string plate, string dirtinessLevelName)
-        {
-            var currentWash = DbSet.Include(w => w.DirtinessLevel).Include(w => w.WashType).Include(w => w.Vehicle).ThenInclude(w => w.VehicleType).Where(w => w.WashID == id).FirstOrDefault();
-
-            var vehicle = vehicles.Include(v => v.VehicleType).Where(v => v.Plate == plate).FirstOrDefault();
-            var washType = washTypes.Where(w => w.WashTypeName == washTypeName).FirstOrDefault();
-            var dirtinessLevel = dirtinessLevels.Where(v => v.DirtinessLevelName == dirtinessLevelName).FirstOrDefault();
-
-            currentWash.Price = washType.Price * vehicle.VehicleType.PriceMultiplier;
-            currentWash.VehicleId = vehicle.VehicleID;
-            currentWash.WashTypeID = washType.WashTypeID;
-            currentWash.DirtinessLevelID = dirtinessLevel.DirtinessLevelID;
-            currentWash.PersonelID = null;
-
-            DbContext.SaveChanges();
-
-            return DbSet.Include(w => w.DirtinessLevel).Include(w => w.WashType).Include(w => w.Vehicle).Where(w => w.WashID == id && w.WashTypeID == washType.WashTypeID && w.Vehicle.VehicleTypeID == vehicle.VehicleTypeID && w.DirtinessLevelID == dirtinessLevel.DirtinessLevelID).Any();
-        }
-        public bool DeleteByID(int id)
-        {
-            var wash = DbSet.Where(w => w.WashID == id).FirstOrDefault();
-
-            if (wash != null) Delete(wash);
-
-            return !DbSet.Where(w => w.WashID == id).Any();
-        }
-
-        public List<DataGridStruct> RunCarWash()
-        {
-            AssignPersonel();
-
-            CheckWashes();
-
-            var mainList = DbSet.Include(w => w.WashType).Include(w => w.Personel).Include(w => w.DirtinessLevel).Include(w => w.Vehicle).ToList();
-
-            var outputList = new List<DataGridStruct>();
-
-            var queueNum = 1;
-
-            foreach (var wash in mainList)
-            {
-                outputList.Add(new DataGridStruct
+                Wash newWash = new Wash()
                 {
-                    SIRA = queueNum,
-                    YIKAMA_ID = wash.WashID,
-                    PLAKA = wash.Vehicle.Plate,
-                    MARKA = wash.Vehicle.Brand,
-                    MODEL = wash.Vehicle.Model,
-                    YIKAMA_TİPİ = wash.WashType.WashTypeName,
-                    ÇALIŞAN_KİŞİ = wash.Personel != null ? wash.Personel.Name + " " + wash.Personel.Surname : "Çalışan Bekleniyor.",
-                    YIKAMA_DURUMU = (!wash.IsDone && wash.Personel == null) ? "Sırada" : ((wash.EndTime - DateTime.Now).Minutes > 0) ? "İşlemde." : "Bitti.",
-                    KALAN_SÜRE = (wash.EndTime - DateTime.Now).Minutes > 0 ? (wash.EndTime - DateTime.Now).Minutes : 0
-                });
+                    Price = washType.Price * vehicleType.PriceMultiplier,
+                    VehicleId = vehicle.VehicleID,
+                    WashTypeID = washType.WashTypeID,
+                    DirtinessLevelID = dirtinessLevel.DirtinessLevelID,
+                    IsDone = false
+                    //Personel ataması sonra yapılacak
+                };
 
-                queueNum++;
+                washes.Add(newWash);
+                DbContext.SaveChanges();
+                return washes.Where(x => x.WashID == newWash.WashID).Any();
             }
 
-            return outputList;
-        }
-
-        private void CheckWashes()
-        {
-            var list = DbSet.Include(w => w.Personel).Where(w => w.IsDone == false && w.Personel != null && w.EndTime < DateTime.Now).ToList();
-
-            if (list.Count() > 0)
+            public bool UpdateWash(int id, string washTypeName, string plate, string dirtinessLevelName)
             {
-                foreach (var wash in list)
-                {
-                    var currentWash = DbSet.Where(w => w.WashID == wash.WashID).First();
-                    currentWash.IsDone = true;
-                    currentWash.Personel.IsWorking = false;
+                var currentWash = DbSet.Include(w => w.DirtinessLevel).Include(w => w.WashType).Include(w => w.Vehicle).ThenInclude(w => w.VehicleType).Where(w => w.WashID == id).FirstOrDefault();
 
-                    DbContext.SaveChanges();
-                }
+                var vehicle = vehicles.Include(v => v.VehicleType).Where(v => v.Plate == plate).FirstOrDefault();
+                var washType = washTypes.Where(w => w.WashTypeName == washTypeName).FirstOrDefault();
+                var dirtinessLevel = dirtinessLevels.Where(v => v.DirtinessLevelName == dirtinessLevelName).FirstOrDefault();
+
+                currentWash.Price = washType.Price * vehicle.VehicleType.PriceMultiplier;
+                currentWash.VehicleId = vehicle.VehicleID;
+                currentWash.WashTypeID = washType.WashTypeID;
+                currentWash.DirtinessLevelID = dirtinessLevel.DirtinessLevelID;
+                Personel.Where(p => p.PersonelID == currentWash.PersonelID).FirstOrDefault().IsWorking = false;
+
+                currentWash.PersonelID = null;
+
+
+                DbContext.SaveChanges();
+
+                return DbSet.Include(w => w.DirtinessLevel).Include(w => w.WashType).Include(w => w.Vehicle).Where(w => w.WashID == id && w.WashTypeID == washType.WashTypeID && w.Vehicle.VehicleTypeID == vehicle.VehicleTypeID && w.DirtinessLevelID == dirtinessLevel.DirtinessLevelID).Any();
             }
-        }
-
-        public void AssignPersonel()
-        {
-            var personel = Personel.Where(p => p.IsWasher == true && p.IsWorking == false).ToList();
-
-            if (personel.Count() > 0)
+            public bool DeleteByID(int id)
             {
-                foreach (var person in personel)
-                {
-                    var wash = DbSet.Include(w => w.DirtinessLevel).Include(w => w.WashType).Where(w => w.Personel == null).FirstOrDefault();
+                var wash = DbSet.Where(w => w.WashID == id).FirstOrDefault();
 
-                    if (wash != null)
+                if (wash != null) Delete(wash);
+
+                return !DbSet.Where(w => w.WashID == id).Any();
+            }
+
+            public List<DataGridStruct> RunCarWash()
+            {
+                AssignPersonel();
+
+                CheckWashes();
+
+                var mainList = DbSet.Include(w => w.WashType).Include(w => w.Personel).Include(w => w.DirtinessLevel).Include(w => w.Vehicle).ToList();
+
+                var outputList = new List<DataGridStruct>();
+
+                var queueNum = 1;
+
+                foreach (var wash in mainList)
+                {
+                    outputList.Add(new DataGridStruct
                     {
-                        wash.PersonelID = person.PersonelID;
-                        wash.EndTime = DateTime.Now.AddMinutes(wash.DirtinessLevel.AdditionalDuration + wash.WashType.Duration);
-                        Personel.Where(p => p.PersonelID == person.PersonelID).First().IsWorking = true;
+                        SIRA = queueNum,
+                        YIKAMA_ID = wash.WashID,
+                        PLAKA = wash.Vehicle.Plate,
+                        MARKA = wash.Vehicle.Brand,
+                        MODEL = wash.Vehicle.Model,
+                        YIKAMA_TİPİ = wash.WashType.WashTypeName,
+                        ÇALIŞAN_KİŞİ = wash.Personel != null ? wash.Personel.Name + " " + wash.Personel.Surname : "Çalışan Bekleniyor.",
+                        YIKAMA_DURUMU = (!wash.IsDone && wash.Personel == null) ? "Sırada" : ((wash.EndTime - DateTime.Now).Minutes > 0) ? "İşlemde." : "Bitti.",
+                        KALAN_SÜRE = (wash.EndTime - DateTime.Now).Minutes > 0 ? (wash.EndTime - DateTime.Now).Minutes : 0
+                    });
+
+                    queueNum++;
+                }
+
+                return outputList;
+            }
+
+            private void CheckWashes()
+            {
+                var list = DbSet.Include(w => w.Personel).Where(w => w.IsDone == false && w.Personel != null && w.EndTime < DateTime.Now).ToList();
+
+                if (list.Count() > 0)
+                {
+                    foreach (var wash in list)
+                    {
+                        var currentWash = DbSet.Where(w => w.WashID == wash.WashID).First();
+                        currentWash.IsDone = true;
+                        currentWash.Personel.IsWorking = false;
 
                         DbContext.SaveChanges();
                     }
                 }
             }
+
+            public void AssignPersonel()
+            {
+                var personel = Personel.Where(p => p.IsWasher == true && p.IsWorking == false).ToList();
+
+                if (personel.Count() > 0)
+                {
+                    foreach (var person in personel)
+                    {
+                        var wash = DbSet.Include(w => w.DirtinessLevel).Include(w => w.WashType).Where(w => w.Personel == null).FirstOrDefault();
+
+                        if (wash != null)
+                        {
+                            wash.PersonelID = person.PersonelID;
+                            wash.EndTime = DateTime.Now.AddMinutes(wash.DirtinessLevel.AdditionalDuration + wash.WashType.Duration);
+                            Personel.Where(p => p.PersonelID == person.PersonelID).First().IsWorking = true;
+
+                            DbContext.SaveChanges();
+                        }
+                    }
+                }
+            }
         }
     }
-}
