@@ -111,14 +111,18 @@ namespace CarWashApp.DAL.Concrete
 
             foreach (var item in mainList2)
             {
-                outputList2.Add(new PersonelAvailabilityStruct
+                if(item.IsWorking == false)
                 {
-                    PERSONEL_ID = item.PersonelID,
-                    PERSONEL_ADI = item.Name + item.Surname,
-                    PERSONEL_UYGUNLUGU = item.IsWorking ? "Çalışıyor." : "Boşta.",
-                    UYGUN_OLMASINA_KALAN_SURE = "0",
-                    ÇALIŞTIGI_ARAC = ""
-                }); ;
+                    outputList2.Add(new PersonelAvailabilityStruct
+                    {
+                        PERSONEL_ID = item.PersonelID,
+                        PERSONEL_ADI = item.Name + item.Surname,
+                        PERSONEL_UYGUNLUGU = item.IsWorking ? "Çalışıyor." : "Boşta.",
+                        UYGUN_OLMASINA_KALAN_SURE = "0",
+                        ÇALIŞTIGI_ARAC = ""
+                    }); ;
+                }
+                
             }
 
             return (outputList1, outputList2);
