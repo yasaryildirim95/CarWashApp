@@ -1,4 +1,5 @@
-﻿using CarWashApp.Entity.Concrete;
+﻿using CarWashApp.DAL.Common;
+using CarWashApp.Entity.Concrete;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarWashApp.DAL.Concrete
@@ -88,10 +89,40 @@ namespace CarWashApp.DAL.Concrete
             return personels;
         }
 
-        //public ICollection ShowPersonelavailability()
-        //{
-        //    washes.Include(w => w.Personel).
-        //}
+        public (List<PersonelAvailabilityStruct>, List<PersonelAvailabilityStruct>) ShowPersonelavailability()
+        {
+            var mainList1 = washes.Where(w => w.IsDone == false).Include(w => w.Personel).Include(w => w.Vehicle).ToList();
+            var mainList2 = DbSet.Where(p => p.IsWorking).ToList();
+
+            var outputList1 = new List<PersonelAvailabilityStruct>();
+            var outputList2 = new List<PersonelAvailabilityStruct>();
+
+            foreach (var item in mainList1)
+            {
+                outputList1.Add(new PersonelAvailabilityStruct
+                {
+                    PERSONEL_ID = item.Personel.PersonelID,
+                    PERSONEL_ADI = item.Personel.Name + item.Personel.Surname,
+                    PERSONEL_UYGUNLUGU = item.Personel.IsWorking ? "Çalışıyor." : "Boşta.",
+                    UYGUN_OLMASINA_KALAN_SURE = item.EndTime.Minute.ToString(),
+                    ÇALIŞTIGI_ARAC = item.Vehicle.Plate
+                });
+            }
+
+            foreach (var item in mainList2)
+            {
+                outputList2.Add(new PersonelAvailabilityStruct
+                {
+                    PERSONEL_ID = item.PersonelID,
+                    PERSONEL_ADI = item.Name + item.Surname,
+                    PERSONEL_UYGUNLUGU = item.IsWorking ? "Çalışıyor." : "Boşta.",
+                    UYGUN_OLMASINA_KALAN_SURE = "0",
+                    ÇALIŞTIGI_ARAC = ""
+                }); ;
+            }
+
+            return (outputList1, outputList2);
+        }
 
         public List<PersonelLeave> GetAllPersonelLeaves()
         {
