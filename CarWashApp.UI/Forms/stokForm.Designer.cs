@@ -69,14 +69,14 @@
             uyari_EsigiNumericUpD.Location = new Point(177, 199);
             uyari_EsigiNumericUpD.Name = "uyari_EsigiNumericUpD";
             uyari_EsigiNumericUpD.Size = new Size(184, 34);
-            uyari_EsigiNumericUpD.TabIndex = 13;
+            uyari_EsigiNumericUpD.TabIndex = 3;
             // 
             // stok_AdetNumericUpD
             // 
             stok_AdetNumericUpD.Location = new Point(177, 136);
             stok_AdetNumericUpD.Name = "stok_AdetNumericUpD";
             stok_AdetNumericUpD.Size = new Size(184, 34);
-            stok_AdetNumericUpD.TabIndex = 13;
+            stok_AdetNumericUpD.TabIndex = 2;
             // 
             // stokUrunListBox
             // 
@@ -86,6 +86,7 @@
             stokUrunListBox.Name = "stokUrunListBox";
             stokUrunListBox.Size = new Size(227, 312);
             stokUrunListBox.TabIndex = 12;
+            stokUrunListBox.TabStop = false;
             stokUrunListBox.SelectedIndexChanged += stokUrunListBox_SelectedIndexChanged;
             // 
             // urun_AdıTextBox
@@ -93,14 +94,14 @@
             urun_AdıTextBox.Location = new Point(177, 72);
             urun_AdıTextBox.Name = "urun_AdıTextBox";
             urun_AdıTextBox.Size = new Size(184, 34);
-            urun_AdıTextBox.TabIndex = 10;
+            urun_AdıTextBox.TabIndex = 1;
             // 
             // silBtn
             // 
             silBtn.Location = new Point(70, 334);
             silBtn.Name = "silBtn";
             silBtn.Size = new Size(135, 42);
-            silBtn.TabIndex = 7;
+            silBtn.TabIndex = 6;
             silBtn.Text = "Sil";
             silBtn.UseVisualStyleBackColor = true;
             silBtn.Visible = false;
@@ -111,7 +112,7 @@
             resetBtn.Location = new Point(222, 272);
             resetBtn.Name = "resetBtn";
             resetBtn.Size = new Size(135, 42);
-            resetBtn.TabIndex = 8;
+            resetBtn.TabIndex = 5;
             resetBtn.Text = "Reset";
             resetBtn.UseVisualStyleBackColor = true;
             resetBtn.Click += resetBtn_Click;
@@ -121,7 +122,7 @@
             guncelleBtn.Location = new Point(222, 334);
             guncelleBtn.Name = "guncelleBtn";
             guncelleBtn.Size = new Size(135, 42);
-            guncelleBtn.TabIndex = 8;
+            guncelleBtn.TabIndex = 7;
             guncelleBtn.Text = "Güncelle";
             guncelleBtn.UseVisualStyleBackColor = true;
             guncelleBtn.Visible = false;
@@ -132,7 +133,7 @@
             ekleBtn.Location = new Point(70, 272);
             ekleBtn.Name = "ekleBtn";
             ekleBtn.Size = new Size(135, 42);
-            ekleBtn.TabIndex = 9;
+            ekleBtn.TabIndex = 4;
             ekleBtn.Text = "Ekle";
             ekleBtn.UseVisualStyleBackColor = true;
             ekleBtn.Click += ekleBtn_Click;

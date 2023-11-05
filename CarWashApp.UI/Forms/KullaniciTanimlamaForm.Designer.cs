@@ -75,6 +75,7 @@
             kullaniciListBox.Name = "kullaniciListBox";
             kullaniciListBox.Size = new Size(227, 312);
             kullaniciListBox.TabIndex = 26;
+            kullaniciListBox.TabStop = false;
             kullaniciListBox.SelectedIndexChanged += kullaniciListBox_SelectedIndexChanged;
             // 
             // guncelleBtn
@@ -83,7 +84,7 @@
             guncelleBtn.Location = new Point(230, 326);
             guncelleBtn.Name = "guncelleBtn";
             guncelleBtn.Size = new Size(135, 42);
-            guncelleBtn.TabIndex = 22;
+            guncelleBtn.TabIndex = 8;
             guncelleBtn.Text = "Güncelle";
             guncelleBtn.UseVisualStyleBackColor = true;
             guncelleBtn.Click += guncelleBtn_Click;
@@ -94,7 +95,7 @@
             resetBtn.Location = new Point(230, 279);
             resetBtn.Name = "resetBtn";
             resetBtn.Size = new Size(135, 42);
-            resetBtn.TabIndex = 23;
+            resetBtn.TabIndex = 6;
             resetBtn.Text = "Reset";
             resetBtn.UseVisualStyleBackColor = true;
             resetBtn.Click += resetBtn_Click;
@@ -105,7 +106,7 @@
             silBtn.Location = new Point(78, 326);
             silBtn.Name = "silBtn";
             silBtn.Size = new Size(135, 42);
-            silBtn.TabIndex = 24;
+            silBtn.TabIndex = 7;
             silBtn.Text = "Sil";
             silBtn.UseVisualStyleBackColor = true;
             silBtn.Click += silBtn_Click;
@@ -116,7 +117,7 @@
             ekleBtn.Location = new Point(78, 279);
             ekleBtn.Name = "ekleBtn";
             ekleBtn.Size = new Size(135, 42);
-            ekleBtn.TabIndex = 25;
+            ekleBtn.TabIndex = 5;
             ekleBtn.Text = "Ekle";
             ekleBtn.UseVisualStyleBackColor = true;
             ekleBtn.Click += ekleBtn_Click;
@@ -128,7 +129,7 @@
             isAdminCheckBox.Location = new Point(230, 221);
             isAdminCheckBox.Name = "isAdminCheckBox";
             isAdminCheckBox.Size = new Size(89, 32);
-            isAdminCheckBox.TabIndex = 21;
+            isAdminCheckBox.TabIndex = 4;
             isAdminCheckBox.Text = "Admin";
             isAdminCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -138,7 +139,7 @@
             sifreTextBox.Location = new Point(189, 156);
             sifreTextBox.Name = "sifreTextBox";
             sifreTextBox.Size = new Size(176, 34);
-            sifreTextBox.TabIndex = 19;
+            sifreTextBox.TabIndex = 3;
             // 
             // kullanici_AdiTextBox
             // 
@@ -146,7 +147,7 @@
             kullanici_AdiTextBox.Location = new Point(189, 93);
             kullanici_AdiTextBox.Name = "kullanici_AdiTextBox";
             kullanici_AdiTextBox.Size = new Size(176, 34);
-            kullanici_AdiTextBox.TabIndex = 20;
+            kullanici_AdiTextBox.TabIndex = 2;
             // 
             // personelComboBox
             // 
@@ -155,7 +156,7 @@
             personelComboBox.Location = new Point(189, 30);
             personelComboBox.Name = "personelComboBox";
             personelComboBox.Size = new Size(176, 36);
-            personelComboBox.TabIndex = 18;
+            personelComboBox.TabIndex = 1;
             // 
             // label3
             // 

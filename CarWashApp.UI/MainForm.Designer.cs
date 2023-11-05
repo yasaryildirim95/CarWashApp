@@ -68,7 +68,7 @@
             uygulamaKullaniciBtn.Location = new Point(0, 405);
             uygulamaKullaniciBtn.Name = "uygulamaKullaniciBtn";
             uygulamaKullaniciBtn.Size = new Size(164, 65);
-            uygulamaKullaniciBtn.TabIndex = 7;
+            uygulamaKullaniciBtn.TabIndex = 17;
             uygulamaKullaniciBtn.Text = "Kullanıcı Tanımlama";
             uygulamaKullaniciBtn.UseVisualStyleBackColor = true;
             uygulamaKullaniciBtn.Click += uygulamaKullaniciBtn_Click;
@@ -82,7 +82,7 @@
             uygulamaAyarlariBtn.Location = new Point(0, 340);
             uygulamaAyarlariBtn.Name = "uygulamaAyarlariBtn";
             uygulamaAyarlariBtn.Size = new Size(164, 65);
-            uygulamaAyarlariBtn.TabIndex = 6;
+            uygulamaAyarlariBtn.TabIndex = 16;
             uygulamaAyarlariBtn.Text = "Ayarlar";
             uygulamaAyarlariBtn.UseVisualStyleBackColor = true;
             uygulamaAyarlariBtn.Click += uygulamaAyarlariBtn_Click;
@@ -96,7 +96,7 @@
             personelBtn.Location = new Point(0, 275);
             personelBtn.Name = "personelBtn";
             personelBtn.Size = new Size(164, 65);
-            personelBtn.TabIndex = 5;
+            personelBtn.TabIndex = 15;
             personelBtn.Text = "Personel";
             personelBtn.UseVisualStyleBackColor = true;
             personelBtn.Click += personelBtn_Click;
@@ -110,7 +110,7 @@
             stokBtn.Location = new Point(0, 210);
             stokBtn.Name = "stokBtn";
             stokBtn.Size = new Size(164, 65);
-            stokBtn.TabIndex = 4;
+            stokBtn.TabIndex = 14;
             stokBtn.Text = "Stok";
             stokBtn.UseVisualStyleBackColor = true;
             stokBtn.Click += stokBtn_Click;
@@ -124,7 +124,7 @@
             yikamaBtn.Location = new Point(0, 145);
             yikamaBtn.Name = "yikamaBtn";
             yikamaBtn.Size = new Size(164, 65);
-            yikamaBtn.TabIndex = 3;
+            yikamaBtn.TabIndex = 13;
             yikamaBtn.Text = "Yıkama";
             yikamaBtn.UseVisualStyleBackColor = true;
             yikamaBtn.Click += yikamaBtn_Click;
@@ -138,7 +138,7 @@
             aracKayitBtn.Location = new Point(0, 80);
             aracKayitBtn.Name = "aracKayitBtn";
             aracKayitBtn.Size = new Size(164, 65);
-            aracKayitBtn.TabIndex = 2;
+            aracKayitBtn.TabIndex = 12;
             aracKayitBtn.Text = "Araç Kayıt";
             aracKayitBtn.UseVisualStyleBackColor = true;
             aracKayitBtn.Click += aracKayitBtn_Click;
@@ -248,7 +248,7 @@
             kullaniciLabel.Location = new Point(162, 84);
             kullaniciLabel.Name = "kullaniciLabel";
             kullaniciLabel.Size = new Size(129, 28);
-            kullaniciLabel.TabIndex = 6;
+            kullaniciLabel.TabIndex = 0;
             kullaniciLabel.Text = "Kullanıcı Adı :";
             // 
             // sifreTextBox

@@ -30,12 +30,14 @@
         {
             components = new System.ComponentModel.Container();
             yikamaPanel = new Panel();
+            yikamaTextBox = new TextBox();
             label4 = new Label();
             sureComboBox = new ComboBox();
             resetBtn = new Button();
             guncelleBtn = new Button();
             SilBtn = new Button();
             ekleBtn = new Button();
+            label5 = new Label();
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
@@ -44,8 +46,6 @@
             yikama_TipiComboBox = new ComboBox();
             plakaComboBox = new ComboBox();
             timer1 = new System.Windows.Forms.Timer(components);
-            yikamaTextBox = new TextBox();
-            label5 = new Label();
             yikamaPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)yikamaDataGrid).BeginInit();
             SuspendLayout();
@@ -73,6 +73,16 @@
             yikamaPanel.Size = new Size(759, 400);
             yikamaPanel.TabIndex = 0;
             // 
+            // yikamaTextBox
+            // 
+            yikamaTextBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            yikamaTextBox.Location = new Point(124, 220);
+            yikamaTextBox.Name = "yikamaTextBox";
+            yikamaTextBox.ReadOnly = true;
+            yikamaTextBox.Size = new Size(140, 34);
+            yikamaTextBox.TabIndex = 19;
+            yikamaTextBox.TabStop = false;
+            // 
             // label4
             // 
             label4.AutoSize = true;
@@ -90,7 +100,7 @@
             sureComboBox.Location = new Point(434, 8);
             sureComboBox.Name = "sureComboBox";
             sureComboBox.Size = new Size(121, 23);
-            sureComboBox.TabIndex = 17;
+            sureComboBox.TabIndex = 8;
             sureComboBox.SelectedIndexChanged += sureComboBox_SelectedIndexChanged;
             // 
             // resetBtn
@@ -99,7 +109,7 @@
             resetBtn.Location = new Point(146, 291);
             resetBtn.Name = "resetBtn";
             resetBtn.Size = new Size(118, 37);
-            resetBtn.TabIndex = 16;
+            resetBtn.TabIndex = 5;
             resetBtn.Text = "Reset";
             resetBtn.UseVisualStyleBackColor = true;
             resetBtn.Click += resetBtn_Click;
@@ -110,7 +120,7 @@
             guncelleBtn.Location = new Point(12, 350);
             guncelleBtn.Name = "guncelleBtn";
             guncelleBtn.Size = new Size(118, 37);
-            guncelleBtn.TabIndex = 16;
+            guncelleBtn.TabIndex = 6;
             guncelleBtn.Text = "Güncelle";
             guncelleBtn.UseVisualStyleBackColor = true;
             guncelleBtn.Visible = false;
@@ -122,7 +132,7 @@
             SilBtn.Location = new Point(146, 350);
             SilBtn.Name = "SilBtn";
             SilBtn.Size = new Size(118, 37);
-            SilBtn.TabIndex = 16;
+            SilBtn.TabIndex = 7;
             SilBtn.Text = "Sil";
             SilBtn.UseVisualStyleBackColor = true;
             SilBtn.Visible = false;
@@ -134,10 +144,20 @@
             ekleBtn.Location = new Point(12, 291);
             ekleBtn.Name = "ekleBtn";
             ekleBtn.Size = new Size(118, 37);
-            ekleBtn.TabIndex = 16;
+            ekleBtn.TabIndex = 4;
             ekleBtn.Text = "Ekle";
             ekleBtn.UseVisualStyleBackColor = true;
             ekleBtn.Click += ekleBtn_Click;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Location = new Point(12, 229);
+            label5.Name = "label5";
+            label5.Size = new Size(87, 21);
+            label5.TabIndex = 15;
+            label5.Text = "YıkamaID : ";
             // 
             // label3
             // 
@@ -189,7 +209,7 @@
             kirlilikComboBox.Location = new Point(124, 160);
             kirlilikComboBox.Name = "kirlilikComboBox";
             kirlilikComboBox.Size = new Size(140, 36);
-            kirlilikComboBox.TabIndex = 10;
+            kirlilikComboBox.TabIndex = 3;
             // 
             // yikama_TipiComboBox
             // 
@@ -199,7 +219,7 @@
             yikama_TipiComboBox.Location = new Point(124, 97);
             yikama_TipiComboBox.Name = "yikama_TipiComboBox";
             yikama_TipiComboBox.Size = new Size(140, 36);
-            yikama_TipiComboBox.TabIndex = 9;
+            yikama_TipiComboBox.TabIndex = 2;
             // 
             // plakaComboBox
             // 
@@ -209,31 +229,12 @@
             plakaComboBox.Location = new Point(124, 37);
             plakaComboBox.Name = "plakaComboBox";
             plakaComboBox.Size = new Size(140, 36);
-            plakaComboBox.TabIndex = 8;
+            plakaComboBox.TabIndex = 1;
             // 
             // timer1
             // 
             timer1.Interval = 1000;
             timer1.Tick += timer1_Tick;
-            // 
-            // yikamaTextBox
-            // 
-            yikamaTextBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            yikamaTextBox.Location = new Point(124, 220);
-            yikamaTextBox.Name = "yikamaTextBox";
-            yikamaTextBox.ReadOnly = true;
-            yikamaTextBox.Size = new Size(140, 34);
-            yikamaTextBox.TabIndex = 19;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(12, 229);
-            label5.Name = "label5";
-            label5.Size = new Size(87, 21);
-            label5.TabIndex = 15;
-            label5.Text = "YıkamaID : ";
             // 
             // yikamaForm
             // 

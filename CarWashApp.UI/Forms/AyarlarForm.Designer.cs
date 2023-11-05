@@ -115,7 +115,7 @@
             urunAyarlariBtn.Location = new Point(0, 300);
             urunAyarlariBtn.Name = "urunAyarlariBtn";
             urunAyarlariBtn.Size = new Size(128, 100);
-            urunAyarlariBtn.TabIndex = 3;
+            urunAyarlariBtn.TabIndex = 13;
             urunAyarlariBtn.Text = "Ürün Ayarları";
             urunAyarlariBtn.UseVisualStyleBackColor = false;
             urunAyarlariBtn.Click += urunAyarlariBtn_Click;
@@ -130,7 +130,7 @@
             kirlilikAyarBtn.Location = new Point(0, 200);
             kirlilikAyarBtn.Name = "kirlilikAyarBtn";
             kirlilikAyarBtn.Size = new Size(128, 100);
-            kirlilikAyarBtn.TabIndex = 0;
+            kirlilikAyarBtn.TabIndex = 12;
             kirlilikAyarBtn.Text = "Kirlilik Ayarları";
             kirlilikAyarBtn.UseVisualStyleBackColor = false;
             kirlilikAyarBtn.Click += kirlilikAyarBtn_Click;
@@ -145,7 +145,7 @@
             aracTipiBtn.Location = new Point(0, 100);
             aracTipiBtn.Name = "aracTipiBtn";
             aracTipiBtn.Size = new Size(128, 100);
-            aracTipiBtn.TabIndex = 2;
+            aracTipiBtn.TabIndex = 11;
             aracTipiBtn.Text = "Araç Tipi Ayarları";
             aracTipiBtn.UseVisualStyleBackColor = false;
             aracTipiBtn.Click += aracTipiBtn_Click;
@@ -160,7 +160,7 @@
             yıkamaAyarBtn.Location = new Point(0, 0);
             yıkamaAyarBtn.Name = "yıkamaAyarBtn";
             yıkamaAyarBtn.Size = new Size(128, 100);
-            yıkamaAyarBtn.TabIndex = 1;
+            yıkamaAyarBtn.TabIndex = 10;
             yıkamaAyarBtn.Text = "Yıkama Ayarları";
             yıkamaAyarBtn.UseVisualStyleBackColor = false;
             yıkamaAyarBtn.Click += yıkamaAyarBtn_Click;
@@ -195,6 +195,7 @@
             yikamaUrunListBox.Name = "yikamaUrunListBox";
             yikamaUrunListBox.Size = new Size(227, 312);
             yikamaUrunListBox.TabIndex = 26;
+            yikamaUrunListBox.TabStop = false;
             yikamaUrunListBox.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
             // guncelleYikamaPanelBtn
@@ -203,7 +204,7 @@
             guncelleYikamaPanelBtn.Location = new Point(170, 342);
             guncelleYikamaPanelBtn.Name = "guncelleYikamaPanelBtn";
             guncelleYikamaPanelBtn.Size = new Size(118, 37);
-            guncelleYikamaPanelBtn.TabIndex = 25;
+            guncelleYikamaPanelBtn.TabIndex = 7;
             guncelleYikamaPanelBtn.Text = "Güncelle";
             guncelleYikamaPanelBtn.UseVisualStyleBackColor = true;
             guncelleYikamaPanelBtn.Visible = false;
@@ -215,7 +216,7 @@
             yikamaPanelResetBtn.Location = new Point(170, 287);
             yikamaPanelResetBtn.Name = "yikamaPanelResetBtn";
             yikamaPanelResetBtn.Size = new Size(118, 37);
-            yikamaPanelResetBtn.TabIndex = 25;
+            yikamaPanelResetBtn.TabIndex = 5;
             yikamaPanelResetBtn.Text = "Reset";
             yikamaPanelResetBtn.UseVisualStyleBackColor = true;
             yikamaPanelResetBtn.Click += yikamaPanelResetBtn_Click;
@@ -226,7 +227,7 @@
             silYikamaPanelBtn.Location = new Point(29, 342);
             silYikamaPanelBtn.Name = "silYikamaPanelBtn";
             silYikamaPanelBtn.Size = new Size(118, 37);
-            silYikamaPanelBtn.TabIndex = 25;
+            silYikamaPanelBtn.TabIndex = 6;
             silYikamaPanelBtn.Text = "Sil";
             silYikamaPanelBtn.UseVisualStyleBackColor = true;
             silYikamaPanelBtn.Visible = false;
@@ -238,7 +239,7 @@
             yikamaPanelEkleBtn.Location = new Point(29, 287);
             yikamaPanelEkleBtn.Name = "yikamaPanelEkleBtn";
             yikamaPanelEkleBtn.Size = new Size(118, 37);
-            yikamaPanelEkleBtn.TabIndex = 25;
+            yikamaPanelEkleBtn.TabIndex = 4;
             yikamaPanelEkleBtn.Text = "Ekle";
             yikamaPanelEkleBtn.UseVisualStyleBackColor = true;
             yikamaPanelEkleBtn.Click += yikamaPanelEkleBtn_Click;
@@ -250,7 +251,7 @@
             yikama_FiyatiNumericUpD.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
             yikama_FiyatiNumericUpD.Name = "yikama_FiyatiNumericUpD";
             yikama_FiyatiNumericUpD.Size = new Size(147, 34);
-            yikama_FiyatiNumericUpD.TabIndex = 23;
+            yikama_FiyatiNumericUpD.TabIndex = 3;
             // 
             // yikama_SuresiNumericUpD
             // 
@@ -259,7 +260,7 @@
             yikama_SuresiNumericUpD.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
             yikama_SuresiNumericUpD.Name = "yikama_SuresiNumericUpD";
             yikama_SuresiNumericUpD.Size = new Size(147, 34);
-            yikama_SuresiNumericUpD.TabIndex = 23;
+            yikama_SuresiNumericUpD.TabIndex = 2;
             // 
             // label5
             // 
@@ -268,7 +269,7 @@
             label5.Location = new Point(12, 180);
             label5.Name = "label5";
             label5.Size = new Size(141, 28);
-            label5.TabIndex = 22;
+            label5.TabIndex = 0;
             label5.Text = "Yıkama Fiyatı : ";
             // 
             // label4
@@ -278,7 +279,7 @@
             label4.Location = new Point(12, 133);
             label4.Name = "label4";
             label4.Size = new Size(146, 28);
-            label4.TabIndex = 22;
+            label4.TabIndex = 0;
             label4.Text = "Yıkama Süresi : ";
             // 
             // label3
@@ -288,7 +289,7 @@
             label3.Location = new Point(12, 76);
             label3.Name = "label3";
             label3.Size = new Size(124, 28);
-            label3.TabIndex = 22;
+            label3.TabIndex = 0;
             label3.Text = "Yıkama Adı : ";
             // 
             // yikama_AdiTextBox
@@ -298,7 +299,7 @@
             yikama_AdiTextBox.MaxLength = 32;
             yikama_AdiTextBox.Name = "yikama_AdiTextBox";
             yikama_AdiTextBox.Size = new Size(147, 34);
-            yikama_AdiTextBox.TabIndex = 21;
+            yikama_AdiTextBox.TabIndex = 1;
             // 
             // label2
             // 
@@ -307,7 +308,7 @@
             label2.Location = new Point(12, 9);
             label2.Name = "label2";
             label2.Size = new Size(147, 28);
-            label2.TabIndex = 20;
+            label2.TabIndex = 0;
             label2.Text = "Yıkama Ayarları";
             // 
             // aracTipiPanel
@@ -335,7 +336,7 @@
             guncelleAracTipBtn.Location = new Point(170, 342);
             guncelleAracTipBtn.Name = "guncelleAracTipBtn";
             guncelleAracTipBtn.Size = new Size(118, 37);
-            guncelleAracTipBtn.TabIndex = 25;
+            guncelleAracTipBtn.TabIndex = 6;
             guncelleAracTipBtn.Text = "Güncelle";
             guncelleAracTipBtn.UseVisualStyleBackColor = true;
             guncelleAracTipBtn.Visible = false;
@@ -347,7 +348,7 @@
             silAracTipBtn.Location = new Point(29, 342);
             silAracTipBtn.Name = "silAracTipBtn";
             silAracTipBtn.Size = new Size(118, 37);
-            silAracTipBtn.TabIndex = 26;
+            silAracTipBtn.TabIndex = 5;
             silAracTipBtn.Text = "Sil";
             silAracTipBtn.UseVisualStyleBackColor = true;
             silAracTipBtn.Visible = false;
@@ -359,7 +360,7 @@
             resetAracTipBtn.Location = new Point(170, 287);
             resetAracTipBtn.Name = "resetAracTipBtn";
             resetAracTipBtn.Size = new Size(118, 37);
-            resetAracTipBtn.TabIndex = 27;
+            resetAracTipBtn.TabIndex = 4;
             resetAracTipBtn.Text = "Reset";
             resetAracTipBtn.UseVisualStyleBackColor = true;
             resetAracTipBtn.Click += aracTipResetBtn_Click;
@@ -370,7 +371,7 @@
             ekleAracTipBtn.Location = new Point(29, 287);
             ekleAracTipBtn.Name = "ekleAracTipBtn";
             ekleAracTipBtn.Size = new Size(118, 37);
-            ekleAracTipBtn.TabIndex = 28;
+            ekleAracTipBtn.TabIndex = 3;
             ekleAracTipBtn.Text = "Ekle";
             ekleAracTipBtn.UseVisualStyleBackColor = true;
             ekleAracTipBtn.Click += aracTipEkleBtn_Click;
@@ -383,7 +384,7 @@
             aracTipleriListBox.Location = new Point(392, 76);
             aracTipleriListBox.Name = "aracTipleriListBox";
             aracTipleriListBox.Size = new Size(227, 312);
-            aracTipleriListBox.TabIndex = 24;
+            aracTipleriListBox.TabIndex = 0;
             aracTipleriListBox.SelectedIndexChanged += aracTipleriListBox_SelectedIndexChanged;
             // 
             // label7
@@ -412,7 +413,7 @@
             fiyat_CarpaniNumericUpD.Location = new Point(158, 170);
             fiyat_CarpaniNumericUpD.Name = "fiyat_CarpaniNumericUpD";
             fiyat_CarpaniNumericUpD.Size = new Size(152, 34);
-            fiyat_CarpaniNumericUpD.TabIndex = 22;
+            fiyat_CarpaniNumericUpD.TabIndex = 2;
             // 
             // arac_TipiTextBox
             // 
@@ -420,7 +421,7 @@
             arac_TipiTextBox.Location = new Point(159, 97);
             arac_TipiTextBox.Name = "arac_TipiTextBox";
             arac_TipiTextBox.Size = new Size(152, 34);
-            arac_TipiTextBox.TabIndex = 21;
+            arac_TipiTextBox.TabIndex = 1;
             // 
             // label1
             // 
@@ -457,7 +458,7 @@
             kirlilik_SuresiNumericUpD.Location = new Point(149, 156);
             kirlilik_SuresiNumericUpD.Name = "kirlilik_SuresiNumericUpD";
             kirlilik_SuresiNumericUpD.Size = new Size(176, 34);
-            kirlilik_SuresiNumericUpD.TabIndex = 28;
+            kirlilik_SuresiNumericUpD.TabIndex = 2;
             // 
             // guncelleBtn
             // 
@@ -465,7 +466,7 @@
             guncelleBtn.Location = new Point(170, 342);
             guncelleBtn.Name = "guncelleBtn";
             guncelleBtn.Size = new Size(118, 37);
-            guncelleBtn.TabIndex = 24;
+            guncelleBtn.TabIndex = 6;
             guncelleBtn.Text = "Güncelle";
             guncelleBtn.UseVisualStyleBackColor = true;
             guncelleBtn.Visible = false;
@@ -477,7 +478,7 @@
             silBtn.Location = new Point(29, 342);
             silBtn.Name = "silBtn";
             silBtn.Size = new Size(118, 37);
-            silBtn.TabIndex = 25;
+            silBtn.TabIndex = 5;
             silBtn.Text = "Sil";
             silBtn.UseVisualStyleBackColor = true;
             silBtn.Visible = false;
@@ -489,7 +490,7 @@
             resetBtn.Location = new Point(170, 287);
             resetBtn.Name = "resetBtn";
             resetBtn.Size = new Size(118, 37);
-            resetBtn.TabIndex = 26;
+            resetBtn.TabIndex = 4;
             resetBtn.Text = "Reset";
             resetBtn.UseVisualStyleBackColor = true;
             resetBtn.Click += resetBtn_Click;
@@ -500,7 +501,7 @@
             EkleBtn.Location = new Point(29, 287);
             EkleBtn.Name = "EkleBtn";
             EkleBtn.Size = new Size(118, 37);
-            EkleBtn.TabIndex = 27;
+            EkleBtn.TabIndex = 3;
             EkleBtn.Text = "Ekle";
             EkleBtn.UseVisualStyleBackColor = true;
             EkleBtn.Click += EkleBtn_Click;
@@ -531,7 +532,7 @@
             kirlilik_AdiTextBox.Location = new Point(149, 81);
             kirlilik_AdiTextBox.Name = "kirlilik_AdiTextBox";
             kirlilik_AdiTextBox.Size = new Size(176, 34);
-            kirlilik_AdiTextBox.TabIndex = 22;
+            kirlilik_AdiTextBox.TabIndex = 1;
             // 
             // kirlilikAyarlariListBox
             // 
@@ -541,7 +542,7 @@
             kirlilikAyarlariListBox.Location = new Point(392, 76);
             kirlilikAyarlariListBox.Name = "kirlilikAyarlariListBox";
             kirlilikAyarlariListBox.Size = new Size(227, 312);
-            kirlilikAyarlariListBox.TabIndex = 21;
+            kirlilikAyarlariListBox.TabIndex = 0;
             kirlilikAyarlariListBox.SelectedIndexChanged += kirlilikAyarlariListBox_SelectedIndexChanged;
             // 
             // label12
@@ -582,7 +583,7 @@
             urunAyarlariListBox.Location = new Point(392, 76);
             urunAyarlariListBox.Name = "urunAyarlariListBox";
             urunAyarlariListBox.Size = new Size(227, 312);
-            urunAyarlariListBox.TabIndex = 29;
+            urunAyarlariListBox.TabIndex = 0;
             urunAyarlariListBox.SelectedIndexChanged += urunAyarlariListBox_SelectedIndexChanged;
             // 
             // urunAyarlariSilBtn
@@ -591,7 +592,7 @@
             urunAyarlariSilBtn.Location = new Point(29, 342);
             urunAyarlariSilBtn.Name = "urunAyarlariSilBtn";
             urunAyarlariSilBtn.Size = new Size(118, 37);
-            urunAyarlariSilBtn.TabIndex = 26;
+            urunAyarlariSilBtn.TabIndex = 6;
             urunAyarlariSilBtn.Text = "Sil";
             urunAyarlariSilBtn.UseVisualStyleBackColor = true;
             urunAyarlariSilBtn.Visible = false;
@@ -603,7 +604,7 @@
             urunAyarlariResetBtn.Location = new Point(170, 287);
             urunAyarlariResetBtn.Name = "urunAyarlariResetBtn";
             urunAyarlariResetBtn.Size = new Size(118, 37);
-            urunAyarlariResetBtn.TabIndex = 27;
+            urunAyarlariResetBtn.TabIndex = 5;
             urunAyarlariResetBtn.Text = "Reset";
             urunAyarlariResetBtn.UseVisualStyleBackColor = true;
             urunAyarlariResetBtn.Click += urunAyarlariResetBtn_Click;
@@ -614,7 +615,7 @@
             urunAyarlariEkleBtn.Location = new Point(29, 287);
             urunAyarlariEkleBtn.Name = "urunAyarlariEkleBtn";
             urunAyarlariEkleBtn.Size = new Size(118, 37);
-            urunAyarlariEkleBtn.TabIndex = 28;
+            urunAyarlariEkleBtn.TabIndex = 4;
             urunAyarlariEkleBtn.Text = "Ekle";
             urunAyarlariEkleBtn.UseVisualStyleBackColor = true;
             urunAyarlariEkleBtn.Click += urunAyarlariEkleBtn_Click;
@@ -655,7 +656,7 @@
             adetNumericUpD.Location = new Point(149, 196);
             adetNumericUpD.Name = "adetNumericUpD";
             adetNumericUpD.Size = new Size(160, 34);
-            adetNumericUpD.TabIndex = 23;
+            adetNumericUpD.TabIndex = 3;
             // 
             // urunComboBox
             // 
@@ -664,7 +665,7 @@
             urunComboBox.Location = new Point(149, 138);
             urunComboBox.Name = "urunComboBox";
             urunComboBox.Size = new Size(160, 36);
-            urunComboBox.TabIndex = 22;
+            urunComboBox.TabIndex = 2;
             // 
             // yikama_TipiComboBox
             // 
@@ -673,7 +674,7 @@
             yikama_TipiComboBox.Location = new Point(149, 76);
             yikama_TipiComboBox.Name = "yikama_TipiComboBox";
             yikama_TipiComboBox.Size = new Size(160, 36);
-            yikama_TipiComboBox.TabIndex = 22;
+            yikama_TipiComboBox.TabIndex = 1;
             // 
             // label10
             // 
@@ -690,10 +691,10 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(759, 400);
+            Controls.Add(yikamaPanel);
+            Controls.Add(aracTipiPanel);
             Controls.Add(yıkamaUrunAyarlariPanel);
             Controls.Add(kirlilikPanel);
-            Controls.Add(aracTipiPanel);
-            Controls.Add(yikamaPanel);
             Controls.Add(menuPanel);
             Name = "AyarlarForm";
             Text = "Ayarlar";

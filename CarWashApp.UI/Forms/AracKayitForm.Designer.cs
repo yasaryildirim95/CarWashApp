@@ -161,7 +161,7 @@
             arac_SahipComboBox.Margin = new Padding(25, 3, 3, 25);
             arac_SahipComboBox.Name = "arac_SahipComboBox";
             arac_SahipComboBox.Size = new Size(179, 29);
-            arac_SahipComboBox.TabIndex = 17;
+            arac_SahipComboBox.TabIndex = 1;
             // 
             // label6
             // 
@@ -181,7 +181,7 @@
             arac_RenkTextBox.Margin = new Padding(25, 3, 3, 25);
             arac_RenkTextBox.Name = "arac_RenkTextBox";
             arac_RenkTextBox.Size = new Size(179, 29);
-            arac_RenkTextBox.TabIndex = 15;
+            arac_RenkTextBox.TabIndex = 3;
             // 
             // aracKayitEkleBtn
             // 
@@ -189,7 +189,7 @@
             aracKayitEkleBtn.Location = new Point(250, 304);
             aracKayitEkleBtn.Name = "aracKayitEkleBtn";
             aracKayitEkleBtn.Size = new Size(118, 37);
-            aracKayitEkleBtn.TabIndex = 14;
+            aracKayitEkleBtn.TabIndex = 7;
             aracKayitEkleBtn.Text = "Ekle";
             aracKayitEkleBtn.UseVisualStyleBackColor = true;
             aracKayitEkleBtn.Click += AracEkleBtn_Click;
@@ -213,7 +213,7 @@
             arac_TipComboBox.Margin = new Padding(25, 3, 3, 25);
             arac_TipComboBox.Name = "arac_TipComboBox";
             arac_TipComboBox.Size = new Size(153, 29);
-            arac_TipComboBox.TabIndex = 11;
+            arac_TipComboBox.TabIndex = 6;
             // 
             // label4
             // 
@@ -266,7 +266,7 @@
             arac_ModelTextBox.Margin = new Padding(25, 3, 3, 25);
             arac_ModelTextBox.Name = "arac_ModelTextBox";
             arac_ModelTextBox.Size = new Size(153, 29);
-            arac_ModelTextBox.TabIndex = 4;
+            arac_ModelTextBox.TabIndex = 5;
             // 
             // arac_MarkaTextBox
             // 
@@ -275,7 +275,7 @@
             arac_MarkaTextBox.Margin = new Padding(25, 3, 3, 25);
             arac_MarkaTextBox.Name = "arac_MarkaTextBox";
             arac_MarkaTextBox.Size = new Size(153, 29);
-            arac_MarkaTextBox.TabIndex = 5;
+            arac_MarkaTextBox.TabIndex = 4;
             // 
             // arac_PlakaTextBox
             // 
@@ -284,7 +284,7 @@
             arac_PlakaTextBox.Margin = new Padding(25, 3, 3, 25);
             arac_PlakaTextBox.Name = "arac_PlakaTextBox";
             arac_PlakaTextBox.Size = new Size(179, 29);
-            arac_PlakaTextBox.TabIndex = 6;
+            arac_PlakaTextBox.TabIndex = 2;
             // 
             // aracSahibiPanel
             // 
@@ -313,7 +313,7 @@
             adTextBox.MaxLength = 15;
             adTextBox.Name = "adTextBox";
             adTextBox.Size = new Size(165, 29);
-            adTextBox.TabIndex = 33;
+            adTextBox.TabIndex = 1;
             // 
             // label8
             // 
@@ -344,7 +344,7 @@
             telefonTextBox.MaxLength = 11;
             telefonTextBox.Name = "telefonTextBox";
             telefonTextBox.Size = new Size(165, 29);
-            telefonTextBox.TabIndex = 29;
+            telefonTextBox.TabIndex = 3;
             // 
             // aracSahibiEkle
             // 
@@ -352,7 +352,7 @@
             aracSahibiEkle.Location = new Point(250, 304);
             aracSahibiEkle.Name = "aracSahibiEkle";
             aracSahibiEkle.Size = new Size(118, 37);
-            aracSahibiEkle.TabIndex = 28;
+            aracSahibiEkle.TabIndex = 5;
             aracSahibiEkle.Text = "Ekle";
             aracSahibiEkle.UseVisualStyleBackColor = true;
             aracSahibiEkle.Click += aracSahibiEkle_Click;
@@ -397,7 +397,7 @@
             mailTextBox.Margin = new Padding(25, 3, 3, 25);
             mailTextBox.Name = "mailTextBox";
             mailTextBox.Size = new Size(165, 29);
-            mailTextBox.TabIndex = 20;
+            mailTextBox.TabIndex = 4;
             // 
             // soyadTextBox
             // 
@@ -407,7 +407,7 @@
             soyadTextBox.MaxLength = 15;
             soyadTextBox.Name = "soyadTextBox";
             soyadTextBox.Size = new Size(165, 29);
-            soyadTextBox.TabIndex = 21;
+            soyadTextBox.TabIndex = 2;
             // 
             // menuPanel
             // 
@@ -431,7 +431,7 @@
             aracSahibiBtn.Location = new Point(0, 266);
             aracSahibiBtn.Name = "aracSahibiBtn";
             aracSahibiBtn.Size = new Size(128, 133);
-            aracSahibiBtn.TabIndex = 2;
+            aracSahibiBtn.TabIndex = 12;
             aracSahibiBtn.Text = "Araç Sahibi Ekle";
             aracSahibiBtn.UseVisualStyleBackColor = false;
             aracSahibiBtn.Click += aracSahibiBtn_Click;
@@ -446,7 +446,7 @@
             aracKayitBtn.Location = new Point(0, 133);
             aracKayitBtn.Name = "aracKayitBtn";
             aracKayitBtn.Size = new Size(128, 133);
-            aracKayitBtn.TabIndex = 1;
+            aracKayitBtn.TabIndex = 11;
             aracKayitBtn.Text = "Araç Kayıt";
             aracKayitBtn.UseVisualStyleBackColor = false;
             aracKayitBtn.Click += aracKayitBtn_Click;
@@ -461,7 +461,7 @@
             aramaBtn.Location = new Point(0, 0);
             aramaBtn.Name = "aramaBtn";
             aramaBtn.Size = new Size(128, 133);
-            aramaBtn.TabIndex = 0;
+            aramaBtn.TabIndex = 10;
             aramaBtn.Text = "Arama";
             aramaBtn.UseVisualStyleBackColor = false;
             aramaBtn.Click += aramaBtn_Click;
@@ -471,9 +471,9 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(759, 400);
-            Controls.Add(aramaPanel);
-            Controls.Add(aracKayitPanel);
             Controls.Add(aracSahibiPanel);
+            Controls.Add(aracKayitPanel);
+            Controls.Add(aramaPanel);
             Controls.Add(menuPanel);
             Name = "AracKayitForm";
             Text = "Araç Kayıt";
